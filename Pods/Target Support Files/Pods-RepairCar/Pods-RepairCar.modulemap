@@ -1,0 +1,6 @@
+framework module Pods_RepairCar {
+  umbrella header "Pods-RepairCar-umbrella.h"
+
+  export *
+  module * { export * }
+}
