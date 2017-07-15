@@ -79,15 +79,16 @@ let QQShareParameter:[String] = ["","",""]  //QQ分享参数
 var NetWordStatus=false //网络状态  true连接网络，false未连接 
 var Global_latitude:CLLocationDegrees=0    //全局纬度
 var Global_longitude:CLLocationDegrees=0   //全局经度
+var Global_cityName=""
 var Global_UserInfo=MyInfoModel()          //我的信息全局
 
 let StartOneImageList:[String] = ["index1","index2","index4"]       //第一次启动引导页图片
 
 /// TabBarController 全局参数变量
-let TabBar_Title = ["首页","频道","游记","我的"]      //标题
-let TabBar_StoryName = ["HoneMain","ClassifCation","Travel","My"]  //sb名称（UI)
-let TabBar_SelectedImage = ["Home_Click","ClassifCation_Click","Travel_Click","My_Click"]        //选择的图片
-let TabBar_NoSelectedImage = ["Home_Default","ClassifCation_Default","Travel_Default","My_Default"]      //未选择图片
+let TabBar_Title = ["首页","资讯","我的"]      //标题
+let TabBar_StoryName = ["Home","News","Mine"]  //sb名称（UI)
+let TabBar_SelectedImage = ["home_select","news_select","mine_select"]        //选择的图片
+let TabBar_NoSelectedImage = ["home_normal","news_normal","mine_normal"]      //未选择图片
 
 
 

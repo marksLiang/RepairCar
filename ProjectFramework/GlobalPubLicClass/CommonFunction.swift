@@ -275,10 +275,10 @@ final class   CommonFunction {
     }
     /// 本系统默认颜色调
     static func SystemColor()->UIColor{
-        return  UIColor().TransferStringToColor("#FF6347")
+        return  UIColor().TransferStringToColor("#3F81CC")
     }
     static func SystemColor()->String{
-        return   "#FF6347"
+        return   "#3F81CC"
     }
     // MARK:坐标
     static func CGRect_fram(_ x:CGFloat, y:CGFloat, w:CGFloat, h:CGFloat) -> CGRect{
@@ -792,5 +792,19 @@ final class   CommonFunction {
         }
     
     }
-   
+    //MARK: 颜色渐变
+    static func gradientLayer() -> CAGradientLayer {
+        let gradientLayer = CAGradientLayer()
+        // CGColor是无法放入数组中的，必须要转型。
+        gradientLayer.colors = [(UIColor(red: CGFloat(78 / 255.0), green: CGFloat(143 / 255.0), blue: CGFloat(1.0), alpha: CGFloat(1.0)).cgColor),
+                                CommonFunction.SystemColor().cgColor,
+                                (UIColor(red: CGFloat(60 / 255.0), green: CGFloat(143 / 255.0), blue: CGFloat(1.0), alpha: CGFloat(1.0)).cgColor)]
+        // 颜色分割线
+        gradientLayer.locations = [0, 0.8, 1.5]
+        // 颜色渐变的起点和终点，范围为 (0~1.0, 0~1.0)
+        gradientLayer.startPoint = CGPoint(x: CGFloat(0), y: CGFloat(0))
+        gradientLayer.endPoint = CGPoint(x: CGFloat(1.0), y: CGFloat(0))
+        gradientLayer.frame = CGRect(x: CGFloat(0), y: CGFloat(-20), width: CGFloat(CommonFunction.kScreenWidth), height: CGFloat(20 + CommonFunction.NavigationControllerHeight))
+        return gradientLayer
+    }
 }

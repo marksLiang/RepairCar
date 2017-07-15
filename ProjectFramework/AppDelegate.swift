@@ -12,7 +12,7 @@ import IQKeyboardManager
 import SwiftTheme
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, BMKMapViewDelegate, BMKLocationServiceDelegate,BMKGeneralDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
      
     var IsPushuProduction=false     //是否是发布产品  （用于极光推送)
@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BMKMapViewDelegate, BMKLo
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         InitUI()    //初始化UI   (第一次启动的导航页，需要在里面设置)
         Init_Navigationbar_TabbarStyle()    //导航样式设置
-        InitBaidu()           //百度地图 
+        //InitBaidu()           //百度地图
         InitUMshare()         //友盟分享
         InitNetworkCheck()    //网络检测
         InitDB()              //初始化sqlite数据库
@@ -106,49 +106,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate, BMKMapViewDelegate, BMKLo
     }
     
     
-    // MARK: - 初始化百度地图
-    func InitBaidu(){
-        
-        _mapManager = BMKMapManager() // 初始化 BMKMapManager
-        // 如果要关注网络及授权验证事件，请设定generalDelegate参数
-        let ret = _mapManager?.start(BaiduMapKey, generalDelegate: self)
-        if  ret == false {
-            print("失败")
-        }
-        else{
-            
-            //初始化BMKLocationService
-            locService = BMKLocationService()
-            locService?.delegate = self
-            //启动LocationService
-            locService?.startUserLocationService()
-            // 设置定位精确度，默认：kCLLocationAccuracyBest
-            locService?.desiredAccuracy=kCLLocationAccuracyBest
-            //指定最小距离更新(米)，默认：kCLDistanceFilterNone
-            locService?.distanceFilter=0.1
-        }
-        
-        
-    }
-    
-    //实现相关delegate 处理位置信息更新
-    //处理方向变更信息
-    func didUpdateUserHeading(_ userLocation: BMKUserLocation!) {
-        if(userLocation.location != nil){
-            //print("更新了地理位置")
-            //纬度,经度
-        }
-    }
-    
-//    //处理位置坐标更新  /********************  此代理方法在OC调用有效 在swift则不执行 ********************/
-//    func didUpdateBMKUserLocation(userLocation: BMKUserLocation!) {
-//        print("处理位置坐标更新---",userLocation)
+//    // MARK: - 初始化百度地图
+//    func InitBaidu(){
+//        
+//        _mapManager = BMKMapManager() // 初始化 BMKMapManager
+//        // 如果要关注网络及授权验证事件，请设定generalDelegate参数
+//        let ret = _mapManager?.start(BaiduMapKey, generalDelegate: self)
+//        if  ret == false {
+//            print("失败")
+//        }
+//        else{
+//            
+//            //初始化BMKLocationService
+//            locService = BMKLocationService()
+//            locService?.delegate = self
+//            //启动LocationService
+//            locService?.startUserLocationService()
+//            // 设置定位精确度，默认：kCLLocationAccuracyBest
+//            locService?.desiredAccuracy=kCLLocationAccuracyBest
+//            //指定最小距离更新(米)，默认：kCLDistanceFilterNone
+//            locService?.distanceFilter=0.1
+//        }
+//        
+//        
 //    }
-    func didUpdate(_ userLocation: BMKUserLocation!) {
-        //debugPrint("处理位置坐标更新---",userLocation)
-        Global_latitude=userLocation.location.coordinate.latitude
-        Global_longitude=userLocation.location.coordinate.longitude
-    }
+//    
+//    //实现相关delegate 处理位置信息更新
+//    //处理方向变更信息
+//    func didUpdateUserHeading(_ userLocation: BMKUserLocation!) {
+//        if(userLocation.location != nil){
+//            //print("更新了地理位置")
+//            //纬度,经度
+//        }
+//    }
+//    
+////    //处理位置坐标更新  /********************  此代理方法在OC调用有效 在swift则不执行 ********************/
+////    func didUpdateBMKUserLocation(userLocation: BMKUserLocation!) {
+////        print("处理位置坐标更新---",userLocation)
+////    }
+//    func didUpdate(_ userLocation: BMKUserLocation!) {
+//        //debugPrint("处理位置坐标更新---",userLocation)
+//        Global_latitude=userLocation.location.coordinate.latitude
+//        Global_longitude=userLocation.location.coordinate.longitude
+//    }
     // MARK: - 友盟分享
     func InitUMshare(){
         

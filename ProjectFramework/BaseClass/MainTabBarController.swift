@@ -15,7 +15,7 @@ class  CYLBaseNavigationController:UINavigationController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         //导航栏颜色渐变---需要的时候开启 不需要不用开启
-        //self.navigationBar.layer.insertSublayer(gradientLayer(), at: 0)
+        self.navigationBar.layer.insertSublayer(gradientLayer(), at: 0)
         
     }
     
@@ -74,8 +74,7 @@ class MainTabBarController : CYLTabBarController {
                 CYLTabBarItemImage: TabBar_NoSelectedImage[i], //未选择图片
                 CYLTabBarItemSelectedImage: TabBar_SelectedImage[i]    //选择图片
             ]
-            let vc = UIStoryboard(name: TabBar_StoryName[i], bundle: nil).instantiateViewController(withIdentifier: TabBar_StoryName[i])
-            
+            let vc = UIStoryboard(name: TabBar_StoryName[i], bundle: nil).instantiateViewController(withIdentifier: TabBar_StoryName[i])            
             let rootNavigationController = CYLBaseNavigationController(rootViewController: vc)   //添加自定义导航控制器   如果是append  vc 则不会出现navigationcontrooler
             rootNavigationController.navigationBar.hideBottomHairline()//隐藏线条
             

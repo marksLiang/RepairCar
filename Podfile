@@ -24,4 +24,5 @@ target "RepairCar" do
     pod 'RxCocoa',    '~> 3.0'              #响应式编程库(swift)
     pod 'RxDataSources', '~> 1.0'           #响应式编程库 主要用于tableivew等控件封装(swift)
     pod 'pop', '~> 1.0'     #Facebook开源的动画框架-Pop。
+    pod 'SDCycleScrollView','1.66'  #轮播图
 end
