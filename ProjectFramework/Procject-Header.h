@@ -71,4 +71,4 @@
 #import "HcdPopMenu.h"              //动画菜单
 #import "JLPhotoBrowser.h"          //图片浏览
 #import "ZFChooseTimeViewController.h"//酒店时间选择
-
+#import "SDCycleScrollView.h"       //轮播图

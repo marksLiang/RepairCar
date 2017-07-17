@@ -12,6 +12,7 @@ import RxCocoa
 class Home: UIViewController {
     /********************  属性  ********************/
     fileprivate let disposeBag   = DisposeBag()//处理包通道
+    @IBOutlet weak var tableView: UITableView!
     
     /********************  懒加载  ********************/
     //自定义导航栏
@@ -62,13 +63,15 @@ class Home: UIViewController {
         self.setNavgationBar()
         
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
         
     }
-    
+    //MARK: initUI
+    private func initUI() -> Void {
+        
+    }
     //MARK: setNavgationBar
     private func setNavgationBar() -> Void {
         self.view.addSubview(navgationBar)
