@@ -392,7 +392,7 @@ final class   CommonFunction {
             break
         case .error:   //失败
             img.image=UIImage(named: "GlobalClassSettings.bundle/NotificationBackgroundErrorIcon.png")
-            view.backgroundColor=RGBA(255,g: 69,b: 0)
+            view.backgroundColor=SystemColor()
             break
         case .load:    //加载
             view.backgroundColor=SystemColor()

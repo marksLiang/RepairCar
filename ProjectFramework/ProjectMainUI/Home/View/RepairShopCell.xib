@@ -12,53 +12,84 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RepairShopCell" rowHeight="113" id="KGk-i7-Jjw" customClass="RepairShopCell" customModule="tourism" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="113"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="112"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="109.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iGg-Nk-k8d">
-                        <rect key="frame" x="8" y="14" width="70" height="70"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="caicon.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="iGg-Nk-k8d">
+                        <rect key="frame" x="10" y="15" width="70" height="70"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="70" id="XYk-vh-a1x"/>
+                            <constraint firstAttribute="width" constant="70" id="s8V-nI-A5O"/>
+                        </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="这是一个维修店名" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Elh-4Q-TNH">
-                        <rect key="frame" x="86" y="14" width="193" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="这是一个维修店名" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Elh-4Q-TNH">
+                        <rect key="frame" x="85" y="15" width="193" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="IxN-6N-Cag"/>
+                            <constraint firstAttribute="width" constant="193" id="mGB-Am-HSL"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="服务星级:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uPr-JK-HoC">
-                        <rect key="frame" x="86" y="39" width="58" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="服务星级：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uPr-JK-HoC">
+                        <rect key="frame" x="85" y="39" width="61.5" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="Iq9-ex-Q4u"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="58" id="tVx-Nq-Q6M"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="维修类型:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CBV-2z-imj">
-                        <rect key="frame" x="86" y="63" width="58" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="维修类型" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CBV-2z-imj">
+                        <rect key="frame" x="85" y="63" width="58" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="58" id="i5c-EY-Jxu"/>
+                            <constraint firstAttribute="height" constant="21" id="z8d-KM-5di"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" red="0.87015122180000004" green="0.1987587002" blue="0.12671964860000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="未知距离" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uTi-5D-30G">
-                        <rect key="frame" x="316" y="8" width="52" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未知距离" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uTi-5D-30G">
+                        <rect key="frame" x="323" y="8" width="45" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="PUo-4W-7Fp"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="20" id="rIQ-2G-l7l"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="iGg-Nk-k8d" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="32y-Hy-D0x"/>
+                    <constraint firstItem="iGg-Nk-k8d" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="34b-BM-9af"/>
+                    <constraint firstItem="uPr-JK-HoC" firstAttribute="leading" secondItem="Elh-4Q-TNH" secondAttribute="leading" id="8n3-wA-ngB"/>
+                    <constraint firstItem="CBV-2z-imj" firstAttribute="top" secondItem="uPr-JK-HoC" secondAttribute="bottom" constant="3" id="AWM-7w-FbR"/>
+                    <constraint firstItem="Elh-4Q-TNH" firstAttribute="top" secondItem="iGg-Nk-k8d" secondAttribute="top" id="Agh-a8-D0Q"/>
+                    <constraint firstItem="CBV-2z-imj" firstAttribute="leading" secondItem="uPr-JK-HoC" secondAttribute="leading" id="BvD-wF-tI3"/>
+                    <constraint firstItem="Elh-4Q-TNH" firstAttribute="leading" secondItem="iGg-Nk-k8d" secondAttribute="trailing" constant="5" id="R4c-YY-p5h"/>
+                    <constraint firstItem="uPr-JK-HoC" firstAttribute="top" secondItem="Elh-4Q-TNH" secondAttribute="bottom" constant="3" id="eOi-cY-uyg"/>
+                    <constraint firstAttribute="trailing" secondItem="uTi-5D-30G" secondAttribute="trailing" constant="7" id="pbO-vq-HVX"/>
+                    <constraint firstItem="uTi-5D-30G" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="tq4-Fq-yWA"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="distanceLabel" destination="uTi-5D-30G" id="dVy-u5-ZN8"/>
+                <outlet property="fuwuxingji" destination="uPr-JK-HoC" id="1Uq-99-n6Q"/>
                 <outlet property="mainImageView" destination="iGg-Nk-k8d" id="mom-ks-nZL"/>
                 <outlet property="titleLabel" destination="Elh-4Q-TNH" id="1nU-7R-xA5"/>
+                <outlet property="weixiuleixing" destination="CBV-2z-imj" id="oR4-eE-kc8"/>
             </connections>
             <point key="canvasLocation" x="24.5" y="86.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="caicon.jpg" width="300" height="200"/>
+    </resources>
 </document>

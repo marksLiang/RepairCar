@@ -9,10 +9,13 @@
 import UIKit
 import RxSwift
 import RxCocoa
-class Home: UIViewController {
-    /********************  属性  ********************/
-    fileprivate let disposeBag   = DisposeBag()//处理包通道
+class Home: CustomTemplateViewController {
+    /********************  xib控件  ********************/
     @IBOutlet weak var tableView: UITableView!
+    
+    /********************  属性  ********************/
+    fileprivate let identifier   = "RepairShopCell"
+    fileprivate let disposeBag   = DisposeBag()//处理包通道
     
     /********************  懒加载  ********************/
     //自定义导航栏
@@ -54,6 +57,20 @@ class Home: UIViewController {
         }).addDisposableTo(self.disposeBag)
         return release
     }()
+    fileprivate lazy var model: RepairShopModel = {
+        let model = RepairShopModel()
+        model.Score = 5
+        model.tabs = ["电器类","机修类","门窗类","轮胎类","冷工类","装饰类","油类","焊类"]
+        return model
+    }()
+    fileprivate lazy var tagsFrame: TagsFrame = {
+        let tagsFrame = TagsFrame.init()
+        tagsFrame.tagsMinPadding = 5
+        tagsFrame.tagsMargin = 20
+        tagsFrame.tagsLineSpacing = 10
+        tagsFrame.tagsArray = self.model.tabs
+        return tagsFrame
+    }()
     //MARK: viewload
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -61,6 +78,7 @@ class Home: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setNavgationBar()
+        self.initUI()
         
     }
     override func didReceiveMemoryWarning() {
@@ -68,8 +86,21 @@ class Home: UIViewController {
         // Dispose of any resources that can be recreated.
         
     }
+    //MARK: tableViewDelegate
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! RepairShopCell
+        cell.InitConfig(model, tagsFrame)
+        return cell
+    }
     //MARK: initUI
     private func initUI() -> Void {
+        let requesterNib = UINib(nibName: "RepairShopCell", bundle: nil)
+        self.InitCongif(tableView)
+        self.tableView.frame = CGRect.init(x: 0, y: CommonFunction.NavigationControllerHeight, width: CommonFunction.kScreenWidth, height: CommonFunction.kScreenHeight - 64 - 49)
+        self.tableView.register(requesterNib, forCellReuseIdentifier: identifier)
+        self.tableViewheightForRowAt = 110 + tagsFrame.tagsHeight
+        self.numberOfSections = 1
+        self.numberOfRowsInSection = 10
         
     }
     //MARK: setNavgationBar
@@ -79,5 +110,5 @@ class Home: UIViewController {
         self.navgationBar.addSubview(releaseBtn)
         
     }
-
+    
 }
