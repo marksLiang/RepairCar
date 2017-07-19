@@ -9,13 +9,16 @@
 import UIKit
 import RxSwift
 import RxCocoa
-class Home: CustomTemplateViewController {
+class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate{
     /********************  xib控件  ********************/
     @IBOutlet weak var tableView: UITableView!
     
     /********************  属性  ********************/
     fileprivate let identifier   = "RepairShopCell"
     fileprivate let disposeBag   = DisposeBag()//处理包通道
+    fileprivate let imagesURLStrings = ["https://ss2.baidu.com/-vo3dSag_xI4khGko9WTAnF6hhy/super/whfpf%3D425%2C260%2C50/sign=a4b3d7085dee3d6d2293d48b252b5910/0e2442a7d933c89524cd5cd4d51373f0830200ea.jpg",
+                                         "https://ss0.baidu.com/-Po3dSag_xI4khGko9WTAnF6hhy/super/whfpf%3D425%2C260%2C50/sign=a41eb338dd33c895a62bcb3bb72e47c2/5fdf8db1cb134954a2192ccb524e9258d1094a1e.jpg",
+                                          "http://c.hiphotos.baidu.com/image/w%3D400/sign=c2318ff84334970a4773112fa5c8d1c0/b7fd5266d0160924c1fae5ccd60735fae7cd340d.jpg"]
     
     /********************  懒加载  ********************/
     //自定义导航栏
@@ -46,6 +49,7 @@ class Home: CustomTemplateViewController {
         }).addDisposableTo(self.disposeBag)
         return cityBtn
     }()
+    //发布按钮
     fileprivate lazy var releaseBtn: UIButton = {
         let release = UIButton.init(frame: CGRect.init(x: CommonFunction.kScreenWidth - 70, y: 30, width: 60, height: 30))
         release.titleLabel?.font = UIFont.systemFont(ofSize: 14)
@@ -57,28 +61,36 @@ class Home: CustomTemplateViewController {
         }).addDisposableTo(self.disposeBag)
         return release
     }()
+    //tableView头部
+    fileprivate lazy var headerView: HomeHeaderView = {
+        let headerView = HomeHeaderView.init(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: 300))
+        return headerView
+    }()
+    //轮播图
+    fileprivate lazy var shuffling: SDCycleScrollView = {
+        let shuffling = SDCycleScrollView(frame:CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: 150),delegate:self ,placeholderImage:UIImage.init(named: "placeholder"))
+        shuffling?.currentPageDotImage = UIImage.init(named: "pageControlCurrentDot")
+        shuffling?.pageDotImage = UIImage.init(named: "pageControlDot")
+        shuffling?.imageURLStringsGroup = self.imagesURLStrings
+        return shuffling!
+    }()
     fileprivate lazy var model: RepairShopModel = {
         let model = RepairShopModel()
         model.Score = 5
         model.tabs = ["电器类","机修类","门窗类","轮胎类","冷工类","装饰类","油类","焊类"]
         return model
     }()
-    fileprivate lazy var tagsFrame: TagsFrame = {
-        let tagsFrame = TagsFrame.init()
-        tagsFrame.tagsMinPadding = 5
-        tagsFrame.tagsMargin = 20
-        tagsFrame.tagsLineSpacing = 10
-        tagsFrame.tagsArray = self.model.tabs
-        return tagsFrame
-    }()
+    
     //MARK: viewload
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setNavgationBar()
         self.initUI()
+        
         
     }
     override func didReceiveMemoryWarning() {
@@ -87,18 +99,23 @@ class Home: CustomTemplateViewController {
         
     }
     //MARK: tableViewDelegate
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return model.tabs.count > 3 ? 130: 90
+    }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! RepairShopCell
-        cell.InitConfig(model, tagsFrame)
+        cell.InitConfig(model)
         return cell
     }
     //MARK: initUI
     private func initUI() -> Void {
+        self.headerView.addSubview(shuffling)
+        
         let requesterNib = UINib(nibName: "RepairShopCell", bundle: nil)
         self.InitCongif(tableView)
         self.tableView.frame = CGRect.init(x: 0, y: CommonFunction.NavigationControllerHeight, width: CommonFunction.kScreenWidth, height: CommonFunction.kScreenHeight - 64 - 49)
         self.tableView.register(requesterNib, forCellReuseIdentifier: identifier)
-        self.tableViewheightForRowAt = 110 + tagsFrame.tagsHeight
+        self.tableView.tableHeaderView = headerView
         self.numberOfSections = 1
         self.numberOfRowsInSection = 10
         
@@ -110,5 +127,6 @@ class Home: CustomTemplateViewController {
         self.navgationBar.addSubview(releaseBtn)
         
     }
+    
     
 }
