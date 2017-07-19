@@ -61,7 +61,7 @@ class RepairShopCell: UITableViewCell {
                 lable.layer.cornerRadius = 4
                 lable.clipsToBounds = true
                 lable.font = UIFont.systemFont(ofSize: 12)
-                lable.backgroundColor = CommonFunction.SystemColor()
+                lable.backgroundColor = CommonFunction.SystemColor().withAlphaComponent(0.7)
                 lable.text = model.tabs[i]
                 lable.textColor = UIColor.white
                 lable.textAlignment = .center

@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "27609BCB1CB257810041E8B7"
-               BuildableName = "&#x667a;&#x6167;&#x65c5;&#x6e38;&#x5e73;&#x53f0;.app"
-               BlueprintName = "ProjectFramework_Tourism"
-               ReferencedContainer = "container:ProjectFramework_Tourism.xcodeproj">
+               BuildableName = "tourism.app"
+               BlueprintName = "RepairCar"
+               ReferencedContainer = "container:../RepairCar.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,41 +28,21 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "27609BDF1CB257810041E8B7"
-               BuildableName = "ProjectFramework_TourismTests.xctest"
-               BlueprintName = "ProjectFramework_TourismTests"
-               ReferencedContainer = "container:ProjectFramework_Tourism.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "27609BEA1CB257810041E8B7"
-               BuildableName = "ProjectFramework_TourismUITests.xctest"
-               BlueprintName = "ProjectFramework_TourismUITests"
-               ReferencedContainer = "container:ProjectFramework_Tourism.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "27609BCB1CB257810041E8B7"
-            BuildableName = "&#x667a;&#x6167;&#x65c5;&#x6e38;&#x5e73;&#x53f0;.app"
-            BlueprintName = "ProjectFramework_Tourism"
-            ReferencedContainer = "container:ProjectFramework_Tourism.xcodeproj">
+            BuildableName = "tourism.app"
+            BlueprintName = "RepairCar"
+            ReferencedContainer = "container:../RepairCar.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Release"
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -71,16 +51,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "27609BCB1CB257810041E8B7"
-            BuildableName = "&#x667a;&#x6167;&#x65c5;&#x6e38;&#x5e73;&#x53f0;.app"
-            BlueprintName = "ProjectFramework_Tourism"
-            ReferencedContainer = "container:ProjectFramework_Tourism.xcodeproj">
+            BuildableName = "tourism.app"
+            BlueprintName = "RepairCar"
+            ReferencedContainer = "container:../RepairCar.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -90,19 +69,18 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "27609BCB1CB257810041E8B7"
-            BuildableName = "&#x667a;&#x6167;&#x65c5;&#x6e38;&#x5e73;&#x53f0;.app"
-            BlueprintName = "ProjectFramework_Tourism"
-            ReferencedContainer = "container:ProjectFramework_Tourism.xcodeproj">
+            BuildableName = "tourism.app"
+            BlueprintName = "RepairCar"
+            ReferencedContainer = "container:../RepairCar.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
-      buildConfiguration = "Release">
+      buildConfiguration = "Debug">
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"

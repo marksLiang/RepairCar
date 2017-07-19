@@ -232,7 +232,7 @@
 		079C974B1D17AD6600DD539F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		079C974D1D17AD8B00DD539F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		079C974F1D17ADA300DD539F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		27609BCC1CB257810041E8B7 /* tourism.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tourism.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		27609BCC1CB257810041E8B7 /* RepairCar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RepairCar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27609BCF1CB257810041E8B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27609BD61CB257810041E8B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		27609BDB1CB257810041E8B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -668,7 +668,7 @@
 		27609BCD1CB257810041E8B7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				27609BCC1CB257810041E8B7 /* tourism.app */,
+				27609BCC1CB257810041E8B7 /* RepairCar.app */,
 				27609BE01CB257810041E8B7 /* RepairCarTests.xctest */,
 				27609BEB1CB257810041E8B7 /* RepairCarUITests.xctest */,
 			);
@@ -1622,7 +1622,7 @@
 			);
 			name = RepairCar;
 			productName = ProjectFramework;
-			productReference = 27609BCC1CB257810041E8B7 /* tourism.app */;
+			productReference = 27609BCC1CB257810041E8B7 /* RepairCar.app */;
 			productType = "com.apple.product-type.application";
 		};
 		27609BDF1CB257810041E8B7 /* RepairCarTests */ = {
@@ -2126,7 +2126,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited) -DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.repaircar;
-				PRODUCT_NAME = tourism;
+				PRODUCT_NAME = RepairCar;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_DISABLE_SAFETY_CHECKS = YES;
@@ -2174,7 +2174,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited) -DRELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.repaircar;
-				PRODUCT_NAME = tourism;
+				PRODUCT_NAME = RepairCar;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_DISABLE_SAFETY_CHECKS = YES;

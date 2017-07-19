@@ -63,7 +63,7 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate{
     }()
     //tableView头部
     fileprivate lazy var headerView: HomeHeaderView = {
-        let headerView = HomeHeaderView.init(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: 300))
+        let headerView = HomeHeaderView.init(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: 290))
         return headerView
     }()
     //轮播图
