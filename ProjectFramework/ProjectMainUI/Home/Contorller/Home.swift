@@ -98,6 +98,10 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate{
         // Dispose of any resources that can be recreated.
         
     }
+    //MARK: 轮播图代理
+    func cycleScrollView(_ cycleScrollView: SDCycleScrollView!, didSelectItemAt index: Int) {
+        print("我点击了第\(index)张")
+    }
     //MARK: tableViewDelegate
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return model.tabs.count > 3 ? 130: 90

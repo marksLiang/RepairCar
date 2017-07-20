@@ -12,7 +12,7 @@
         <!--Home-->
         <scene sceneID="vUH-tr-5ys">
             <objects>
-                <viewController storyboardIdentifier="Home" id="Lyj-NX-rTX" customClass="Home" customModule="tourism" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Home" id="Lyj-NX-rTX" customClass="Home" customModule="RepairCar" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NZJ-fg-brk"/>
                         <viewControllerLayoutGuide type="bottom" id="18c-CP-fK4"/>

@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "27609BCB1CB257810041E8B7"
-               BuildableName = "tourism.app"
+               BuildableName = "RepairCar.app"
                BlueprintName = "RepairCar"
                ReferencedContainer = "container:RepairCar.xcodeproj">
             </BuildableReference>
@@ -53,7 +53,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "27609BCB1CB257810041E8B7"
-            BuildableName = "tourism.app"
+            BuildableName = "RepairCar.app"
             BlueprintName = "RepairCar"
             ReferencedContainer = "container:RepairCar.xcodeproj">
          </BuildableReference>
@@ -76,7 +76,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "27609BCB1CB257810041E8B7"
-            BuildableName = "tourism.app"
+            BuildableName = "RepairCar.app"
             BlueprintName = "RepairCar"
             ReferencedContainer = "container:RepairCar.xcodeproj">
          </BuildableReference>
@@ -95,7 +95,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "27609BCB1CB257810041E8B7"
-            BuildableName = "tourism.app"
+            BuildableName = "RepairCar.app"
             BlueprintName = "RepairCar"
             ReferencedContainer = "container:RepairCar.xcodeproj">
          </BuildableReference>
