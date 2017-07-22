@@ -45,7 +45,8 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate{
         cityBtn.setTitle("南宁市", for: .normal)
         cityBtn.rx.tap.subscribe(
             onNext:{ [weak self] value in
-            print("选择城市")
+                let vc = CityList()
+                self?.navigationController?.show(vc, sender: self)
         }).addDisposableTo(self.disposeBag)
         return cityBtn
     }()
@@ -84,6 +85,7 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate{
     //MARK: viewload
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+        
     }
     
     override func viewDidLoad() {

@@ -16,7 +16,9 @@ class  CYLBaseNavigationController:UINavigationController  {
         super.viewDidLoad()
         //导航栏颜色渐变---需要的时候开启 不需要不用开启
         self.navigationBar.layer.insertSublayer(gradientLayer(), at: 0)
-        
+        self.navigationBar.backIndicatorImage = UIImage.init(named: "back")
+        self.navigationBar.backIndicatorTransitionMaskImage = UIImage.init(named: "back")
+
     }
     
     func gradientLayer() -> CAGradientLayer {
@@ -37,14 +39,8 @@ class  CYLBaseNavigationController:UINavigationController  {
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
         if (self.viewControllers.count > 0) {
             //如果当前的viewcontroller.count大于0 表示不再这个页面内 则 隐藏掉TabbarController
-            viewController.hidesBottomBarWhenPushed = true
-            
+            viewController.hidesBottomBarWhenPushed = true	
         }
-        
-        //修改导航栏的返回样式  title为 “” 表示只有箭头了
-        let item = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
-        viewController.navigationItem.backBarButtonItem = item;
-        
         super.pushViewController(viewController, animated: animated)
     }
  
