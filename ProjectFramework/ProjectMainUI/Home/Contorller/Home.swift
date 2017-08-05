@@ -17,8 +17,8 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate{
     fileprivate let identifier   = "RepairShopCell"
     fileprivate let disposeBag   = DisposeBag()//处理包通道
     fileprivate let imagesURLStrings = ["https://ss2.baidu.com/-vo3dSag_xI4khGko9WTAnF6hhy/super/whfpf%3D425%2C260%2C50/sign=a4b3d7085dee3d6d2293d48b252b5910/0e2442a7d933c89524cd5cd4d51373f0830200ea.jpg",
-                                         "https://ss0.baidu.com/-Po3dSag_xI4khGko9WTAnF6hhy/super/whfpf%3D425%2C260%2C50/sign=a41eb338dd33c895a62bcb3bb72e47c2/5fdf8db1cb134954a2192ccb524e9258d1094a1e.jpg",
-                                          "http://c.hiphotos.baidu.com/image/w%3D400/sign=c2318ff84334970a4773112fa5c8d1c0/b7fd5266d0160924c1fae5ccd60735fae7cd340d.jpg"]
+                                        "https://ss0.baidu.com/-Po3dSag_xI4khGko9WTAnF6hhy/super/whfpf%3D425%2C260%2C50/sign=a41eb338dd33c895a62bcb3bb72e47c2/5fdf8db1cb134954a2192ccb524e9258d1094a1e.jpg",
+                                        "http://c.hiphotos.baidu.com/image/w%3D400/sign=c2318ff84334970a4773112fa5c8d1c0/b7fd5266d0160924c1fae5ccd60735fae7cd340d.jpg"]
     
     /********************  懒加载  ********************/
     //自定义导航栏
@@ -58,7 +58,7 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate{
         release.setTitleColor(UIColor.white, for: .normal)
         release.rx.tap.subscribe(
             onNext:{ [weak self] value in
-             print("发布需求")
+                print("发布需求")
         }).addDisposableTo(self.disposeBag)
         return release
     }()
@@ -92,7 +92,6 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate{
         super.viewDidLoad()
         self.setNavgationBar()
         self.initUI()
-        
         
     }
     override func didReceiveMemoryWarning() {
