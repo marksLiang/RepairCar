@@ -9,7 +9,13 @@
 import UIKit
 
 class HomeHeaderView: UIView {
-
+    typealias CallbackValue=(_ value:Int)->Void //类似于OC中的typedef
+    var myCallbackValue:CallbackValue?  //声明一个闭包 类似OC的Block属性
+    func  FuncCallbackValue(value:CallbackValue?){
+        myCallbackValue = value //返回值
+    }
+    /*******************懒加载*********************/
+    //查看所有维修店
     fileprivate lazy var allShopView: UIView = {
         let allShopView = UIView.init(frame: CGRect.init(x: 5, y: 155, width: (CommonFunction.kScreenWidth - 15) * 0.382, height: 90))
         allShopView.backgroundColor = CommonFunction.RGBA(243, g: 159, b: 36)
@@ -31,9 +37,12 @@ class HomeHeaderView: UIView {
         lable.textAlignment = .center
         allShopView.addSubview(lable)
         
+        let tap = UITapGestureRecognizer.init(target: self, action: #selector(tapclik))
+        tap.ExpTagInt = 1
+        allShopView.addGestureRecognizer(tap)
         return allShopView
     }()
-    
+    //查看所有需求
     fileprivate lazy var allDemandView: UIView = {
         let allDemandView = UIView.init(frame: CGRect.init(x: self.allShopView.frame.maxX + 5, y: 155, width: (CommonFunction.kScreenWidth - 15) * 0.618, height: 90))
         allDemandView.backgroundColor = CommonFunction.RGBA(149, g: 168, b: 245)
@@ -58,6 +67,10 @@ class HomeHeaderView: UIView {
         allDemandView.addSubview(lable2)
         allDemandView.addSubview(xuqiu1)
         allDemandView.addSubview(rightImage)
+        
+        let tap = UITapGestureRecognizer.init(target: self, action: #selector(tapclik))
+        tap.ExpTagInt = 2
+        allDemandView.addGestureRecognizer(tap)
         return allDemandView
     }()
     
@@ -85,5 +98,9 @@ class HomeHeaderView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+    func tapclik( tap: UITapGestureRecognizer) -> Void {
+        if myCallbackValue != nil {
+            myCallbackValue!(tap.ExpTagInt)
+        }
+    }
 }

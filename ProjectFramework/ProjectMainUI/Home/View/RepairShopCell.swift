@@ -16,6 +16,8 @@ class RepairShopCell: UITableViewCell {
     @IBOutlet weak var fuwuxingji: UILabel!//服务星级
     @IBOutlet weak var weixiuleixing: UILabel!//维修类型
     
+    @IBOutlet weak var topButton: UIButton!//置顶按钮
+    @IBOutlet weak var topLayout: NSLayoutConstraint!
     fileprivate var isFirst = true
     
     //服务星级
@@ -31,7 +33,8 @@ class RepairShopCell: UITableViewCell {
         self.clipsToBounds = true
         self.selectionStyle = .none
         self.contentView.addSubview(startView)
-        
+        self.topButton.layer.cornerRadius = topButton.frame.width / 2
+        self.topButton.isHidden = true
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -77,5 +80,9 @@ class RepairShopCell: UITableViewCell {
             }
             isFirst = false
         }
+    }
+    func atTop() -> Void {
+        topLayout.constant-=5
+        topButton.isHidden = false
     }
 }

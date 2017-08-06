@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		079C974A1D17AD2B00DD539F /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 079C97491D17AD2B00DD539F /* libz.1.2.5.tbd */; };
 		079C974E1D17AD8B00DD539F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079C974D1D17AD8B00DD539F /* CoreGraphics.framework */; };
+		1C5B82F01F376FDF001A9584 /* ShopList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5B82EF1F376FDF001A9584 /* ShopList.swift */; };
+		1C5B82F21F377067001A9584 /* DemandList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5B82F11F377067001A9584 /* DemandList.swift */; };
 		27609BD01CB257810041E8B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27609BCF1CB257810041E8B7 /* AppDelegate.swift */; };
 		27609BD71CB257810041E8B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27609BD61CB257810041E8B7 /* Assets.xcassets */; };
 		27609BE51CB257810041E8B7 /* ProjectFrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27609BE41CB257810041E8B7 /* ProjectFrameworkTests.swift */; };
@@ -236,6 +238,8 @@
 		079C974B1D17AD6600DD539F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		079C974D1D17AD8B00DD539F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		079C974F1D17ADA300DD539F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		1C5B82EF1F376FDF001A9584 /* ShopList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopList.swift; sourceTree = "<group>"; };
+		1C5B82F11F377067001A9584 /* DemandList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemandList.swift; sourceTree = "<group>"; };
 		27609BCC1CB257810041E8B7 /* RepairCar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RepairCar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27609BCF1CB257810041E8B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27609BD61CB257810041E8B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -1315,6 +1319,8 @@
 			isa = PBXGroup;
 			children = (
 				6F49053F1F18ABA800F74691 /* Home.swift */,
+				1C5B82EF1F376FDF001A9584 /* ShopList.swift */,
+				1C5B82F11F377067001A9584 /* DemandList.swift */,
 				6F25888D1F20A3FC00137DF1 /* CityList.swift */,
 			);
 			path = Contorller;
@@ -1874,6 +1880,7 @@
 				6F49051E1F186EE800F74691 /* regiestViewModel.swift in Sources */,
 				6F49050C1F186EE800F74691 /* RegionViewController.swift in Sources */,
 				2E12CB101E6F1E6F009527BA /* TZAssetCell.m in Sources */,
+				1C5B82F21F377067001A9584 /* DemandList.swift in Sources */,
 				6F49051B1F186EE800F74691 /* registerViewCell.swift in Sources */,
 				6F50687A1F1C474700E8EC1B /* TAAnimatedDotView.m in Sources */,
 				6F49051D1F186EE800F74691 /* LoginViewModel.swift in Sources */,
@@ -1946,6 +1953,7 @@
 				6F50687B1F1C474700E8EC1B /* TADotView.m in Sources */,
 				6FDB2E0D1EC4612E0092FAFC /* RSADataVerifier.m in Sources */,
 				6FDB2E0A1EC4612E0092FAFC /* NSDataEx.m in Sources */,
+				1C5B82F01F376FDF001A9584 /* ShopList.swift in Sources */,
 				6FF51D351EBD7E9E00021790 /* ScrollViewPageViewController.swift in Sources */,
 				6F4904B91F186DBA00F74691 /* Double+Extension.swift in Sources */,
 				6FF51D271EBD7E9E00021790 /* CAPSPageMenu.swift in Sources */,

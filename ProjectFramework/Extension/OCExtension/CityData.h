@@ -17,4 +17,5 @@
  */
 +(NSMutableArray *)loadFile;
 +(NSArray *)getCityData;
++(NSMutableArray *)getAarry:(NSArray *)array Preicate:(NSPredicate *)preicate;
 @end

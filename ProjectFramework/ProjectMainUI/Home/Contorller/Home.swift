@@ -46,6 +46,9 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate{
         cityBtn.rx.tap.subscribe(
             onNext:{ [weak self] value in
                 let vc = CityList()
+                vc.Callback_SelectedValue {[weak self] (selectCity) in
+                    cityBtn.setTitle(selectCity, for: .normal)
+                }
                 self?.navigationController?.show(vc, sender: self)
         }).addDisposableTo(self.disposeBag)
         return cityBtn
@@ -65,6 +68,15 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate{
     //tableView头部
     fileprivate lazy var headerView: HomeHeaderView = {
         let headerView = HomeHeaderView.init(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: 290))
+        headerView.FuncCallbackValue {[weak self] (tag) in
+            if tag == 1 {
+                let vc = ShopList()
+                self?.show(vc, sender: self)
+            }else{
+                let vc = DemandList()
+                self?.show(vc, sender: self)
+            }
+        }
         return headerView
     }()
     //轮播图

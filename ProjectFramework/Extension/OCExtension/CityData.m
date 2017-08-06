@@ -247,4 +247,9 @@ NSMutableArray * array26;
     
     return data;
 }
+//数组模糊搜索，给swift调用
++(NSMutableArray *)getAarry:(NSArray *)array Preicate:(NSPredicate *)preicate{
+    NSMutableArray * cityArray = [NSMutableArray arrayWithArray:[array filteredArrayUsingPredicate:preicate]];
+    return cityArray;
+}
 @end
