@@ -11,6 +11,7 @@ import UIKit
 class ShopList: CustomTemplateViewController,PYSearchViewControllerDelegate {
     /********************  属性  ********************/
     fileprivate let identifier   = "RepairShopCell"
+    fileprivate var Menuview:MenuView?  = nil
     /*******************懒加载*********************/
     fileprivate lazy var tableView: UITableView = {
         let tableView = UITableView.init(frame: CGRect.init(x: 0, y: CommonFunction.NavigationControllerHeight + 30, width: CommonFunction.kScreenWidth, height: self.view.frame.height-CommonFunction.NavigationControllerHeight-30), style: .plain)
@@ -26,6 +27,7 @@ class ShopList: CustomTemplateViewController,PYSearchViewControllerDelegate {
         super.viewDidLoad()
         self.setNavbar()
         self.initUI()
+        self.setMeunView()
     }
     //MARK: tableViewDelegate
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -47,6 +49,41 @@ class ShopList: CustomTemplateViewController,PYSearchViewControllerDelegate {
         self.tableView.register(requesterNib, forCellReuseIdentifier: identifier)
         self.numberOfSections = 1
         self.numberOfRowsInSection = 10
+    }
+    private func setMeunView() -> Void{
+        Menuview=MenuView(delegate: self, frame:  CGRect(x: 0, y: 64, width: self.view.frame.width, height: 30))
+        self.view.addSubview(Menuview!)
+        let model1       = MenuModel()
+        for   i:Int in 0  ..< 4{
+            let onemol   = OneMenuModel()
+            onemol.type  = 1
+            onemol.name  = "第一\(i)"
+            onemol.value = i.description
+            model1.OneMenu.append(onemol)
+        }
+        let model2       = MenuModel()
+        for   i:Int in 0  ..< 4{
+            let onemol   = OneMenuModel()
+            onemol.type  = 2
+            onemol.name  = "第二\(i)"
+            onemol.value = i.description
+            model2.OneMenu.append(onemol)
+        }
+        let model3       = MenuModel()
+        for   i:Int in 0  ..< 4{
+            let onemol   = OneMenuModel()
+            onemol.type  = 3
+            onemol.name  = "第三\(i)"
+            onemol.value = i.description
+            model3.OneMenu.append(onemol)
+        }
+        Menuview?.AddMenuData(model1)
+        Menuview?.AddMenuData(model2)
+        Menuview?.AddMenuData(model3)
+        Menuview?.Callback_SelectedValue { [weak self](name, value,type) in
+            print(name,value,type)
+        }
+        Menuview?.menureloadData()    //刷新菜单 (每次加载完数据后都需要刷新
     }
     //MARK: 设置导航栏
     private func setNavbar() -> Void{

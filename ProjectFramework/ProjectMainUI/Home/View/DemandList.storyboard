@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Demand List-->
+        <scene sceneID="Uaq-rs-Px5">
+            <objects>
+                <viewController storyboardIdentifier="DemandList" id="kji-K0-4Hc" customClass="DemandList" customModule="RepairCar" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YZp-YC-QSq"/>
+                        <viewControllerLayoutGuide type="bottom" id="jJC-ZU-TGr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="b0z-mo-OK9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aae-cX-Upd">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="DemandListCell" rowHeight="85" id="aKj-50-1b5" customClass="DemandListCell" customModule="RepairCar" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="85"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aKj-50-1b5" id="kOx-lf-ylR">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="84.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="caicon.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="kSY-ZQ-ZAV">
+                                                    <rect key="frame" x="15" y="5" width="85" height="70"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="85" id="May-1n-jIm"/>
+                                                        <constraint firstAttribute="height" constant="70" id="zVV-fv-7qZ"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的车爆胎了，赶紧来赶紧来修！！有重谢！！！！！！！！！！！！！！！！" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ky-v4-m2r">
+                                                    <rect key="frame" x="110" y="5" width="217" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="6xK-gR-JPV"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017-06-16 09:09:09" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGF-mm-q4g">
+                                                    <rect key="frame" x="110" y="49" width="171" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="cUf-6x-ZCS"/>
+                                                        <constraint firstAttribute="width" constant="171" id="eng-JR-Y5o"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="wGF-mm-q4g" firstAttribute="leading" secondItem="6Ky-v4-m2r" secondAttribute="leading" id="FNM-Gz-wcd"/>
+                                                <constraint firstItem="6Ky-v4-m2r" firstAttribute="leading" secondItem="kOx-lf-ylR" secondAttribute="leading" constant="110" id="FXz-xJ-Vud"/>
+                                                <constraint firstItem="kSY-ZQ-ZAV" firstAttribute="leading" secondItem="kOx-lf-ylR" secondAttribute="leading" constant="15" id="GbI-Kq-blk"/>
+                                                <constraint firstItem="wGF-mm-q4g" firstAttribute="top" secondItem="6Ky-v4-m2r" secondAttribute="bottom" constant="4" id="H0f-YB-Q04"/>
+                                                <constraint firstItem="6Ky-v4-m2r" firstAttribute="top" secondItem="kSY-ZQ-ZAV" secondAttribute="top" id="LC0-6V-w9p"/>
+                                                <constraint firstAttribute="trailing" secondItem="6Ky-v4-m2r" secondAttribute="trailing" constant="15" id="Wjs-Nq-gwC"/>
+                                                <constraint firstItem="kSY-ZQ-ZAV" firstAttribute="top" secondItem="kOx-lf-ylR" secondAttribute="top" constant="5" id="XTe-s6-yde"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="date" destination="wGF-mm-q4g" id="nao-tN-ftR"/>
+                                            <outlet property="detail" destination="6Ky-v4-m2r" id="Era-nK-sSL"/>
+                                            <outlet property="detailLeading" destination="FXz-xJ-Vud" id="Yfk-1f-7ho"/>
+                                            <outlet property="detailTraling" destination="Wjs-Nq-gwC" id="M8Y-Xj-mlZ"/>
+                                            <outlet property="mainImage" destination="kSY-ZQ-ZAV" id="Ac1-lx-Tbw"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="aae-cX-Upd" secondAttribute="trailing" id="AEh-70-XPU"/>
+                            <constraint firstItem="aae-cX-Upd" firstAttribute="leading" secondItem="b0z-mo-OK9" secondAttribute="leading" id="OOa-mZ-e8b"/>
+                            <constraint firstItem="jJC-ZU-TGr" firstAttribute="top" secondItem="aae-cX-Upd" secondAttribute="bottom" id="TlM-KS-LY0"/>
+                            <constraint firstItem="aae-cX-Upd" firstAttribute="top" secondItem="b0z-mo-OK9" secondAttribute="top" constant="64" id="jSz-kz-EzN"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="aae-cX-Upd" id="dzo-SD-YoS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M3y-Pw-xal" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-122.40000000000001" y="136.28185907046478"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="caicon.jpg" width="300" height="200"/>
+    </resources>
+</document>

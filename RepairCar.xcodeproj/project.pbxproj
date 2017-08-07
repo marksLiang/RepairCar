@@ -11,6 +11,8 @@
 		079C974E1D17AD8B00DD539F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079C974D1D17AD8B00DD539F /* CoreGraphics.framework */; };
 		1C5B82F01F376FDF001A9584 /* ShopList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5B82EF1F376FDF001A9584 /* ShopList.swift */; };
 		1C5B82F21F377067001A9584 /* DemandList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5B82F11F377067001A9584 /* DemandList.swift */; };
+		1C5B82F41F38C078001A9584 /* DemandList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C5B82F31F38C078001A9584 /* DemandList.storyboard */; };
+		1C5B82F61F38C51C001A9584 /* DemandListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5B82F51F38C51C001A9584 /* DemandListCell.swift */; };
 		27609BD01CB257810041E8B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27609BCF1CB257810041E8B7 /* AppDelegate.swift */; };
 		27609BD71CB257810041E8B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27609BD61CB257810041E8B7 /* Assets.xcassets */; };
 		27609BE51CB257810041E8B7 /* ProjectFrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27609BE41CB257810041E8B7 /* ProjectFrameworkTests.swift */; };
@@ -240,6 +242,8 @@
 		079C974F1D17ADA300DD539F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1C5B82EF1F376FDF001A9584 /* ShopList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopList.swift; sourceTree = "<group>"; };
 		1C5B82F11F377067001A9584 /* DemandList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemandList.swift; sourceTree = "<group>"; };
+		1C5B82F31F38C078001A9584 /* DemandList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DemandList.storyboard; sourceTree = "<group>"; };
+		1C5B82F51F38C51C001A9584 /* DemandListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemandListCell.swift; sourceTree = "<group>"; };
 		27609BCC1CB257810041E8B7 /* RepairCar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RepairCar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27609BCF1CB257810041E8B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27609BD61CB257810041E8B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -1333,6 +1337,8 @@
 				6F5068801F1C506D00E8EC1B /* RepairShopCell.swift */,
 				6F5068811F1C506D00E8EC1B /* RepairShopCell.xib */,
 				6F2588871F1F467300137DF1 /* HomeHeaderView.swift */,
+				1C5B82F31F38C078001A9584 /* DemandList.storyboard */,
+				1C5B82F51F38C51C001A9584 /* DemandListCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1783,6 +1789,7 @@
 				6F1D69121F00BE5400FEA3CC /* Default-568h@3x.png in Resources */,
 				6FC61D181F355D9400B8BA1C /* cities_array.xml in Resources */,
 				6F49049E1F186DA200F74691 /* CustomSettings.bundle in Resources */,
+				1C5B82F41F38C078001A9584 /* DemandList.storyboard in Resources */,
 				6F45EB591EF8F90C00562709 /* compose_guide_check_box_default@2x.png in Resources */,
 				6F1D69111F00BE5400FEA3CC /* Default-568h@2x.png in Resources */,
 				6F5068831F1C506D00E8EC1B /* RepairShopCell.xib in Resources */,
@@ -1919,6 +1926,7 @@
 				6F45EB621EF8F90C00562709 /* JLAssetsLibrary.m in Sources */,
 				6F4905271F186F6000F74691 /* GlobalParameter.swift in Sources */,
 				6FF51D261EBD7E9E00021790 /* CalendarViewController.swift in Sources */,
+				1C5B82F61F38C51C001A9584 /* DemandListCell.swift in Sources */,
 				2E12CB0F1E6F1E6F009527BA /* NSBundle+TZImagePicker.m in Sources */,
 				6F49050A1F186EE800F74691 /* Forget+passwordViewController.swift in Sources */,
 				2E12CB031E6F1E6F009527BA /* MHSheetFoot.m in Sources */,

@@ -73,7 +73,7 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate{
                 let vc = ShopList()
                 self?.show(vc, sender: self)
             }else{
-                let vc = DemandList()
+                let vc = CommonFunction.ViewControllerWithStoryboardName("DemandList", Identifier: "DemandList") as! DemandList
                 self?.show(vc, sender: self)
             }
         }
