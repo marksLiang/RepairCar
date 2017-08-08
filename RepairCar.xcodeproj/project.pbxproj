@@ -2177,7 +2177,7 @@
 				);
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited) -DDEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = com.repaircar;
+				PRODUCT_BUNDLE_IDENTIFIER = com.repaircar.365;
 				PRODUCT_NAME = RepairCar;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2225,7 +2225,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited) -DRELEASE";
-				PRODUCT_BUNDLE_IDENTIFIER = com.repaircar;
+				PRODUCT_BUNDLE_IDENTIFIER = com.repaircar.365;
 				PRODUCT_NAME = RepairCar;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

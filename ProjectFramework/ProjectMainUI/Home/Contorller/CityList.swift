@@ -155,8 +155,7 @@ class CityList: UIViewController ,UITextFieldDelegate,UITableViewDelegate,UITabl
     private func getCityData() -> Void{
         let array = ["南宁市"]
         
-        let str = UserDefaults.standard.value(forKey: "city") as? String
-        if  str?.characters.count == 0 {
+        if((UserDefaults.standard.bool(forKey: "city") as Bool!) == false || (UserDefaults.standard.bool(forKey: "city") as Bool!)==nil ){
             DispatchQueue.global(qos: .default).async(execute: {() -> Void in
                 self.dataArray = CityData.loadFile() as! Array
                 self.dataArray.insert(array, at: 0)
@@ -165,7 +164,8 @@ class CityList: UIViewController ,UITextFieldDelegate,UITableViewDelegate,UITabl
                     self.tableView.reloadData()
                 })
             })
-        }else{
+        }
+        else{
             self.dataArray = CityData.getCityData() as! Array
             self.dataArray.insert(array, at: 0)
             //            print(array.count)

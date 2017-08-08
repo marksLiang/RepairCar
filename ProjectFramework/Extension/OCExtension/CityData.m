@@ -41,7 +41,7 @@ NSMutableArray * array26;
 +(NSMutableArray *)loadFile{
     
     
-    [[NSUserDefaults standardUserDefaults] setValue:@"南宁市" forKey:@"city"];
+    [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"city"];
     [[NSUserDefaults standardUserDefaults]synchronize];
     dataArray = [[NSMutableArray alloc]init];
     //读取文件
@@ -135,7 +135,7 @@ NSMutableArray * array26;
     [dataArray addObject:array25];
     [dataArray addObject:array26];
     
-    [self saveDataWithDataArray:dataArray dataCacheKey:@"cityData"];
+    [self saveDataWithDataArray:dataArray dataCacheKey:@"city"];
 }
 +(void)ttransformToPinyinWith:(NSString *)str{
         NSMutableString *mutableString = [NSMutableString stringWithString:str];
@@ -241,7 +241,7 @@ NSMutableArray * array26;
 +(NSArray *)getCityData{
     NSString *path = [NSHomeDirectory() stringByAppendingPathComponent:@"Library/Caches"];
     
-    NSString *filePath = [path stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.plist",@"cityData"]];
+    NSString *filePath = [path stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.plist",@"city"]];
     
     NSArray * data = [NSArray arrayWithContentsOfFile:filePath];
     
