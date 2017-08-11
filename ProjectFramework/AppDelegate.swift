@@ -25,10 +25,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         InitUI()    //初始化UI   (第一次启动的导航页，需要在里面设置)
         Init_Navigationbar_TabbarStyle()    //导航样式设置
         //InitBaidu()           //百度地图
-        InitUMshare()         //友盟分享
+        //InitUMshare()         //友盟分享
         InitNetworkCheck()    //网络检测
         InitDB()              //初始化sqlite数据库
-        InitJpush(didFinishLaunchingWithOptions:launchOptions)  //极光推送
+        //InitJpush(didFinishLaunchingWithOptions:launchOptions)  //极光推送
         return true
     }
     // MARK: - 析构方法

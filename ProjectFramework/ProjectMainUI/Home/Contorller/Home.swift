@@ -9,12 +9,13 @@
 import UIKit
 import RxSwift
 import RxCocoa
-class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate{
+class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocationManagerDelegate{
     /********************  xib控件  ********************/
     @IBOutlet weak var tableView: UITableView!
     
     /********************  属性  ********************/
     fileprivate let identifier   = "RepairShopCell"
+    fileprivate var mgr: CLLocationManager?=nil
     fileprivate let disposeBag   = DisposeBag()//处理包通道
     fileprivate let imagesURLStrings = ["https://ss2.baidu.com/-vo3dSag_xI4khGko9WTAnF6hhy/super/whfpf%3D425%2C260%2C50/sign=a4b3d7085dee3d6d2293d48b252b5910/0e2442a7d933c89524cd5cd4d51373f0830200ea.jpg",
                                         "https://ss0.baidu.com/-Po3dSag_xI4khGko9WTAnF6hhy/super/whfpf%3D425%2C260%2C50/sign=a41eb338dd33c895a62bcb3bb72e47c2/5fdf8db1cb134954a2192ccb524e9258d1094a1e.jpg",
@@ -102,13 +103,32 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.position()
         self.setNavgationBar()
         self.initUI()
         
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    //MARK: 获取地理位置信息
+    private func position() -> Void{
+        mgr = CLLocationManager()
+        mgr?.delegate = self
+        mgr?.startUpdatingLocation()
+        if (mgr?.responds(to: #selector(mgr?.requestWhenInUseAuthorization)))! {
+            mgr?.requestWhenInUseAuthorization()
+        }
+        
+    }
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let geocoder = CLGeocoder.init()
+        geocoder.reverseGeocodeLocation(locations.last!) { (placemarks, error) in
+            if placemarks?.count == 0 || (error != nil) {
+                return
+            }
+            let pm = placemarks?.first!
+            if ((pm?.locality) != nil) {
+                print(pm?.locality as! String)
+            }
+        }
         
     }
     //MARK: 轮播图代理
