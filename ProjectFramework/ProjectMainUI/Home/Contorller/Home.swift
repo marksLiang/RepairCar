@@ -126,7 +126,7 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
             }
             let pm = placemarks?.first!
             if ((pm?.locality) != nil) {
-                print(pm?.locality as! String)
+                print(pm!.locality)
             }
         }
         
