@@ -10,6 +10,10 @@ import UIKit
 
 class MineCell: UITableViewCell {
 
+    @IBOutlet weak var mainImage: UIImageView!
+    
+    @IBOutlet weak var titleLable: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,5 +24,9 @@ class MineCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        mainImage.layer.cornerRadius = mainImage.frame.width / 2
+        mainImage.clipsToBounds = true
+    }
 }

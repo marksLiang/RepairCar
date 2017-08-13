@@ -13,6 +13,10 @@
 		1C5B82F21F377067001A9584 /* DemandList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5B82F11F377067001A9584 /* DemandList.swift */; };
 		1C5B82F41F38C078001A9584 /* DemandList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C5B82F31F38C078001A9584 /* DemandList.storyboard */; };
 		1C5B82F61F38C51C001A9584 /* DemandListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5B82F51F38C51C001A9584 /* DemandListCell.swift */; };
+		1C5B82F81F4052F2001A9584 /* MineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5B82F71F4052F2001A9584 /* MineHeaderView.swift */; };
+		1C5B82FA1F40551B001A9584 /* MineHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C5B82F91F40551B001A9584 /* MineHeaderView.xib */; };
+		1C5B82FC1F406B80001A9584 /* Myinfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C5B82FB1F406B80001A9584 /* Myinfo.storyboard */; };
+		1C5B82FE1F40AE7B001A9584 /* MyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5B82FD1F40AE7B001A9584 /* MyInfoViewController.swift */; };
 		27609BD01CB257810041E8B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27609BCF1CB257810041E8B7 /* AppDelegate.swift */; };
 		27609BD71CB257810041E8B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27609BD61CB257810041E8B7 /* Assets.xcassets */; };
 		27609BE51CB257810041E8B7 /* ProjectFrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27609BE41CB257810041E8B7 /* ProjectFrameworkTests.swift */; };
@@ -245,6 +249,10 @@
 		1C5B82F11F377067001A9584 /* DemandList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemandList.swift; sourceTree = "<group>"; };
 		1C5B82F31F38C078001A9584 /* DemandList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DemandList.storyboard; sourceTree = "<group>"; };
 		1C5B82F51F38C51C001A9584 /* DemandListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemandListCell.swift; sourceTree = "<group>"; };
+		1C5B82F71F4052F2001A9584 /* MineHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineHeaderView.swift; sourceTree = "<group>"; };
+		1C5B82F91F40551B001A9584 /* MineHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineHeaderView.xib; sourceTree = "<group>"; };
+		1C5B82FB1F406B80001A9584 /* Myinfo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Myinfo.storyboard; sourceTree = "<group>"; };
+		1C5B82FD1F40AE7B001A9584 /* MyInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyInfoViewController.swift; sourceTree = "<group>"; };
 		27609BCC1CB257810041E8B7 /* RepairCar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RepairCar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27609BCF1CB257810041E8B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27609BD61CB257810041E8B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -1394,6 +1402,7 @@
 			isa = PBXGroup;
 			children = (
 				6F4905451F18AD0100F74691 /* Mine.swift */,
+				1C5B82FD1F40AE7B001A9584 /* MyInfoViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1403,6 +1412,9 @@
 			children = (
 				6F4905471F18AD9300F74691 /* Mine.storyboard */,
 				6FC61D241F3EA95300B8BA1C /* MineCell.swift */,
+				1C5B82F71F4052F2001A9584 /* MineHeaderView.swift */,
+				1C5B82F91F40551B001A9584 /* MineHeaderView.xib */,
+				1C5B82FB1F406B80001A9584 /* Myinfo.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1773,6 +1785,7 @@
 				6F4905181F186EE800F74691 /* Login2Resource.bundle in Resources */,
 				6F45EB601EF8F90C00562709 /* navigationbar_back_withtext@3x.png in Resources */,
 				2E12CB061E6F1E6F009527BA /* MHSheetHead.xib in Resources */,
+				1C5B82FA1F40551B001A9584 /* MineHeaderView.xib in Resources */,
 				27609BD71CB257810041E8B7 /* Assets.xcassets in Resources */,
 				6F4905481F18AD9300F74691 /* Mine.storyboard in Resources */,
 				6F45EB5B1EF8F90C00562709 /* compose_guide_check_box_right@2x.png in Resources */,
@@ -1798,6 +1811,7 @@
 				6F5068831F1C506D00E8EC1B /* RepairShopCell.xib in Resources */,
 				2E2611691E52D55F00CC70F9 /* Main.storyboard in Resources */,
 				2E12CABA1E6F1E67009527BA /* MBProgressHUD.bundle in Resources */,
+				1C5B82FC1F406B80001A9584 /* Myinfo.storyboard in Resources */,
 				2E12CB041E6F1E6F009527BA /* MHSheetFoot.xib in Resources */,
 				6F49050F1F186EE800F74691 /* SB_Login.storyboard in Resources */,
 				6F4905441F18ACF000F74691 /* News.storyboard in Resources */,
@@ -1962,6 +1976,7 @@
 				6FF51D431EBD7EC500021790 /* ZFChooseTimeViewController.m in Sources */,
 				6F49051A1F186EE800F74691 /* LoginView.swift in Sources */,
 				6F2588881F1F467300137DF1 /* HomeHeaderView.swift in Sources */,
+				1C5B82FE1F40AE7B001A9584 /* MyInfoViewController.swift in Sources */,
 				6F50687B1F1C474700E8EC1B /* TADotView.m in Sources */,
 				6FDB2E0D1EC4612E0092FAFC /* RSADataVerifier.m in Sources */,
 				6FDB2E0A1EC4612E0092FAFC /* NSDataEx.m in Sources */,
@@ -1987,6 +2002,7 @@
 				6FDB2E0B1EC4612E0092FAFC /* openssl_wrapper.m in Sources */,
 				6F50687E1F1C474700E8EC1B /* SDCycleScrollView.m in Sources */,
 				2E12CAB91E6F1E67009527BA /* MBProgressHUD+NJ.m in Sources */,
+				1C5B82F81F4052F2001A9584 /* MineHeaderView.swift in Sources */,
 				6FF51D361EBD7E9E00021790 /* UpLoadPicManagerView.swift in Sources */,
 				6F45EB611EF8F90C00562709 /* JLAssetGroup.m in Sources */,
 				6F45EB6A1EF8F90C00562709 /* JLPieProgressView.m in Sources */,

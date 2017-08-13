@@ -118,7 +118,9 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
         }
         
     }
+    var isFrist = true //只允许执行一次
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
         let geocoder = CLGeocoder.init()
         geocoder.reverseGeocodeLocation(locations.last!) { (placemarks, error) in
             if placemarks?.count == 0 || (error != nil) {
@@ -126,7 +128,11 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
             }
             let pm = placemarks?.first!
             if ((pm?.locality) != nil) {
-                print(pm!.locality)
+                if self.isFrist == true {
+                    print(locations.last!.coordinate.latitude , locations.last!.coordinate.longitude)
+                    print(pm!.locality)
+                    self.isFrist = false
+                }
             }
         }
         
