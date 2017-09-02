@@ -10,8 +10,10 @@ import UIKit
 
 class ShopList: CustomTemplateViewController,PYSearchViewControllerDelegate {
     /********************  属性  ********************/
-    fileprivate let identifier   = "RepairShopCell"
+    fileprivate let identifier    = "RepairShopCell"
     fileprivate var Menuview:MenuView?  = nil
+    fileprivate var sfitViewModel = SfitViewModel()
+    fileprivate var viewModel     = ShopListViewModel()
     /*******************懒加载*********************/
     fileprivate lazy var tableView: UITableView = {
         let tableView = UITableView.init(frame: CGRect.init(x: 0, y: CommonFunction.NavigationControllerHeight + 30, width: CommonFunction.kScreenWidth, height: self.view.frame.height-CommonFunction.NavigationControllerHeight-30), style: .plain)
@@ -19,19 +21,34 @@ class ShopList: CustomTemplateViewController,PYSearchViewControllerDelegate {
     }()
     fileprivate lazy var model: RepairShopModel = {
         let model = RepairShopModel()
-        model.Score = 5
-        model.tabs = ["电器类","机修类","门窗类","轮胎类","冷工类","装饰类","油类","焊类"]
+//        model.Score = 5
+//        model.tabs = ["电器类","机修类","门窗类","轮胎类","冷工类","装饰类","油类","焊类"]
         return model
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setNavbar()
         self.initUI()
-        self.setMeunView()
+        self.GetSiftData()
+    }
+    //MARK: 请求数据
+    private func GetSiftData() -> Void{
+        sfitViewModel.GetScreeningCondition { (result) in
+            if result == true {
+                self.setMeunView()
+                self.GetHttp()
+            }else{
+                CommonFunction.HUD("请求失败", type: .error)
+            }
+        }
+    }
+    private func GetHttp() -> Void{
+        
     }
     //MARK: tableViewDelegate
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return model.tabs.count > 3 ? 130: 90
+        return 90
+        //return model.tabs.count > 3 ? 130: 90
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! RepairShopCell
@@ -54,27 +71,27 @@ class ShopList: CustomTemplateViewController,PYSearchViewControllerDelegate {
         Menuview=MenuView(delegate: self, frame:  CGRect(x: 0, y: 64, width: self.view.frame.width, height: 30))
         self.view.addSubview(Menuview!)
         let model1       = MenuModel()
-        for   i:Int in 0  ..< 4{
+        for   i:Int in 0  ..< (self.sfitViewModel.ListData.MaintenanceTypeNames?.count)!{
             let onemol   = OneMenuModel()
             onemol.type  = 1
-            onemol.name  = "第一\(i)"
-            onemol.value = i.description
+            onemol.name  = self.sfitViewModel.ListData.MaintenanceTypeNames?[i].ShowTitle
+            onemol.value = self.sfitViewModel.ListData.MaintenanceTypeNames?[i].ShowTitle
             model1.OneMenu.append(onemol)
         }
         let model2       = MenuModel()
-        for   i:Int in 0  ..< 4{
+        for   i:Int in 0  ..< (self.sfitViewModel.ListData.StarRating?.count)!{
             let onemol   = OneMenuModel()
             onemol.type  = 2
-            onemol.name  = "第二\(i)"
-            onemol.value = i.description
+            onemol.name  = self.sfitViewModel.ListData.StarRating?[i].ShowTitle
+            onemol.value = self.sfitViewModel.ListData.StarRating?[i].StarRatingEnum.description
             model2.OneMenu.append(onemol)
         }
         let model3       = MenuModel()
-        for   i:Int in 0  ..< 4{
+        for   i:Int in 0  ..< (self.sfitViewModel.ListData.Distance?.count)!{
             let onemol   = OneMenuModel()
             onemol.type  = 3
-            onemol.name  = "第三\(i)"
-            onemol.value = i.description
+            onemol.name  = self.sfitViewModel.ListData.Distance?[i].ShowTitle
+            onemol.value = self.sfitViewModel.ListData.Distance?[i].StarRatingEnum.description
             model3.OneMenu.append(onemol)
         }
         Menuview?.AddMenuData(model1)

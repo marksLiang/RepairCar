@@ -70,35 +70,41 @@ class LoginViewModel {
     }
     
     func SetLogin( result:((_ result:Bool?) -> Void)?){
-        let parameters=["Phone":username.value,"PassWord":password.value]
-        CommonFunction.Global_Post(entity: LoginMode(), IsListData: false, url: HttpsUrl+"api/Login/SetLogin", isHUD: true, isHUDMake: false, parameters: parameters as NSDictionary) { (resultData) in
+        let parameters=["UsersName":username.value,"PassWord":password.value]
+        CommonFunction.Global_Post(entity: LoginMode(), IsListData: false, url: HttpsUrl+"api/Login/Login", isHUD: true, isHUDMake: false, parameters: parameters as NSDictionary) { (resultData) in
             if(resultData?.Success==true){
-                let model = resultData?.Content as! LoginMode
-                
-                Global_UserInfo.HeadImgPath=model._userlogo
-                Global_UserInfo.PhoneNo=model._phone
-                Global_UserInfo.RealName=model._username
-                Global_UserInfo.Sex=model._sex
-                Global_UserInfo.userid=model._userid
-                Global_UserInfo.IsLogin=true
-                
-                Global_UserInfo.authorizationtype=model._authorizationtype
-                
-                //登陆成功后 存储到数据库
-                CommonFunction.ExecuteUpdate("update MemberInfo set userid = (?), PhoneNo = (?) , Token = (?), IsLogin = (?) ,RealName=(?),Sex=(?),HeadImgPath=(?),authorizationtype=(?)",
-                                             [Global_UserInfo.userid as AnyObject
-                                                ,Global_UserInfo.PhoneNo as AnyObject
-                                                ,"" as AnyObject
-                                                ,true as AnyObject
-                                                ,Global_UserInfo.RealName as AnyObject
-                                                ,Global_UserInfo.Sex as AnyObject
-                                                ,Global_UserInfo.HeadImgPath as AnyObject
-                                                ,Global_UserInfo.authorizationtype as AnyObject
-                    ], callback: nil )
-                
-           
-                
+                if resultData?.ret == 0 {
+                    let model = resultData?.Content as! LoginMode
+                    
+                    Global_UserInfo.ImagePath=model.ImagePath
+                    Global_UserInfo.Phone=model.Phone
+                    Global_UserInfo.UserName=model.UserName
+                    Global_UserInfo.Sex=model.Sex
+                    Global_UserInfo.UserID=model.UserID
+                    Global_UserInfo.IsLogin=true
+                    
+                    Global_UserInfo.UserType=model.UserType
+                    
+                    //登陆成功后 存储到数据库
+                    CommonFunction.ExecuteUpdate("update MemberInfo set UserID = (?), Phone = (?) , Token = (?), IsLogin = (?) ,UserName=(?),Sex=(?),ImagePath=(?),UserType=(?)",
+                                                 [Global_UserInfo.UserID as AnyObject
+                                                    ,Global_UserInfo.Phone as AnyObject
+                                                    ,"" as AnyObject
+                                                    ,true as AnyObject
+                                                    ,Global_UserInfo.UserName as AnyObject
+                                                    ,Global_UserInfo.Sex as AnyObject
+                                                    ,Global_UserInfo.ImagePath as AnyObject
+                                                    ,Global_UserInfo.UserType as AnyObject
+                        ], callback: nil )
+                    
+                    
+                    
                     result?(true)
+                }
+                else{
+                    CommonFunction.HUD(resultData!.Result, type: .error)
+                    result?(false)
+                }
             }else{
                     CommonFunction.HUD(resultData!.Result, type: .error)
             }

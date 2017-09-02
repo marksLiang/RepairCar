@@ -15,29 +15,30 @@ class MyInfoModel:NSObject  {
     ///是否已登录
     var IsLogin=false
     ///用户ID
-    var userid=0
+    var UserID=0
     ///图片
-    var HeadImgPath=""
+    var ImagePath=""
     ///名称(姓名
-    var  RealName=""
+    var  UserName=""
     ///性别
     var  Sex=""
     ///手机
-    var  PhoneNo=""
+    var  Phone=""
     ///token
     var  Token=""
-    ///0 未授权 1数据挖掘
-    var authorizationtype=0
+    ///用户类型 1普通用户，2管理员(拥有城市后台管理)，3超级管理员都能管
+    var UserType=1
     
 }
 
 
-
+//当前城市
+var CurrentCity = ""
 //支付宝AppScheme
-let ZFBAppScheme = "alisdknmsclv"  //应用注册scheme,在Info.plist定义URL types  (特注说明：如果一个app下存在多个相同公司产品 那么他的 Scheme不能一样 否则调整支付宝后无法跳转回来该应用)
+let ZFBAppScheme = "suxiu365"  //应用注册scheme,在Info.plist定义URL types  (特注说明：如果一个app下存在多个相同公司产品 那么他的 Scheme不能一样 否则调整支付宝后无法跳转回来该应用)
 let ZFBPayNoticeResultStatus="PayResultStatus"      //支付宝通知的Name
 
-let placeholderImage="loadimg"  //SDWebImage 默认加载图片
+let placeholderImage="placeholder"  //SDWebImage 默认加载图片
 
 let UMAPPKey="58ad571299f0c768cc000f0d"      //友盟Appkey
 let BaiduMapKey="bkKIE4v1nTBGCRYZ4Zpg34LrynTExfXk" //百度地图key
@@ -45,15 +46,12 @@ let BaiduTTAppID="9311410"                         //百度地图开启语音功
 let JpushKey="d2bea33f0be75f93ed0fd1c8"            //激光推送Key
 
 #if DEBUG
-let HttpsUrl="http://192.168.1.20:5499/";
-let HttpsUrlImage="http://192.168.1.20:5488/";
-let HttpsPanorama360="http://www.8gsky.com/360/?id=";
-let HttpsVR="http://m.8gsky.com/vision/videoplay.aspx?app=1&id=";
+let HttpsUrl="http://39.108.173.130:5421/";
+let HttpsUrlImage="http://39.108.173.130:5422";
+
 #else
-let HttpsUrl="http://api.8gsky.com/";
-let HttpsUrlImage="http://images.8gsky.com/";
-let HttpsPanorama360="http://www.8gsky.com/360/?id=";
-let HttpsVR="http://m.8gsky.com/vision/videoplay.aspx?app=1&id=";
+let HttpsUrl="http://39.108.173.130:5421/";
+let HttpsUrlImage="http://39.108.173.130:5422";
 
 #endif
 

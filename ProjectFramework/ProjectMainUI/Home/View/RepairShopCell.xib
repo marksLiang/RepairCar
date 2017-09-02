@@ -25,8 +25,8 @@
                             <constraint firstAttribute="width" constant="70" id="s8V-nI-A5O"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="这是一个维修店名" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Elh-4Q-TNH">
-                        <rect key="frame" x="85" y="15" width="193" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="这是一个维修店名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Elh-4Q-TNH">
+                        <rect key="frame" x="85" y="10" width="193" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="IxN-6N-Cag"/>
                             <constraint firstAttribute="width" constant="193" id="mGB-Am-HSL"/>
@@ -36,7 +36,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="服务星级：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uPr-JK-HoC">
-                        <rect key="frame" x="85" y="39" width="61.5" height="21"/>
+                        <rect key="frame" x="85" y="34" width="61.5" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="Iq9-ex-Q4u"/>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="58" id="tVx-Nq-Q6M"/>
@@ -46,7 +46,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="维修类型：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CBV-2z-imj">
-                        <rect key="frame" x="85" y="63" width="61.5" height="21"/>
+                        <rect key="frame" x="85" y="58" width="61.5" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="58" id="i5c-EY-Jxu"/>
                             <constraint firstAttribute="height" constant="21" id="z8d-KM-5di"/>
@@ -84,10 +84,10 @@
                     <constraint firstAttribute="trailing" secondItem="Mm7-KH-Q8O" secondAttribute="trailing" constant="10" id="5D8-Px-wLR"/>
                     <constraint firstItem="uPr-JK-HoC" firstAttribute="leading" secondItem="Elh-4Q-TNH" secondAttribute="leading" id="8n3-wA-ngB"/>
                     <constraint firstItem="CBV-2z-imj" firstAttribute="top" secondItem="uPr-JK-HoC" secondAttribute="bottom" constant="3" id="AWM-7w-FbR"/>
-                    <constraint firstItem="Elh-4Q-TNH" firstAttribute="top" secondItem="iGg-Nk-k8d" secondAttribute="top" id="Agh-a8-D0Q"/>
                     <constraint firstItem="CBV-2z-imj" firstAttribute="leading" secondItem="uPr-JK-HoC" secondAttribute="leading" id="BvD-wF-tI3"/>
                     <constraint firstItem="Mm7-KH-Q8O" firstAttribute="top" secondItem="uTi-5D-30G" secondAttribute="bottom" id="H53-Nw-diM"/>
                     <constraint firstItem="Elh-4Q-TNH" firstAttribute="leading" secondItem="iGg-Nk-k8d" secondAttribute="trailing" constant="5" id="R4c-YY-p5h"/>
+                    <constraint firstItem="Elh-4Q-TNH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="YkK-4X-nEu"/>
                     <constraint firstItem="uPr-JK-HoC" firstAttribute="top" secondItem="Elh-4Q-TNH" secondAttribute="bottom" constant="3" id="eOi-cY-uyg"/>
                     <constraint firstAttribute="trailing" secondItem="uTi-5D-30G" secondAttribute="trailing" constant="7" id="pbO-vq-HVX"/>
                     <constraint firstItem="uTi-5D-30G" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="tq4-Fq-yWA"/>

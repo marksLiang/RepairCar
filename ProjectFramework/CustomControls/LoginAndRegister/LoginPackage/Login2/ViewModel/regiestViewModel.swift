@@ -53,12 +53,12 @@ class regiestViewModel {
                 
                 if(name.characters.count != 11){
                     //校验手机号码
-                    CommonFunction.HUD("手机号码不正确", type: .error)
+                    CommonFunction.HUD("请输入11位手机号", type: .error)
                     return Observable.just(ValidationResult.error)
                 }
                 else{
                     if(!Validate.phoneNum(name).isRight){
-                        CommonFunction.HUD("非法手机号码", type: .error)
+                        CommonFunction.HUD("请输入正确的手机号", type: .error)
                         return Observable.just(ValidationResult.error)
                     }
                 }
@@ -103,11 +103,11 @@ class regiestViewModel {
                 return
             }
             if(!Validate.phoneNum(self.username.value).isRight){
-                CommonFunction.HUD("非法手机号码", type: .error)
+                CommonFunction.HUD("请输入正确的手机号", type: .error)
                 return
             }
             self.VerificationCodeEvent1?.StartTime()   //开启计时器
-            CommonFunction.Global_Post(entity: nil, IsListData: false, url: HttpsUrl+"api/Login/RegisterVerificationCode", isHUD: true,HUDMsg: "正在获取验证码...", isHUDMake: false, parameters: ["Phone":self.username.value], Model: { (resultData) in
+            CommonFunction.Global_Post(entity: nil, IsListData: false, url: HttpsUrl+"api/Register/GetVerificationCode", isHUD: true,HUDMsg: "正在获取验证码...", isHUDMake: false, parameters: ["Phone":self.username.value], Model: { (resultData) in
                 if(resultData?.Success==true){
                      CommonFunction.HUD("发送成功", type: .success)
                 }else{
@@ -121,15 +121,24 @@ class regiestViewModel {
     
     ///注册
     func SetRegister(){
-        let parameters = ["Phone":username.value,"PassWord":password.value,"VerificationCode":VerificationCode.value]
-        CommonFunction.Global_Post(entity: nil, IsListData: false, url:  HttpsUrl+"api/Login/SetRegister", isHUD: true,HUDMsg: "正在提交中...", isHUDMake: false, parameters:parameters as NSDictionary) { (resultData) in
+        let parameters = ["Phone":username.value,"PassWord":password.value,"VCode":VerificationCode.value,"CityName":CurrentCity]
+        CommonFunction.Global_Post(entity: nil, IsListData: false, url:  HttpsUrl+"api/Register/SetRegister", isHUD: true,HUDMsg: "正在提交中...", isHUDMake: false, parameters:parameters as NSDictionary) { (resultData) in
+//            print(resultData?.ret,resultData?.Content)
             if(resultData?.Success==true){
-                CommonFunction.HUD("注册成功", type: .success)
-                self.delegate?.dismiss(animated: true, completion: { 
-                    
-                })
+                if (resultData?.ret == 0){
+                    CommonFunction.HUD("注册成功", type: .success)
+                    self.delegate?.dismiss(animated: true, completion: {
+                        
+                    })
+                }
+                if (resultData?.ret == 4){
+                    CommonFunction.HUD((resultData?.Result)!, type: .error)
+                }
+                else{
+                    CommonFunction.HUD("注册失败", type: .error)
+                }
             }else{
-                CommonFunction.HUD(resultData!.Result, type: .success)
+                CommonFunction.HUD(resultData!.Result, type: .error)
             }
         }
     }

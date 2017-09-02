@@ -22,7 +22,7 @@ class LoginView: UIView
     lazy var UserImage:UIImageView = {
         let imgWh:CGFloat=90
         let img = UIImageView(frame: CGRect(x: self.bounds.width/2-imgWh/2, y: 100, width:imgWh, height: imgWh))
-        img.image=UIImage.init(named: "userIcon_defualt")
+        img.image=UIImage.init(named: "默认头像")
         img.layer.borderColor=UIColor.white.cgColor
         img.layer.borderWidth=4
         img.layer.cornerRadius=imgWh/2
@@ -46,6 +46,7 @@ class LoginView: UIView
         newTextField.font=UIFont.systemFont(ofSize: 12)
         newTextField.clearButtonMode = .always
         newTextField.textColor=UIColor.white
+        newTextField.keyboardType = .numberPad
         newTextField.attributedPlaceholder=NSAttributedString(string: newTextField.placeholder!, attributes: [NSForegroundColorAttributeName:UIColor.white])    //修改placeholder的颜色
         return newTextField
     }()
@@ -132,6 +133,7 @@ class LoginView: UIView
     override init(frame: CGRect) {
         super.init(frame: frame)
         ShowView()
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -52,7 +52,7 @@ class CreatedbBase {
  
         var DBItem=[String]()
         //用户信息
-        let createSql1:String = "CREATE TABLE IF NOT EXISTS MemberInfo (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, userid integer , PhoneNo text , RealName text ,  Sex text , HeadImgPath text , Token text  , IsLogin bit , authorizationtype integer)"
+        let createSql1:String = "CREATE TABLE IF NOT EXISTS MemberInfo (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, UserID integer , Phone text , UserName text ,  Sex text , ImagePath text , Token text  , IsLogin bit , UserType integer)"
         
         DBItem.append(createSql1) // 用户信息
         
@@ -78,30 +78,30 @@ class CreatedbBase {
         CommonFunction.ExecuteQuery("select *  from MemberInfo", nil) { (Result) in
             
             if(!Result.next()){
-                CommonFunction.ExecuteUpdate("insert into MemberInfo (userid,PhoneNo,RealName,Sex,HeadImgPath,Token,IsLogin ,authorizationtype) values (?,?,?,?,?,?,?,? ) ", ["0" as AnyObject,"" as AnyObject,"" as AnyObject,"" as AnyObject,"" as AnyObject,"" as AnyObject,false as AnyObject,"0" as AnyObject]) { (isOk) in
+                CommonFunction.ExecuteUpdate("insert into MemberInfo (UserID,Phone,UserName,Sex,ImagePath,Token,IsLogin ,UserType) values (?,?,?,?,?,?,?,? ) ", ["0" as AnyObject,"" as AnyObject,"" as AnyObject,"" as AnyObject,"" as AnyObject,"" as AnyObject,false as AnyObject,"0" as AnyObject]) { (isOk) in
                 }
             }else{
                 CommonFunction.ExecuteQuery("select * from MemberInfo", nil, callback: { (Result) in
                     while Result.next() {
                         print(Result.resultDictionary())
-                        let userid = Result.int(forColumn: "userid") as Int32
-                        let PhoneNo = Result.string(forColumn: "PhoneNo") as String
-                        let RealName = Result.string(forColumn: "RealName") as String
+                        let userid = Result.int(forColumn: "UserID") as Int32
+                        let PhoneNo = Result.string(forColumn: "Phone") as String
+                        let RealName = Result.string(forColumn: "UserName") as String
                         let Sex = Result.string(forColumn: "Sex") as String
-                        let HeadImgPath = Result.string(forColumn: "HeadImgPath") as String
+                        let HeadImgPath = Result.string(forColumn: "ImagePath") as String
                         let Token = Result.string(forColumn: "Token") as String
                         let IsLogin = Result.bool(forColumn: "IsLogin") as Bool
                         
-                        let authorizationtype = Result.int(forColumn: "authorizationtype") as Int32
+                        let authorizationtype = Result.int(forColumn: "UserType") as Int32
                          
                         Global_UserInfo.IsLogin=IsLogin
-                        Global_UserInfo.userid=Int(userid)
-                        Global_UserInfo.PhoneNo=PhoneNo
-                        Global_UserInfo.RealName=RealName
+                        Global_UserInfo.UserID=Int(userid)
+                        Global_UserInfo.Phone=PhoneNo
+                        Global_UserInfo.UserName=RealName
                         Global_UserInfo.Sex=Sex
-                        Global_UserInfo.HeadImgPath=HeadImgPath
+                        Global_UserInfo.ImagePath=HeadImgPath
                         Global_UserInfo.Token=Token
-                        Global_UserInfo.authorizationtype=Int(authorizationtype)
+                        Global_UserInfo.UserType=Int(authorizationtype)
                         
                     }
                     

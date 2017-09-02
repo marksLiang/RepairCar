@@ -32,4 +32,14 @@ class MineHeaderView: UIView {
             myCallbackValue!("")
         }
     }
+    func setData() -> Void {
+        if(Global_UserInfo.IsLogin==true){
+            userHeadImage.ImageLoad(PostUrl: HttpsUrlImage+Global_UserInfo.ImagePath)
+            userName.text = Global_UserInfo.UserName
+            userPhone.text = Global_UserInfo.Phone
+        }else{
+            userName.text = "未登录"
+            userPhone.text = "点击去登录吧!"
+        }
+    }
 }

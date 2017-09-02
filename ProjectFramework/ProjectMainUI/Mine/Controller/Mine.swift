@@ -14,30 +14,50 @@ class Mine: CustomTemplateViewController {
     /********************  属性  ********************/
     fileprivate let identifier   = "MineCell"
     let setion0    = ["发布管理","我是店主","系统通知"]
-    let setion1    = ["设置","安全退出"]
+    var setion1    = ["设置"]
     let setion2    = ["后台管理"]
     var titleArray = [[String]]()
+    var isfirt     = true
     /*******************懒加载*********************/
     fileprivate lazy var headerView: MineHeaderView = {
         let headerView = Bundle.main.loadNibNamed("MineHeaderView", owner: self, options: nil)?.last as! MineHeaderView
         headerView.frame = CGRect.init(x: 0, y: 0, width: CommonFunction.kScreenWidth, height: 150)
-        
+        headerView.FuncCallbackValue {[weak self] (text) in
+            print("我点击了")
+            CommonFunction.isLogin(taget: self!, loginResult: { (login) in
+                if login == true {
+                    self!.getData()
+                }
+            }) {
+                let vc = CommonFunction.ViewControllerWithStoryboardName("Myinfo", Identifier: "Myinfo") as! MyInfoViewController
+                self?.navigationController?.show(vc, sender: nil)
+            }
+        }
         return headerView
     }()
     //MARK: viewload
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-        
+        headerView.setData()
     }
     override func viewDidLoad() {
-        headerView.FuncCallbackValue {[weak self] (text) in
-            print("我点击了")
-        }
+        
         super.viewDidLoad()
-        titleArray.append(setion0)
-        titleArray.append(setion1)
-        titleArray.append(setion2)
+        self.getData()
         self.initUI()
+    }
+    private func getData() -> Void{
+        if Global_UserInfo.IsLogin == false {
+            titleArray.append(setion0)
+            titleArray.append(setion1)
+        }else{
+            setion1.append("安全退出")
+            titleArray.append(setion0)
+            titleArray.append(setion1)
+            if Global_UserInfo.UserType == 2 || Global_UserInfo.UserType == 3 {
+                titleArray.append(setion2)
+            }
+        }
     }
     //MARK: tableViewdelegate
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -59,6 +79,28 @@ class Mine: CustomTemplateViewController {
         cell.titleLable.text = titleArray[indexPath.section][indexPath.row]
         return cell
     }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let str = titleArray[indexPath.section][indexPath.row]
+        switch str {
+        case "发布管理":
+            let vc = CommonFunction.ViewControllerWithStoryboardName("ReleseDemandManager", Identifier: "ReleseDemandManager") as! ReleseDemandManager
+            self.navigationController?.show(vc, sender: nil)
+            break
+        case "我是店主":
+            break
+        case "安全退出":
+            CommonFunction.AlertController(self, title: "注销", message: "确定注销该账户吗？", ok_name: "确定", cancel_name: "取消", style: .alert, OK_Callback: {
+                
+                self.tableView.reloadData()
+            }, Cancel_Callback: {
+                
+            })
+            break
+        default:
+            break
+        }
+    }
+
     //MARK: initUI
     private func initUI() -> Void {
         self.InitCongif(tableView)

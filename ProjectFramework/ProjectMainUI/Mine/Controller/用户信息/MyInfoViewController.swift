@@ -30,7 +30,7 @@ class MyInfoViewController: UITableViewController {
         self.pic.image = image
         if(Global_UserInfo.IsLogin==true){
             
-            self.pic.sd_setImage(with:URL(string:HttpsUrlImage+Global_UserInfo.HeadImgPath), placeholderImage:  UIImage(named: placeholderImage) ,options:  SDWebImageOptions.retryFailed) { (UIImage, NSError, SDImageCacheType, NSURL) -> Void in
+            self.pic.sd_setImage(with:URL(string:HttpsUrlImage+Global_UserInfo.ImagePath), placeholderImage:  UIImage(named: placeholderImage) ,options:  SDWebImageOptions.retryFailed) { (UIImage, NSError, SDImageCacheType, NSURL) -> Void in
                 if(UIImage != nil){
                     self.pic.image=UIImage
                 }
@@ -40,9 +40,9 @@ class MyInfoViewController: UITableViewController {
                 }
                 
             }
-            name.text=Global_UserInfo.RealName
+            name.text=Global_UserInfo.UserName
             sex.text=Global_UserInfo.Sex
-            phone.text=Global_UserInfo.PhoneNo
+            phone.text=Global_UserInfo.Phone
         }else{
             
             name.text=""

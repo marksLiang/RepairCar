@@ -11,10 +11,15 @@ import Foundation
 
 class LoginMode: NSObject
 {
-   var _userid=0
-    var _username=""
-    var _phone=""
-    var _sex=""
-    var _userlogo=""
-    var _authorizationtype=0
+    var UserTypeRemark=""
+    var UserID=0
+    var LoginAccount=""
+    var LoginPassWord=""
+    var UserName=""
+    var Sex=""
+    var Phone=""
+    var ImagePath=""
+    var UserType=1
+    var CityName=""
+    var CreateTime=""
 }

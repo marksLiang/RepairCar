@@ -63,6 +63,7 @@ class LoginViewControllerTwo: UIViewController
         _LoginView?.registerbtn.rx.tap.subscribe(      //注册事件
             onNext:{ [weak self] value in
                 let vc = registerViewController()
+                vc.delegate = self
                 self?.present(vc, animated: true, completion: nil)
         }).addDisposableTo(disposeBag)
         
@@ -98,9 +99,11 @@ class LoginViewControllerTwo: UIViewController
                     if(result==true){
                         
                         //极光推送添加别名
-                        JPUSHService.setAlias(Global_UserInfo.userid.description, callbackSelector: nil, object: self )
+                        JPUSHService.setAlias(Global_UserInfo.UserID.description, callbackSelector: nil, object: self )
                             self?.myCallbackValue?(true)
-                          self?.dismiss(animated: true, completion: nil)
+                            self?.dismiss(animated: true, completion: {
+                            CommonFunction.HUD("登录成功", type: .success)
+                          })
                     } 
                 })
                 break

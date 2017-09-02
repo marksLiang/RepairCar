@@ -18,7 +18,7 @@ class registerViewController: UIViewController,UITableViewDelegate,UITableViewDa
     let  Identifier = "registerViewCell"
     fileprivate let disposeBag   = DisposeBag() //创建一个处理包（通道）
     let _regiestViewModel = regiestViewModel()   //数据处理 (VM)
-    
+    var delegate:UIViewController?=nil
     ///返回 按钮
     lazy var backbtn:UIButton =
         {
@@ -38,7 +38,7 @@ class registerViewController: UIViewController,UITableViewDelegate,UITableViewDa
     lazy var registerbtn:UIButton =
         {
             let btn = UIButton(frame: CGRect(x: 20, y: 5, width: self.view.bounds.width-40, height: 35))
-            btn.backgroundColor=UIColor.red
+            btn.backgroundColor=CommonFunction.SystemColor()
             btn.setTitleColor(UIColor.white, for: .normal)
             btn.setTitle(  "注  册",   for: .normal)
             btn.titleLabel?.font = UIFont.systemFont(ofSize: 13)
@@ -60,6 +60,7 @@ class registerViewController: UIViewController,UITableViewDelegate,UITableViewDa
             let imgWh:CGFloat=90
             let title = UILabel(frame: CGRect(x: self.view.bounds.width/2-imgWh/2, y: 22, width:imgWh, height: 44))
             title.text="注册账户"
+            title.textAlignment = .center
             title.font=UIFont.systemFont(ofSize: 16)
             title.textColor = UIColor.white
             _HeaderView.addSubview(title)  //添加标题
@@ -88,9 +89,9 @@ class registerViewController: UIViewController,UITableViewDelegate,UITableViewDa
     {
         super.viewDidLoad()
         self.view.backgroundColor=UIColor.white
+        _regiestViewModel.delegate = delegate//上一个界面
         self.view.addSubview(HeaderView)    //添加头部view
         self.view.addSubview(tableView) //添加tableview
-    
         //点击背景收起键盘
         let tapBackground = UITapGestureRecognizer()
         tapBackground.rx.event
@@ -136,6 +137,7 @@ class registerViewController: UIViewController,UITableViewDelegate,UITableViewDa
         case 0:
             cell.lab.text="手机号"
             cell.inpuText.placeholder="请输入手机号码"
+            cell.inpuText.keyboardType = .phonePad
             cell.inpuText.rx.text.orEmpty
                 .bind(to: _regiestViewModel.username) //手机号绑定
                 .addDisposableTo(disposeBag)

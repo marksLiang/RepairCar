@@ -9,8 +9,37 @@
 import UIKit
 
 class RepairShopModel: NSObject {
-    var title = ""
-    var ShopID = 0
-    var Score = 5
-    var tabs = [String]() //["电器类","机修类","门窗类","轮胎类","冷工类","装饰类","油类","焊类"]
+    var Images:[ImageList]?
+    var KM=""
+    var MaintenanceID=0
+    var TitleName=""
+    var Address=""
+    var Phone=""
+    var Area=""
+    var Lng=0.0
+    var Lat=0.0
+    var CityName=""
+    var TypeNames=""
+    var Introduce=""
+    var StarRating=0.0
+    var UserID=1
+    var IsRecommend=true
+    var IsTop=false
+    var IsAudit=false
+    var Views=0
+    var ViewsFlase=0
+    var IsDel=false
+    var CreateTime=""
+    override static func mj_objectClassInArray() -> [AnyHashable : Any]! {
+        return ["Images":ImageList.self]
+    }
+}
+
+class ImageList: NSObject {
+    var ImgID=0
+    var ImgPath=""
+    var ImgDescribe=""
+    var ImgType=0
+    var OtherID=0
+    var CreateTime=""
 }

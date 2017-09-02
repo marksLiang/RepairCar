@@ -17,10 +17,10 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
     fileprivate let identifier   = "RepairShopCell"
     fileprivate var mgr: CLLocationManager?=nil
     fileprivate let disposeBag   = DisposeBag()//处理包通道
-    fileprivate let imagesURLStrings = ["https://ss2.baidu.com/-vo3dSag_xI4khGko9WTAnF6hhy/super/whfpf%3D425%2C260%2C50/sign=a4b3d7085dee3d6d2293d48b252b5910/0e2442a7d933c89524cd5cd4d51373f0830200ea.jpg",
-                                        "https://ss0.baidu.com/-Po3dSag_xI4khGko9WTAnF6hhy/super/whfpf%3D425%2C260%2C50/sign=a41eb338dd33c895a62bcb3bb72e47c2/5fdf8db1cb134954a2192ccb524e9258d1094a1e.jpg",
-                                        "http://c.hiphotos.baidu.com/image/w%3D400/sign=c2318ff84334970a4773112fa5c8d1c0/b7fd5266d0160924c1fae5ccd60735fae7cd340d.jpg"]
-    
+    fileprivate var viewModel    = HomeViewModel()
+    fileprivate var aViewModel   = AdvertisingViewModel()
+    fileprivate var imagesURLStrings = [String]()
+    fileprivate var currenModel: RepairShopModel?=nil
     /********************  懒加载  ********************/
     //自定义导航栏
     fileprivate lazy var navgationBar: UIView = {
@@ -43,11 +43,11 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
         cityBtn.frame = CGRect.init(x: 0, y: 30, width: 80, height: 30)
         cityBtn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         cityBtn.setImage(UIImage.init(named: "arrow_down"), for: .normal)
-        cityBtn.setTitle("南宁市", for: .normal)
         cityBtn.rx.tap.subscribe(
             onNext:{ [weak self] value in
-                let vc = CityList()
+                let vc = CommonFunction.ViewControllerWithStoryboardName("CityList", Identifier: "CityList") as! CityList
                 vc.Callback_SelectedValue {[weak self] (selectCity) in
+                    CurrentCity = selectCity
                     cityBtn.setTitle(selectCity, for: .normal)
                 }
                 self?.navigationController?.show(vc, sender: self)
@@ -69,6 +69,7 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
     //tableView头部
     fileprivate lazy var headerView: HomeHeaderView = {
         let headerView = HomeHeaderView.init(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: 290))
+        headerView.isHidden = true
         headerView.FuncCallbackValue {[weak self] (tag) in
             if tag == 1 {
                 let vc = ShopList()
@@ -85,28 +86,95 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
         let shuffling = SDCycleScrollView(frame:CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: 150),delegate:self ,placeholderImage:UIImage.init(named: "placeholder"))
         shuffling?.currentPageDotImage = UIImage.init(named: "pageControlCurrentDot")
         shuffling?.pageDotImage = UIImage.init(named: "pageControlDot")
-        shuffling?.imageURLStringsGroup = self.imagesURLStrings
         return shuffling!
     }()
-    fileprivate lazy var model: RepairShopModel = {
-        let model = RepairShopModel()
-        model.Score = 5
-        model.tabs = ["电器类","机修类","门窗类","轮胎类","冷工类","装饰类","油类","焊类"]
-        return model
+    //店铺预览
+    fileprivate lazy var pview: ShopPreview = {
+        let pview = ShopPreview.init(frame: CGRect.init(x: 0, y:  0, width: CommonFunction.kScreenWidth, height: CommonFunction.kScreenHeight), model: self.currenModel!)
+        return pview
     }()
-    
     //MARK: viewload
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.position()
         self.setNavgationBar()
         self.initUI()
+        pview.FuncCallbackValue {[weak self] (tag) in
+            CommonFunction.isLogin(taget: self!, loginResult: { (result) in
+                
+            }, normal: {
+                self?.GetMaintenanceDetailsIsPay()
+            })
+        }
+    }
+    private func push() -> Void{
         
+    }
+    //MARK: 支付----》查看店铺
+    private func GetMaintenanceDetailsIsPay() -> Void{
+        viewModel.GetMaintenanceDetailsIsPay(MaintenanceID: self.currenModel!.MaintenanceID, UserID: Global_UserInfo.UserID) { (result) in
+            if result == true {
+                self.payFor()
+            }else{
+                let vc = CommonFunction.ViewControllerWithStoryboardName("ShopDetail", Identifier: "ShopDetail") as! ShopDetail
+                vc.model = self.currenModel
+                self.show(vc, sender: self)
+            }
+        }
+    }
+    private func payFor() -> Void{
+        CommonFunction.AlertController(self, title: "查看店铺详情", message: "需要支付3元，是否支付？", ok_name: "确定", cancel_name: "取消", OK_Callback: {
+//            let vc = PayClass.init(OrderType:1,delegate: self)
+//            vc.OtherID = self.currenModel!.MaintenanceID
+//            self.present(vc, animated: true, completion: {
+//                self.hiddenPview()
+//            })
+            self.hiddenPview()
+            let vc = CommonFunction.ViewControllerWithStoryboardName("ShopDetail", Identifier: "ShopDetail") as! ShopDetail
+            vc.model = self.currenModel
+            self.show(vc, sender: self)
+        }, Cancel_Callback: {
+            
+        })
+    }
+    override func headerRefresh() {
+        self.imagesURLStrings.removeAll()
+        self.GetAdvertising()
+    }
+    override func Error_Click() {
+        self.imagesURLStrings.removeAll()
+        self.GetAdvertising()
+    }
+    private func GetAdvertising() -> Void{
+        aViewModel.GetAdvList(CityName: CurrentCity, AdvType: 0) { (result) in
+            if result == true {
+                for i in 0..<self.aViewModel.ListData.count{
+                    self.imagesURLStrings.append(self.aViewModel.ListData[i].ImgPath)
+                }
+                self.GetHttp()
+            }else{
+                CommonFunction.HUD("网络异常", type: .error)
+            }
+        }
+    }
+    private func GetHttp() -> Void{
+        viewModel.GetHomeMaintenanceInfo(CityName: CurrentCity, Longitude: "", Latitude: "") { (result) in
+            self.header.endRefreshing()
+            self.footer.endRefreshing()
+            if result == true {
+                self.shuffling.imageURLStringsGroup = self.imagesURLStrings
+                self.numberOfSections = 1
+                self.numberOfRowsInSection = self.viewModel.ListData.count
+                self.headerView.isHidden = false
+                self.RefreshRequest(isLoading: false, isHiddenFooter: true)
+            }else{
+                self.RefreshRequest(isLoading: false, isHiddenFooter: true, isLoadError: true)
+            }
+        }
     }
     //MARK: 获取地理位置信息
     private func position() -> Void{
@@ -129,9 +197,13 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
             let pm = placemarks?.first!
             if ((pm?.locality) != nil) {
                 if self.isFrist == true {
-                    print(locations.last!.coordinate.latitude , locations.last!.coordinate.longitude)
-                    print(pm!.locality)
+                    print(locations.last!.coordinate.latitude , locations.last!.coordinate.longitude ,(pm?.locality)!)
+                    CurrentCity = (pm?.locality)!
+                    self.cityBtn.setTitle((pm?.locality)!, for: .normal)
                     self.isFrist = false
+                    
+                    //MARK: 定位完获取数据
+                    self.GetAdvertising()
                 }
             }
         }
@@ -139,16 +211,49 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
     }
     //MARK: 轮播图代理
     func cycleScrollView(_ cycleScrollView: SDCycleScrollView!, didSelectItemAt index: Int) {
-        print("我点击了第\(index)张")
+        //点击跳转到广告详情、是h5地址
+        let vc = AdvertisingWeb()
+        vc.urlString = self.aViewModel.ListData[index].JumpURL
+        self.show(vc, sender: self)
     }
     //MARK: tableViewDelegate
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return model.tabs.count > 3 ? 130: 90
+        var tepyArray = [String]()
+        if self.viewModel.ListData[indexPath.row].TypeNames != "" {
+            tepyArray = self.viewModel.ListData[indexPath.row].TypeNames.components(separatedBy: ",")
+            tepyArray.removeLast()
+        }
+        return  tepyArray.count > 3 ? 130 : 90
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! RepairShopCell
-        cell.InitConfig(model)
+        cell.InitConfig(self.viewModel.ListData[indexPath.row])
+        if self.viewModel.ListData[indexPath.row].IsTop == true {
+//            cell.atTop()
+        }
         return cell
+    }
+    var isfirstClick = true
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            self.currenModel = self.viewModel.ListData[indexPath.row]
+            self.pview.setModel(self.viewModel.ListData[indexPath.row])
+            if self.isfirstClick == true {
+                CommonFunction.RootView?.addSubview(self.pview)
+                self.isfirstClick = false
+            }else{
+                self.shouPview()
+            }
+
+    }
+    private func shouPview() -> Void{
+        UIView.animate(withDuration: 0.5, animations: {
+            self.pview.frame = CGRect.init(x: 0, y: 0, width: CommonFunction.kScreenWidth, height: CommonFunction.kScreenHeight)
+        })
+    }
+    private func hiddenPview() -> Void{
+        UIView.animate(withDuration: 0.5, animations: {
+            self.pview.frame = CGRect.init(x: 0, y: CommonFunction.kScreenHeight, width: CommonFunction.kScreenWidth, height: CommonFunction.kScreenHeight)
+        })
     }
     //MARK: initUI
     private func initUI() -> Void {
@@ -159,8 +264,6 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
         self.tableView.frame = CGRect.init(x: 0, y: CommonFunction.NavigationControllerHeight, width: CommonFunction.kScreenWidth, height: CommonFunction.kScreenHeight - 64 - 49)
         self.tableView.register(requesterNib, forCellReuseIdentifier: identifier)
         self.tableView.tableHeaderView = headerView
-        self.numberOfSections = 1
-        self.numberOfRowsInSection = 10
         
     }
     //MARK: setNavgationBar

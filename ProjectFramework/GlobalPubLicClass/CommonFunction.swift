@@ -264,6 +264,8 @@ final class   CommonFunction {
     static let Model = UIDevice.current.model
     /// 设备区域化型号 如 A1533
     static let LocalizedModel = UIDevice.current.localizedModel
+    /// 根视图
+    static let RootView = UIApplication.shared.keyWindow?.rootViewController?.view
     // MARK:颜色块
     /// 颜色
     static func RGBA(_ r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) -> UIColor {return UIColor(red: (r)/255.0, green: (g)/255.0, blue: (b)/255.0, alpha: (a))}
@@ -806,5 +808,18 @@ final class   CommonFunction {
         gradientLayer.endPoint = CGPoint(x: CGFloat(1.0), y: CGFloat(0))
         gradientLayer.frame = CGRect(x: CGFloat(0), y: CGFloat(-20), width: CGFloat(CommonFunction.kScreenWidth), height: CGFloat(20 + CommonFunction.NavigationControllerHeight))
         return gradientLayer
+    }
+    //MARK: 判断用户是否登录过
+    static func isLogin(taget:UIViewController , loginResult:((_ result:Bool?) -> Void)? ,normal:(( ) -> Void)?) -> Void{
+        if Global_UserInfo.IsLogin == false {
+            let vc = LoginViewControllerTwo()
+            vc.Callback_Value { (isLogin) in
+                loginResult?(isLogin)
+            }
+            taget.present(vc, animated: true, completion:nil)
+        }else{
+            normal?()
+        }
+        
     }
 }
