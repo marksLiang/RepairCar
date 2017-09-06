@@ -17,6 +17,8 @@ class MyInfoViewController: UITableViewController {
     @IBOutlet weak var sex: UILabel!        //性别
     @IBOutlet weak var phone: UILabel!      //电话
     
+    var viewModel = MyinfoViewModel()
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title="个人信息"
@@ -26,7 +28,9 @@ class MyInfoViewController: UITableViewController {
         //添加保存按钮
         let item = UIBarButtonItem(title: "保存 ", style: .plain, target: self, action: #selector(MyInfoViewController.Save))
         self.navigationItem.rightBarButtonItem=item
-        let image = UIImage.init(named: "userIcon_defualt")
+        
+        
+        let image = UIImage.init(named: "默认头像")
         self.pic.image = image
         if(Global_UserInfo.IsLogin==true){
             
@@ -67,6 +71,30 @@ class MyInfoViewController: UITableViewController {
         case 0 :    //头像
             CommonFunction.CameraPhotoAlertController(self, Camera_Callback: { (img) in
                 self.pic.image=img
+                let data = UIImageJPEGRepresentation(self.pic.image!, 0.9)!
+                CommonFunction.HUD("上传头像中...", type: .load)
+                self.viewModel.SetImageUpload(datas: [data], Model: { (model) in
+                    CommonFunction.HUDHide()
+                    if model?.Success == true {
+                        if model?.Content != nil {
+                            let imagePathList = model?.Content as! [String]
+                            print(HttpsUrlImage+imagePathList[0])
+                            Global_UserInfo.ImagePath = imagePathList[0]
+                            CommonFunction.ExecuteUpdate("update MemberInfo set UserID = (?), Phone = (?) , Token = (?), IsLogin = (?) ,UserName=(?),Sex=(?),ImagePath=(?),UserType=(?)",
+                                                         [Global_UserInfo.UserID as AnyObject
+                                                            ,Global_UserInfo.Phone as AnyObject
+                                                            ,"" as AnyObject
+                                                            ,true as AnyObject
+                                                            ,Global_UserInfo.UserName as AnyObject
+                                                            ,Global_UserInfo.Sex as AnyObject
+                                                            ,Global_UserInfo.ImagePath as AnyObject
+                                                            ,Global_UserInfo.UserType as AnyObject
+                                ], callback: nil )
+                        }
+                        CommonFunction.HUD("上传成功", type: .success)
+                    }
+                })
+                
             })
             break
         case 1 :    //姓名
@@ -116,28 +144,13 @@ class MyInfoViewController: UITableViewController {
     
     //保存
     func Save(){
-//        let data = UIImageJPEGRepresentation(pic.image!, 0.9)!
-//        let http = MyinfoHttps()
-//        CommonFunction.HUD("数据保存中...", type: .load)
-//        http.UpUserInfo(data: data, parameters: ["UserID":Global_UserInfo.userid,"RealName":name.text! ,"Sex":sex.text!,"Phone":phone.text!] ) { (model) in
-//            CommonFunction.HUDHide()
-//            if(model?.Success==true){
-//                Global_UserInfo.RealName=self.name.text!
-//                Global_UserInfo.Sex=self.sex.text!
-//                Global_UserInfo.HeadImgPath=model?.Content! as! String
-//                Global_UserInfo.PhoneNo=self.phone.text!
-//                CommonFunction.ExecuteUpdate("update MemberInfo  set RealName=(?),Sex=(?),HeadImgPath=(?),PhoneNo=(?)  ", [
-//                    Global_UserInfo.RealName as AnyObject,
-//                    Global_UserInfo.Sex as AnyObject,
-//                    Global_UserInfo.HeadImgPath as AnyObject,
-//                    Global_UserInfo.PhoneNo as AnyObject,
-//                    ], callback: nil)
-//                
-//                CommonFunction.HUD("保存成功", type: .success)
-//            }else{
-//                CommonFunction.HUD("保存失败", type: .error) 
-//            }
-//        }
+        viewModel.SetUpdateUserInfo(UserID: Global_UserInfo.UserID, UserName: name.text!, ImagePath: Global_UserInfo.ImagePath, Sex: sex.text!, Phone: phone.text!) { (result) in
+            if result == true {
+                CommonFunction.HUD("保存成功", type: .success)
+            }else{
+                CommonFunction.HUD("保存失败", type: .error)
+            }
+        }
         
     }
     

@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="默认头像" translatesAutoresizingMaskIntoConstraints="NO" id="S94-fP-GR9">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S94-fP-GR9">
                     <rect key="frame" x="16" y="71" width="70" height="70"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
@@ -64,6 +64,5 @@
     </objects>
     <resources>
         <image name="arrowright" width="75" height="75"/>
-        <image name="默认头像" width="16" height="16"/>
     </resources>
 </document>

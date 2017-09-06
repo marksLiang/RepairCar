@@ -23,15 +23,7 @@ class Mine: CustomTemplateViewController {
         let headerView = Bundle.main.loadNibNamed("MineHeaderView", owner: self, options: nil)?.last as! MineHeaderView
         headerView.frame = CGRect.init(x: 0, y: 0, width: CommonFunction.kScreenWidth, height: 150)
         headerView.FuncCallbackValue {[weak self] (text) in
-            print("我点击了")
-            CommonFunction.isLogin(taget: self!, loginResult: { (login) in
-                if login == true {
-                    self!.getData()
-                }
-            }) {
-                let vc = CommonFunction.ViewControllerWithStoryboardName("Myinfo", Identifier: "Myinfo") as! MyInfoViewController
-                self?.navigationController?.show(vc, sender: nil)
-            }
+            self?.login(index: 6)
         }
         return headerView
     }()
@@ -46,7 +38,42 @@ class Mine: CustomTemplateViewController {
         self.getData()
         self.initUI()
     }
+    //MARK: 登录
+    private func login(index:Int) -> Void{
+        CommonFunction.isLogin(taget: self, loginResult: { (login) in
+            if login == true {
+                self.getData()
+            }
+        }) {
+            switch index {
+                case 0:
+                    let vc = CommonFunction.ViewControllerWithStoryboardName("ReleseDemandManager", Identifier: "ReleseDemandManager") as! ReleseDemandManager
+                    self.navigationController?.show(vc, sender: nil)
+                break
+                case 1:
+                
+                break
+                case 2:
+                
+                break
+                case 6:
+                let vc = CommonFunction.ViewControllerWithStoryboardName("Myinfo", Identifier: "Myinfo") as! MyInfoViewController
+                self.navigationController?.show(vc, sender: nil)
+                break
+                default:
+                    break
+            }
+        }
+    }
+    //MARK: 第一次的数据 登录或者未登录时的数组
     private func getData() -> Void{
+        if titleArray.count > 0 {
+            titleArray.removeAll()//删除数据
+        }
+        if setion1.count == 2 {
+            setion1.removeLast()
+        }
+        //重新添加
         if Global_UserInfo.IsLogin == false {
             titleArray.append(setion0)
             titleArray.append(setion1)
@@ -58,6 +85,7 @@ class Mine: CustomTemplateViewController {
                 titleArray.append(setion2)
             }
         }
+        self.RefreshRequest(isLoading: false, isHiddenFooter: true, isLoadError: false)
     }
     //MARK: tableViewdelegate
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -80,18 +108,27 @@ class Mine: CustomTemplateViewController {
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            self.login(index: indexPath.row)
+        }
         let str = titleArray[indexPath.section][indexPath.row]
         switch str {
-        case "发布管理":
-            let vc = CommonFunction.ViewControllerWithStoryboardName("ReleseDemandManager", Identifier: "ReleseDemandManager") as! ReleseDemandManager
-            self.navigationController?.show(vc, sender: nil)
-            break
-        case "我是店主":
-            break
         case "安全退出":
-            CommonFunction.AlertController(self, title: "注销", message: "确定注销该账户吗？", ok_name: "确定", cancel_name: "取消", style: .alert, OK_Callback: {
-                
-                self.tableView.reloadData()
+                CommonFunction.AlertController(self, title: "注销", message: "确定注销该账户吗？", ok_name: "确定", cancel_name: "取消", style: .alert, OK_Callback: {
+                //登陆成功后 存储到数据库
+                CommonFunction.ExecuteUpdate("update MemberInfo set UserID = (?), Phone = (?) , Token = (?), IsLogin = (?) ,UserName=(?),Sex=(?),ImagePath=(?),UserType=(?)",
+                                             [0 as AnyObject
+                                                ,"" as AnyObject
+                                                ,"" as AnyObject
+                                                ,false as AnyObject
+                                                ,"" as AnyObject
+                                                ,"" as AnyObject
+                                                ,"" as AnyObject
+                                                ,0 as AnyObject
+                    ], callback: nil )
+                    Global_UserInfo=MyInfoModel()
+                    self.headerView.setData()
+                    self.getData()
             }, Cancel_Callback: {
                 
             })

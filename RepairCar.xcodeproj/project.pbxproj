@@ -40,6 +40,7 @@
 		1C5D90191F52FE6900F90380 /* ShopDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5D90181F52FE6900F90380 /* ShopDetail.swift */; };
 		1C5D901B1F5307E200F90380 /* ShopDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C5D901A1F5307E200F90380 /* ShopDetail.storyboard */; };
 		1C5D901D1F53151100F90380 /* ShopDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5D901C1F53151100F90380 /* ShopDetailCell.swift */; };
+		1CFEBC0C1F5CFD8E00FFA54C /* MyinfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CFEBC0B1F5CFD8E00FFA54C /* MyinfoViewModel.swift */; };
 		27609BD01CB257810041E8B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27609BCF1CB257810041E8B7 /* AppDelegate.swift */; };
 		27609BD71CB257810041E8B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27609BD61CB257810041E8B7 /* Assets.xcassets */; };
 		27609BE51CB257810041E8B7 /* ProjectFrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27609BE41CB257810041E8B7 /* ProjectFrameworkTests.swift */; };
@@ -299,6 +300,7 @@
 		1C5D90181F52FE6900F90380 /* ShopDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopDetail.swift; sourceTree = "<group>"; };
 		1C5D901A1F5307E200F90380 /* ShopDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ShopDetail.storyboard; sourceTree = "<group>"; };
 		1C5D901C1F53151100F90380 /* ShopDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopDetailCell.swift; sourceTree = "<group>"; };
+		1CFEBC0B1F5CFD8E00FFA54C /* MyinfoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyinfoViewModel.swift; path = ProjectFramework/ProjectMainUI/Home/View/MyinfoViewModel.swift; sourceTree = SOURCE_ROOT; };
 		27609BCC1CB257810041E8B7 /* RepairCar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RepairCar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27609BCF1CB257810041E8B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27609BD61CB257810041E8B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -1476,6 +1478,7 @@
 		6F4905391F18AA6500F74691 /* ViewModle */ = {
 			isa = PBXGroup;
 			children = (
+				1CFEBC0B1F5CFD8E00FFA54C /* MyinfoViewModel.swift */,
 			);
 			path = ViewModle;
 			sourceTree = "<group>";
@@ -2021,6 +2024,7 @@
 				6F45EB661EF8F90C00562709 /* JLGroupCell.m in Sources */,
 				6F4905051F186EE800F74691 /* HttpsRegion.swift in Sources */,
 				6F22E38B1E9B133E0090291F /* XHStarRateView.m in Sources */,
+				1CFEBC0C1F5CFD8E00FFA54C /* MyinfoViewModel.swift in Sources */,
 				6F91AD671EBC5BE200A9E617 /* HcdPopMenuItem.m in Sources */,
 				6F4904CB1F186E4800F74691 /* CustomTemplateViewController.swift in Sources */,
 				6FDB2E091EC4612E0092FAFC /* base64.m in Sources */,

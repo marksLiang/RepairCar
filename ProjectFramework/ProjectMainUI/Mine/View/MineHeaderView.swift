@@ -21,6 +21,8 @@ class MineHeaderView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         userHeadImage.layer.cornerRadius = userHeadImage.frame.width / 2
+        userHeadImage.layer.borderWidth = 2
+        userHeadImage.layer.borderColor = UIColor.white.cgColor
         userHeadImage.clipsToBounds = true
         self.backgroundColor = CommonFunction.SystemColor()
         
@@ -37,7 +39,14 @@ class MineHeaderView: UIView {
             userHeadImage.ImageLoad(PostUrl: HttpsUrlImage+Global_UserInfo.ImagePath)
             userName.text = Global_UserInfo.UserName
             userPhone.text = Global_UserInfo.Phone
+            if Global_UserInfo.UserName == "" {
+                userName.text = "Hi,给我取个名字吧"
+            }
+            if Global_UserInfo.ImagePath == "" {
+                userHeadImage.image = UIImage.init(named: "默认头像")
+            }
         }else{
+            userHeadImage.image = UIImage.init(named: "默认头像")
             userName.text = "未登录"
             userPhone.text = "点击去登录吧!"
         }

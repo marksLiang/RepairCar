@@ -15,7 +15,7 @@ class  CYLBaseNavigationController:UINavigationController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         //导航栏颜色渐变---需要的时候开启 不需要不用开启
-        self.navigationBar.layer.insertSublayer(gradientLayer(), at: 0)
+        //self.view.layer.insertSublayer(gradientLayer(), at: 0)
         self.navigationBar.backIndicatorImage = UIImage.init(named: "back")
         self.navigationBar.backIndicatorTransitionMaskImage = UIImage.init(named: "back")
 

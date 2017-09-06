@@ -116,10 +116,12 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
     }
     //MARK: 支付----》查看店铺
     private func GetMaintenanceDetailsIsPay() -> Void{
+        print(self.currenModel!.MaintenanceID)
         viewModel.GetMaintenanceDetailsIsPay(MaintenanceID: self.currenModel!.MaintenanceID, UserID: Global_UserInfo.UserID) { (result) in
             if result == true {
                 self.payFor()
             }else{
+                self.hiddenPview()
                 let vc = CommonFunction.ViewControllerWithStoryboardName("ShopDetail", Identifier: "ShopDetail") as! ShopDetail
                 vc.model = self.currenModel
                 self.show(vc, sender: self)
