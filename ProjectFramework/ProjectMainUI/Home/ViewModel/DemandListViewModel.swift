@@ -19,20 +19,20 @@ class DemandListViewModel: NSObject {
                     result?(true,false,true)
                     return
                 }
-                //分页没有数据
-                if(resultModel?.ret==6){
-                    result?(true,true,false)
-                    return
-                }
                 let model =  resultModel?.Content   as!  [DemandListModel]
                 if(PageIndex>=2){
                     for item in model {
                         self.ListData.append(item)
                     }
+                    //分页没有数据
+                    if(resultModel?.ret==6){
+                        result?(true,true,false)
+                        return
+                    }
                 }else{
                     self.ListData = model
+                    result?(true,false,false)
                 }
-                result?(true,false,false)
             }else{
                 result?(false,false,false)
             }

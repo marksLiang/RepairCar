@@ -63,6 +63,7 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
         release.rx.tap.subscribe(
             onNext:{ [weak self] value in
                 print("发布需求")
+                CommonFunction.HUD("此功能程序员正在编写，请耐心等待。。。。", type: .error)
         }).addDisposableTo(self.disposeBag)
         return release
     }()
@@ -110,6 +111,7 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
                 self?.GetMaintenanceDetailsIsPay()
             })
         }
+        
     }
     private func push() -> Void{
         

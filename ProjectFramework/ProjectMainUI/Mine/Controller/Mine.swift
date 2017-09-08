@@ -51,10 +51,11 @@ class Mine: CustomTemplateViewController {
                     self.navigationController?.show(vc, sender: nil)
                 break
                 case 1:
-                
+                    
                 break
                 case 2:
-                
+                    let vc = CommonFunction.ViewControllerWithStoryboardName("MyMessage", Identifier: "MyMessage") as! MyMessage
+                    self.navigationController?.show(vc, sender: nil)
                 break
                 case 6:
                 let vc = CommonFunction.ViewControllerWithStoryboardName("Myinfo", Identifier: "Myinfo") as! MyInfoViewController
@@ -132,6 +133,10 @@ class Mine: CustomTemplateViewController {
             }, Cancel_Callback: {
                 
             })
+            break
+        case "设置":
+            let vc = CommonFunction.ViewControllerWithStoryboardName("MySetting", Identifier: "MySetting") as! MySetting
+            self.navigationController?.show(vc, sender: self)
             break
         default:
             break
