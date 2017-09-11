@@ -137,10 +137,23 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
 //            self.present(vc, animated: true, completion: {
 //                self.hiddenPview()
 //            })
-            self.hiddenPview()
-            let vc = CommonFunction.ViewControllerWithStoryboardName("ShopDetail", Identifier: "ShopDetail") as! ShopDetail
-            vc.model = self.currenModel
-            self.show(vc, sender: self)
+//            self.hiddenPview()
+//            let vc = CommonFunction.ViewControllerWithStoryboardName("ShopDetail", Identifier: "ShopDetail") as! ShopDetail
+//            vc.model = self.currenModel
+//            self.show(vc, sender: self)
+            if self.currenModel!.MaintenanceID == 2 {
+                let vc = PayClass.init(OrderType:1,delegate: self)
+                vc.OtherID = self.currenModel!.MaintenanceID
+                vc.model = self.currenModel
+                self.present(vc, animated: true, completion: {
+                    self.hiddenPview()
+                })
+            }else{
+                self.hiddenPview()
+                let vc = CommonFunction.ViewControllerWithStoryboardName("ShopDetail", Identifier: "ShopDetail") as! ShopDetail
+                vc.model = self.currenModel
+                self.show(vc, sender: self)
+            }
         }, Cancel_Callback: {
             
         })

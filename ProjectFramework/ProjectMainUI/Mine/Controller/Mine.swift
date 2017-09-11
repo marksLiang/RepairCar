@@ -134,6 +134,9 @@ class Mine: CustomTemplateViewController {
                 
             })
             break
+        case "我是店主":
+            CommonFunction.HUD("此功能程序员正在编写，请耐心等待。。。。", type: .error)
+            break
         case "设置":
             let vc = CommonFunction.ViewControllerWithStoryboardName("MySetting", Identifier: "MySetting") as! MySetting
             self.navigationController?.show(vc, sender: self)

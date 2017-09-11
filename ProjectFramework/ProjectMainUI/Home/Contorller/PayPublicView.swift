@@ -15,6 +15,7 @@ class PayClass:UIViewController {
     fileprivate weak var delegate:UIViewController?=nil
     fileprivate var OrderType = 0
     var OtherID = 0
+    var model:RepairShopModel?=nil
     init(OrderType:Int,delegate:UIViewController) {
         super.init(nibName: nil, bundle: nil)
         self.delegate=delegate
@@ -87,7 +88,10 @@ class PayClass:UIViewController {
         if resultStatus == "9000"{
             print("OK,支付完成")
 //            self.delegate?.navigationController?.popToRootViewController(animated: true)
-            
+            let vc = CommonFunction.ViewControllerWithStoryboardName("ShopDetail", Identifier: "ShopDetail") as! ShopDetail
+            vc.model = self.model
+            self.delegate?.navigationController?.show(vc, sender: self)
+            CommonFunction.MessageNotification("您已支付成功", interval: 2, msgtype: .success)
         }else if resultStatus == "8000" {
             print("正在处理中")
         }else if resultStatus == "4000" {

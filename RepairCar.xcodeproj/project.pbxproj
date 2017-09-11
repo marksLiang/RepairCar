@@ -92,6 +92,11 @@
 		2E9FFC121D259F43009B7B81 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E9FFC111D259F43009B7B81 /* CFNetwork.framework */; };
 		2EB659041E26C680004A5DDF /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EB658FC1E26B2C9004A5DDF /* libresolv.tbd */; };
 		3BCF71069B95F8B7A8533BE2 /* Pods_RepairCar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBF9BE0F69AAE640A2F90379 /* Pods_RepairCar.framework */; };
+		5F3E31821F6392000018FE01 /* FeedbackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3E31811F6392000018FE01 /* FeedbackViewModel.swift */; };
+		5F3E31841F63945A0018FE01 /* Feedback.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F3E31831F63945A0018FE01 /* Feedback.storyboard */; };
+		5F3E31861F6394C90018FE01 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3E31851F6394C90018FE01 /* FeedbackViewController.swift */; };
+		5F3E318D1F6399820018FE01 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F3E318B1F6399820018FE01 /* Default-568h@2x.png */; };
+		5F3E318E1F6399820018FE01 /* Default-568h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F3E318C1F6399820018FE01 /* Default-568h@3x.png */; };
 		5F4823F41F61258E00BE04AC /* MyMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4823F31F61258E00BE04AC /* MyMessage.swift */; };
 		5F4823F61F61259D00BE04AC /* MyMessage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F4823F51F61259D00BE04AC /* MyMessage.storyboard */; };
 		5F4823F81F612AAC00BE04AC /* MyMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F4823F71F612AAC00BE04AC /* MyMessageCell.swift */; };
@@ -105,8 +110,11 @@
 		5F62EFF51F62A92500D8305B /* ShopListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F62EFF41F62A92500D8305B /* ShopListViewModel.swift */; };
 		5F62EFF71F62A93600D8305B /* CityListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F62EFF61F62A93600D8305B /* CityListViewModel.swift */; };
 		5F62EFF91F62A93F00D8305B /* DemandListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F62EFF81F62A93F00D8305B /* DemandListViewModel.swift */; };
-		6F1D69111F00BE5400FEA3CC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F1D690F1F00BE5400FEA3CC /* Default-568h@2x.png */; };
-		6F1D69121F00BE5400FEA3CC /* Default-568h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F1D69101F00BE5400FEA3CC /* Default-568h@3x.png */; };
+		5F8440FE1F639F780005FED9 /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F8440FD1F639F780005FED9 /* About.storyboard */; };
+		5F8441001F639F7F0005FED9 /* Disclaimer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F8440FF1F639F7F0005FED9 /* Disclaimer.storyboard */; };
+		5F8441021F639F8F0005FED9 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8441011F639F8F0005FED9 /* AboutViewController.swift */; };
+		5F8441041F639F970005FED9 /* Disclaimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8441031F639F970005FED9 /* Disclaimer.swift */; };
+		5F8441061F63A65D0005FED9 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8441051F63A65D0005FED9 /* NewsCell.swift */; };
 		6F1F878F1E9E071F008E9B09 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F1F878E1E9E071F008E9B09 /* OpenGLES.framework */; };
 		6F1F879C1E9F07D4008E9B09 /* PanoramaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F1F879B1E9F07D4008E9B09 /* PanoramaViewController.m */; };
 		6F22E38B1E9B133E0090291F /* XHStarRateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F22E38A1E9B133E0090291F /* XHStarRateView.m */; };
@@ -407,6 +415,11 @@
 		2EB658F91E26ACFE004A5DDF /* RepairCar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RepairCar.entitlements; sourceTree = "<group>"; };
 		2EB658FA1E26B2B7004A5DDF /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		2EB658FC1E26B2C9004A5DDF /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		5F3E31811F6392000018FE01 /* FeedbackViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewModel.swift; sourceTree = "<group>"; };
+		5F3E31831F63945A0018FE01 /* Feedback.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Feedback.storyboard; sourceTree = "<group>"; };
+		5F3E31851F6394C90018FE01 /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
+		5F3E318B1F6399820018FE01 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		5F3E318C1F6399820018FE01 /* Default-568h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@3x.png"; sourceTree = "<group>"; };
 		5F4823F31F61258E00BE04AC /* MyMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMessage.swift; sourceTree = "<group>"; };
 		5F4823F51F61259D00BE04AC /* MyMessage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MyMessage.storyboard; sourceTree = "<group>"; };
 		5F4823F71F612AAC00BE04AC /* MyMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMessageCell.swift; sourceTree = "<group>"; };
@@ -420,8 +433,11 @@
 		5F62EFF41F62A92500D8305B /* ShopListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopListViewModel.swift; sourceTree = "<group>"; };
 		5F62EFF61F62A93600D8305B /* CityListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityListViewModel.swift; sourceTree = "<group>"; };
 		5F62EFF81F62A93F00D8305B /* DemandListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemandListViewModel.swift; sourceTree = "<group>"; };
-		6F1D690F1F00BE5400FEA3CC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		6F1D69101F00BE5400FEA3CC /* Default-568h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@3x.png"; sourceTree = "<group>"; };
+		5F8440FD1F639F780005FED9 /* About.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = About.storyboard; sourceTree = "<group>"; };
+		5F8440FF1F639F7F0005FED9 /* Disclaimer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Disclaimer.storyboard; sourceTree = "<group>"; };
+		5F8441011F639F8F0005FED9 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		5F8441031F639F970005FED9 /* Disclaimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Disclaimer.swift; sourceTree = "<group>"; };
+		5F8441051F63A65D0005FED9 /* NewsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
 		6F1F878E1E9E071F008E9B09 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		6F1F879A1E9F07D4008E9B09 /* PanoramaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanoramaViewController.h; sourceTree = "<group>"; };
 		6F1F879B1E9F07D4008E9B09 /* PanoramaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PanoramaViewController.m; sourceTree = "<group>"; };
@@ -760,8 +776,8 @@
 		27609BC31CB257810041E8B7 = {
 			isa = PBXGroup;
 			children = (
-				6F1D690F1F00BE5400FEA3CC /* Default-568h@2x.png */,
-				6F1D69101F00BE5400FEA3CC /* Default-568h@3x.png */,
+				5F3E318B1F6399820018FE01 /* Default-568h@2x.png */,
+				5F3E318C1F6399820018FE01 /* Default-568h@3x.png */,
 				6F25887A1F1D9F6F00137DF1 /* caicon.jpg */,
 				27609BFD1CB257E40041E8B7 /* Podfile */,
 				27609BCE1CB257810041E8B7 /* ProjectFramework */,
@@ -1013,6 +1029,9 @@
 			isa = PBXGroup;
 			children = (
 				5F62EFDF1F62850300D8305B /* MySetting.swift */,
+				5F3E31851F6394C90018FE01 /* FeedbackViewController.swift */,
+				5F8441011F639F8F0005FED9 /* AboutViewController.swift */,
+				5F8441031F639F970005FED9 /* Disclaimer.swift */,
 			);
 			path = "设置";
 			sourceTree = "<group>";
@@ -1022,6 +1041,7 @@
 			children = (
 				5F62EFE91F62A7BD00D8305B /* MyinfoViewModel.swift */,
 				5F62EFEB1F62A7D200D8305B /* MessageViewModel.swift */,
+				5F3E31811F6392000018FE01 /* FeedbackViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1520,6 +1540,7 @@
 			isa = PBXGroup;
 			children = (
 				6F4905431F18ACF000F74691 /* News.storyboard */,
+				5F8441051F63A65D0005FED9 /* NewsCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1550,6 +1571,9 @@
 				5F4823F71F612AAC00BE04AC /* MyMessageCell.swift */,
 				5F62EFE11F62869300D8305B /* MySetting.storyboard */,
 				5F62EFE31F62899B00D8305B /* MySettingCell.swift */,
+				5F3E31831F63945A0018FE01 /* Feedback.storyboard */,
+				5F8440FD1F639F780005FED9 /* About.storyboard */,
+				5F8440FF1F639F7F0005FED9 /* Disclaimer.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1909,12 +1933,14 @@
 			files = (
 				6F45EB5D1EF8F90C00562709 /* navigationbar_back_dark@2x.png in Resources */,
 				6F45EB5A1EF8F90C00562709 /* compose_guide_check_box_default@3x.png in Resources */,
+				5F3E31841F63945A0018FE01 /* Feedback.storyboard in Resources */,
 				6F49049D1F186DA200F74691 /* CodeScan.bundle in Resources */,
 				6F4905181F186EE800F74691 /* Login2Resource.bundle in Resources */,
 				6F45EB601EF8F90C00562709 /* navigationbar_back_withtext@3x.png in Resources */,
 				2E12CB061E6F1E6F009527BA /* MHSheetHead.xib in Resources */,
 				1C5B82FA1F40551B001A9584 /* MineHeaderView.xib in Resources */,
 				1C5D8F971F442F6800F90380 /* ReleseDemandManager.storyboard in Resources */,
+				5F3E318D1F6399820018FE01 /* Default-568h@2x.png in Resources */,
 				5F4823F61F61259D00BE04AC /* MyMessage.storyboard in Resources */,
 				27609BD71CB257810041E8B7 /* Assets.xcassets in Resources */,
 				6F4905481F18AD9300F74691 /* Mine.storyboard in Resources */,
@@ -1928,17 +1954,17 @@
 				6F4905421F18ABB800F74691 /* Home.storyboard in Resources */,
 				2E12CB131E6F1E6F009527BA /* TZImagePickerController.bundle in Resources */,
 				6F45EB5F1EF8F90C00562709 /* navigationbar_back_withtext@2x.png in Resources */,
+				5F3E318E1F6399820018FE01 /* Default-568h@3x.png in Resources */,
 				6FDB2E041EC4612E0092FAFC /* AlipaySDK.bundle in Resources */,
 				1C5D90151F50854400F90380 /* ShopPreviewCell.xib in Resources */,
 				2E12CB091E6F1E6F009527BA /* PYSearch.bundle in Resources */,
 				6F25887B1F1D9F6F00137DF1 /* caicon.jpg in Resources */,
 				6F4905111F186EE800F74691 /* SB_Register.storyboard in Resources */,
-				6F1D69121F00BE5400FEA3CC /* Default-568h@3x.png in Resources */,
 				6FC61D181F355D9400B8BA1C /* cities_array.xml in Resources */,
 				6F49049E1F186DA200F74691 /* CustomSettings.bundle in Resources */,
 				1C5B82F41F38C078001A9584 /* DemandList.storyboard in Resources */,
+				5F8440FE1F639F780005FED9 /* About.storyboard in Resources */,
 				6F45EB591EF8F90C00562709 /* compose_guide_check_box_default@2x.png in Resources */,
-				6F1D69111F00BE5400FEA3CC /* Default-568h@2x.png in Resources */,
 				6F5068831F1C506D00E8EC1B /* RepairShopCell.xib in Resources */,
 				2E2611691E52D55F00CC70F9 /* Main.storyboard in Resources */,
 				2E12CABA1E6F1E67009527BA /* MBProgressHUD.bundle in Resources */,
@@ -1947,6 +1973,7 @@
 				6F49050F1F186EE800F74691 /* SB_Login.storyboard in Resources */,
 				6F4905441F18ACF000F74691 /* News.storyboard in Resources */,
 				5F62EFE21F62869300D8305B /* MySetting.storyboard in Resources */,
+				5F8441001F639F7F0005FED9 /* Disclaimer.storyboard in Resources */,
 				6F45EB571EF8F90C00562709 /* camera_image_capture_badge@2x.png in Resources */,
 				6F4904A01F186DA200F74691 /* TemplatesSettings.bundle in Resources */,
 				2E596AB41DD23F720027E03C /* loading.gif in Resources */,
@@ -2080,6 +2107,7 @@
 				6F4904D11F186E8800F74691 /* CreatedbBase.swift in Sources */,
 				6F45EB621EF8F90C00562709 /* JLAssetsLibrary.m in Sources */,
 				1C5D90141F50854400F90380 /* ShopPreviewCell.swift in Sources */,
+				5F3E31861F6394C90018FE01 /* FeedbackViewController.swift in Sources */,
 				6F4905271F186F6000F74691 /* GlobalParameter.swift in Sources */,
 				6FF51D261EBD7E9E00021790 /* CalendarViewController.swift in Sources */,
 				1C5B82F61F38C51C001A9584 /* DemandListCell.swift in Sources */,
@@ -2090,6 +2118,7 @@
 				6F4905071F186EE800F74691 /* loginResultModel.swift in Sources */,
 				6F4904C31F186DBA00F74691 /* UINavigationBar+Extension.swift in Sources */,
 				6F45EB671EF8F90C00562709 /* JLScrollView.m in Sources */,
+				5F3E31821F6392000018FE01 /* FeedbackViewModel.swift in Sources */,
 				1C5D8FFB1F4856B900F90380 /* CityListCell.swift in Sources */,
 				6F4904BC1F186DBA00F74691 /* UIBarButtonItem+Extension.swift in Sources */,
 				6F5068791F1C474700E8EC1B /* TAAbstractDotView.m in Sources */,
@@ -2099,6 +2128,7 @@
 				6F4904C51F186DBA00F74691 /* UITapGestureRecognizer+Extension.swift in Sources */,
 				6F4904C01F186DBA00F74691 /* UIImage+Extension.swift in Sources */,
 				6F45EB501EF8F90C00562709 /* JLALAssetGroupViewController.m in Sources */,
+				5F8441061F63A65D0005FED9 /* NewsCell.swift in Sources */,
 				2E12CB051E6F1E6F009527BA /* MHSheetHead.m in Sources */,
 				1C5D8F991F4433D300F90380 /* ReleseDemandListCell.swift in Sources */,
 				6F4905241F186F2C00F74691 /* MultilevelCategoriesTableViewController.swift in Sources */,
@@ -2126,6 +2156,7 @@
 				1C5D8F921F442EEF00F90380 /* ReleseDemandManager.swift in Sources */,
 				6F50687B1F1C474700E8EC1B /* TADotView.m in Sources */,
 				5F62EFEA1F62A7BD00D8305B /* MyinfoViewModel.swift in Sources */,
+				5F8441041F639F970005FED9 /* Disclaimer.swift in Sources */,
 				6FDB2E0D1EC4612E0092FAFC /* RSADataVerifier.m in Sources */,
 				6FDB2E0A1EC4612E0092FAFC /* NSDataEx.m in Sources */,
 				5F62EFEE1F62A7E400D8305B /* MessageModel.swift in Sources */,
@@ -2157,6 +2188,7 @@
 				6F4905231F186F2C00F74691 /* ModifyViewController.swift in Sources */,
 				6F4905121F186EE800F74691 /* LoginLogicViewModel.swift in Sources */,
 				6FDB2E0B1EC4612E0092FAFC /* openssl_wrapper.m in Sources */,
+				5F8441021F639F8F0005FED9 /* AboutViewController.swift in Sources */,
 				6F50687E1F1C474700E8EC1B /* SDCycleScrollView.m in Sources */,
 				2E12CAB91E6F1E67009527BA /* MBProgressHUD+NJ.m in Sources */,
 				1C5B82F81F4052F2001A9584 /* MineHeaderView.swift in Sources */,
