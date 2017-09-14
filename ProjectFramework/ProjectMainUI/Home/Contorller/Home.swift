@@ -46,6 +46,7 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
         cityBtn.rx.tap.subscribe(
             onNext:{ [weak self] value in
                 let vc = CommonFunction.ViewControllerWithStoryboardName("CityList", Identifier: "CityList") as! CityList
+                vc.currentCityName = CurrentCity
                 vc.Callback_SelectedValue {[weak self] (selectCity) in
                     CurrentCity = selectCity
                     cityBtn.setTitle(selectCity, for: .normal)
@@ -74,10 +75,10 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
         headerView.FuncCallbackValue {[weak self] (tag) in
             if tag == 1 {
                 let vc = ShopList()
-                self?.show(vc, sender: self)
+                self?.navigationController?.show(vc, sender: self)
             }else{
                 let vc = CommonFunction.ViewControllerWithStoryboardName("DemandList", Identifier: "DemandList") as! DemandList
-                self?.show(vc, sender: self)
+                self?.navigationController?.show(vc, sender: self)
             }
         }
         return headerView
@@ -126,7 +127,7 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
                 self.hiddenPview()
                 let vc = CommonFunction.ViewControllerWithStoryboardName("ShopDetail", Identifier: "ShopDetail") as! ShopDetail
                 vc.model = self.currenModel
-                self.show(vc, sender: self)
+                self.navigationController?.show(vc, sender: self)
             }
         }
     }
@@ -152,7 +153,7 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
                 self.hiddenPview()
                 let vc = CommonFunction.ViewControllerWithStoryboardName("ShopDetail", Identifier: "ShopDetail") as! ShopDetail
                 vc.model = self.currenModel
-                self.show(vc, sender: self)
+                self.navigationController?.show(vc, sender: self)
             }
         }, Cancel_Callback: {
             
@@ -231,7 +232,7 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
         //点击跳转到广告详情、是h5地址
         let vc = AdvertisingWeb()
         vc.urlString = self.aViewModel.ListData[index].JumpURL
-        self.show(vc, sender: self)
+        self.navigationController?.show(vc, sender: self)
     }
     //MARK: tableViewDelegate
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -537,6 +537,7 @@
         }
     }
     
+    [self.delegate menu:show];
     if (show) {
         if (haveItems) {
             _leftTableView.frame = CGRectMake(self.origin.x, self.frame.origin.y + self.frame.size.height, self.frame.size.width/2, 0);

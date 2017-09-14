@@ -79,6 +79,10 @@
  *  点击代理，点击了第column 第row 或者item项，如果 item >=0
  */
 - (void)menu:(DOPDropDownMenu *)menu didSelectRowAtIndexPath:(DOPIndexPath *)indexPath;
+/**
+ *  点击代理，点击下标（展示图标那块)
+ */
+- (void) menu:(BOOL)IsOpenItmes;
 
 /** 新增
  *  return nil if you don't want to user select specified indexpath

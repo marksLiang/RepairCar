@@ -110,6 +110,7 @@
 		5F62EFF51F62A92500D8305B /* ShopListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F62EFF41F62A92500D8305B /* ShopListViewModel.swift */; };
 		5F62EFF71F62A93600D8305B /* CityListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F62EFF61F62A93600D8305B /* CityListViewModel.swift */; };
 		5F62EFF91F62A93F00D8305B /* DemandListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F62EFF81F62A93F00D8305B /* DemandListViewModel.swift */; };
+		5F63E6CC1F693478002280B7 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F63E6CB1F693478002280B7 /* MenuView.swift */; };
 		5F8440FE1F639F780005FED9 /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F8440FD1F639F780005FED9 /* About.storyboard */; };
 		5F8441001F639F7F0005FED9 /* Disclaimer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F8440FF1F639F7F0005FED9 /* Disclaimer.storyboard */; };
 		5F8441021F639F8F0005FED9 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8441011F639F8F0005FED9 /* AboutViewController.swift */; };
@@ -250,7 +251,6 @@
 		6FF51D2A1EBD7E9E00021790 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF51D181EBD7E9E00021790 /* CustomTextView.swift */; };
 		6FF51D2B1EBD7E9E00021790 /* ImagePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF51D191EBD7E9E00021790 /* ImagePreviewViewController.swift */; };
 		6FF51D2C1EBD7E9E00021790 /* MCWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF51D1A1EBD7E9E00021790 /* MCWebViewController.swift */; };
-		6FF51D2D1EBD7E9E00021790 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF51D1B1EBD7E9E00021790 /* MenuView.swift */; };
 		6FF51D2E1EBD7E9E00021790 /* PictrueSelectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF51D1C1EBD7E9E00021790 /* PictrueSelectedViewController.swift */; };
 		6FF51D341EBD7E9E00021790 /* QQScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF51D221EBD7E9E00021790 /* QQScanViewController.swift */; };
 		6FF51D351EBD7E9E00021790 /* ScrollViewPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF51D231EBD7E9E00021790 /* ScrollViewPageViewController.swift */; };
@@ -433,6 +433,7 @@
 		5F62EFF41F62A92500D8305B /* ShopListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopListViewModel.swift; sourceTree = "<group>"; };
 		5F62EFF61F62A93600D8305B /* CityListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityListViewModel.swift; sourceTree = "<group>"; };
 		5F62EFF81F62A93F00D8305B /* DemandListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemandListViewModel.swift; sourceTree = "<group>"; };
+		5F63E6CB1F693478002280B7 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		5F8440FD1F639F780005FED9 /* About.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = About.storyboard; sourceTree = "<group>"; };
 		5F8440FF1F639F7F0005FED9 /* Disclaimer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Disclaimer.storyboard; sourceTree = "<group>"; };
 		5F8441011F639F8F0005FED9 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
@@ -691,7 +692,6 @@
 		6FF51D181EBD7E9E00021790 /* CustomTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		6FF51D191EBD7E9E00021790 /* ImagePreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePreviewViewController.swift; sourceTree = "<group>"; };
 		6FF51D1A1EBD7E9E00021790 /* MCWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCWebViewController.swift; sourceTree = "<group>"; };
-		6FF51D1B1EBD7E9E00021790 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		6FF51D1C1EBD7E9E00021790 /* PictrueSelectedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictrueSelectedViewController.swift; sourceTree = "<group>"; };
 		6FF51D221EBD7E9E00021790 /* QQScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QQScanViewController.swift; sourceTree = "<group>"; };
 		6FF51D231EBD7E9E00021790 /* ScrollViewPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewPageViewController.swift; sourceTree = "<group>"; };
@@ -993,7 +993,7 @@
 				6FF51D141EBD7E9E00021790 /* CalendarViewController.swift */,
 				6FF51D151EBD7E9E00021790 /* CAPSPageMenu.swift */,
 				6FF51D171EBD7E9E00021790 /* CustomImageView.swift */,
-				6FF51D1B1EBD7E9E00021790 /* MenuView.swift */,
+				5F63E6CB1F693478002280B7 /* MenuView.swift */,
 				6F371ECA1ECD777E00C8E6A2 /* ShareView.swift */,
 				6FF51D181EBD7E9E00021790 /* CustomTextView.swift */,
 				6FF51D191EBD7E9E00021790 /* ImagePreviewViewController.swift */,
@@ -2139,6 +2139,7 @@
 				2E12CB071E6F1E6F009527BA /* MHSheetView.m in Sources */,
 				6F4904C21F186DBA00F74691 /* UIImageView+Extension.swift in Sources */,
 				6F45EB691EF8F90C00562709 /* JLPhotoBrowser.m in Sources */,
+				5F63E6CC1F693478002280B7 /* MenuView.swift in Sources */,
 				6F4904BD1F186DBA00F74691 /* UIButton+Extension.swift in Sources */,
 				2E12CB0E1E6F1E6F009527BA /* UIView+PYExtension.m in Sources */,
 				6F4904D31F186E9200F74691 /* MainTabBarController.swift in Sources */,
@@ -2224,7 +2225,6 @@
 				6F45EB521EF8F90C00562709 /* JLNavigationController.m in Sources */,
 				6F45EB511EF8F90C00562709 /* JLBrowserViewController.m in Sources */,
 				2E12CB011E6F1E6F009527BA /* MHSheetCell.m in Sources */,
-				6FF51D2D1EBD7E9E00021790 /* MenuView.swift in Sources */,
 				2E12CB0C1E6F1E6F009527BA /* PYSearchViewController.m in Sources */,
 				6F4904CD1F186E5A00F74691 /* AFNHelper.swift in Sources */,
 				6F4905151F186EE800F74691 /* registerViewController.swift in Sources */,

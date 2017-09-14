@@ -90,7 +90,7 @@ class LoginViewModel {
                                                  [Global_UserInfo.UserID as AnyObject
                                                     ,Global_UserInfo.Phone as AnyObject
                                                     ,"" as AnyObject
-                                                    ,true as AnyObject
+                                                    ,Global_UserInfo.IsLogin as AnyObject
                                                     ,Global_UserInfo.UserName as AnyObject
                                                     ,Global_UserInfo.Sex as AnyObject
                                                     ,Global_UserInfo.ImagePath as AnyObject

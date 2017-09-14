@@ -49,7 +49,7 @@ class MenuView: UIView,DOPDropDownMenuDataSource,DOPDropDownMenuDelegate {
         self.addSubview(menu)
     }
     
- 
+    
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -147,8 +147,8 @@ class MenuView: UIView,DOPDropDownMenuDataSource,DOPDropDownMenuDelegate {
     
     //一级菜单 右边带有数字
     func menu(_ menu: DOPDropDownMenu!, detailTextForRowAt indexPath: DOPIndexPath!) -> String! {
-       // let value  = _MenuValue[indexPath.column]
-//        return  value.OneMenu[indexPath.row].TowMenu.count.description  //获取二级列表的总数
+        // let value  = _MenuValue[indexPath.column]
+        //        return  value.OneMenu[indexPath.row].TowMenu.count.description  //获取二级列表的总数
         return ""
     }
     //二级菜单 右边带有数字
@@ -158,7 +158,7 @@ class MenuView: UIView,DOPDropDownMenuDataSource,DOPDropDownMenuDelegate {
     }
     //选择
     func menu(_ menu: DOPDropDownMenu!, didSelectRowAt indexPath: DOPIndexPath!) {
-         
+        
         let title = _MenuValue[indexPath.column]
         if(title.OneMenu[indexPath.row].TowMenu.count==0){
             //一级菜单
@@ -178,7 +178,6 @@ class MenuView: UIView,DOPDropDownMenuDataSource,DOPDropDownMenuDelegate {
         if(IsOpenItmes==true){
             delegate?.view.bringSubview(toFront: self)
         }else{
-            
             delegate?.view.sendSubview(toBack:self )
         }
     }

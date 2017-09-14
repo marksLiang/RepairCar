@@ -11,12 +11,12 @@ import UIKit
 class ShopList: CustomTemplateViewController,PYSearchViewControllerDelegate {
     /********************  属性  ********************/
     fileprivate let identifier    = "RepairShopCell"
-    fileprivate var Menuview:MenuView?  = nil
+    fileprivate var menuview:MenuView?  = nil
     fileprivate var sfitViewModel = SfitViewModel()
     fileprivate var viewModel     = ShopListViewModel()
     /*******************懒加载*********************/
     fileprivate lazy var tableView: UITableView = {
-        let tableView = UITableView.init(frame: CGRect.init(x: 0, y: CommonFunction.NavigationControllerHeight + 30, width: CommonFunction.kScreenWidth, height: self.view.frame.height-CommonFunction.NavigationControllerHeight-30), style: .plain)
+        let tableView = UITableView.init(frame: CGRect.init(x: 0, y: 64 + 44, width: CommonFunction.kScreenWidth, height: CommonFunction.kScreenHeight-CommonFunction.NavigationControllerHeight-44), style: .plain)
         return tableView
     }()
     fileprivate lazy var model: RepairShopModel = {
@@ -66,10 +66,11 @@ class ShopList: CustomTemplateViewController,PYSearchViewControllerDelegate {
         self.tableView.register(requesterNib, forCellReuseIdentifier: identifier)
         self.numberOfSections = 1
         self.numberOfRowsInSection = 10
+
     }
     private func setMeunView() -> Void{
-        Menuview=MenuView(delegate: self, frame:  CGRect(x: 0, y: 64, width: self.view.frame.width, height: 30))
-        self.view.addSubview(Menuview!)
+        menuview=MenuView(delegate: self, frame:  CGRect(x: 0, y: 64, width: self.view.frame.width, height: 44))
+        self.view.addSubview(menuview!)
         let model1       = MenuModel()
         for   i:Int in 0  ..< (self.sfitViewModel.ListData.MaintenanceTypeNames?.count)!{
             let onemol   = OneMenuModel()
@@ -94,13 +95,14 @@ class ShopList: CustomTemplateViewController,PYSearchViewControllerDelegate {
             onemol.value = self.sfitViewModel.ListData.Distance?[i].StarRatingEnum.description
             model3.OneMenu.append(onemol)
         }
-        Menuview?.AddMenuData(model1)
-        Menuview?.AddMenuData(model2)
-        Menuview?.AddMenuData(model3)
-        Menuview?.Callback_SelectedValue { [weak self](name, value,type) in
+        menuview?.AddMenuData(model1)
+        menuview?.AddMenuData(model2)
+        menuview?.AddMenuData(model3)
+        menuview?.Callback_SelectedValue { (name, value,type) in
             print(name,value,type)
         }
-        Menuview?.menureloadData()    //刷新菜单 (每次加载完数据后都需要刷新
+        menuview?.menureloadData()    //刷新菜单 (每次加载完数据后都需要刷新
+        
     }
     //MARK: 设置导航栏
     private func setNavbar() -> Void{
