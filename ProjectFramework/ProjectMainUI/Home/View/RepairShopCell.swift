@@ -16,8 +16,8 @@ class RepairShopCell: UITableViewCell {
     @IBOutlet weak var fuwuxingji: UILabel!//服务星级
     @IBOutlet weak var weixiuleixing: UILabel!//维修类型
     
+    @IBOutlet weak var topLayoutConstrant: NSLayoutConstraint!
     @IBOutlet weak var topButton: UIButton!//置顶按钮
-    @IBOutlet weak var topLayout: NSLayoutConstraint!
     fileprivate var isFirst = true
     fileprivate var isTop   = true
     //服务星级
@@ -49,6 +49,7 @@ class RepairShopCell: UITableViewCell {
         self.mainImageView.layer.cornerRadius = 5
     }
     override func InitConfig(_ cell: Any) {
+        self.topButton.isHidden = true
         let model = cell as! RepairShopModel
         startView.setscore(CGFloat(model.StarRating))
         titleLabel.text = model.TitleName
@@ -90,11 +91,7 @@ class RepairShopCell: UITableViewCell {
     }
     //置顶的时候修改约束
     func atTop() -> Void {
-        if isTop {
-            topLayout.constant-=5
+            topLayoutConstrant.constant = 10
             topButton.isHidden = false
-            isTop = false
-        }
-        
     }
 }

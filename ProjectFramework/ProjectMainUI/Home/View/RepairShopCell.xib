@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F2073" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="109.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="caicon.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="iGg-Nk-k8d">
@@ -66,7 +66,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mm7-KH-Q8O">
-                        <rect key="frame" x="337" y="29" width="28" height="28"/>
+                        <rect key="frame" x="337" y="30" width="28" height="28"/>
                         <color key="backgroundColor" red="0.24705882352941178" green="0.70980392156862748" blue="0.65490196078431373" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="28" id="4zX-Gd-Y5L"/>
@@ -85,8 +85,8 @@
                     <constraint firstItem="uPr-JK-HoC" firstAttribute="leading" secondItem="Elh-4Q-TNH" secondAttribute="leading" id="8n3-wA-ngB"/>
                     <constraint firstItem="CBV-2z-imj" firstAttribute="top" secondItem="uPr-JK-HoC" secondAttribute="bottom" constant="3" id="AWM-7w-FbR"/>
                     <constraint firstItem="CBV-2z-imj" firstAttribute="leading" secondItem="uPr-JK-HoC" secondAttribute="leading" id="BvD-wF-tI3"/>
-                    <constraint firstItem="Mm7-KH-Q8O" firstAttribute="top" secondItem="uTi-5D-30G" secondAttribute="bottom" id="H53-Nw-diM"/>
                     <constraint firstItem="Elh-4Q-TNH" firstAttribute="leading" secondItem="iGg-Nk-k8d" secondAttribute="trailing" constant="5" id="R4c-YY-p5h"/>
+                    <constraint firstItem="Mm7-KH-Q8O" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="SOn-GV-9lx"/>
                     <constraint firstItem="Elh-4Q-TNH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="YkK-4X-nEu"/>
                     <constraint firstItem="uPr-JK-HoC" firstAttribute="top" secondItem="Elh-4Q-TNH" secondAttribute="bottom" constant="3" id="eOi-cY-uyg"/>
                     <constraint firstAttribute="trailing" secondItem="uTi-5D-30G" secondAttribute="trailing" constant="7" id="pbO-vq-HVX"/>
@@ -99,10 +99,10 @@
                 <outlet property="mainImageView" destination="iGg-Nk-k8d" id="mom-ks-nZL"/>
                 <outlet property="titleLabel" destination="Elh-4Q-TNH" id="1nU-7R-xA5"/>
                 <outlet property="topButton" destination="Mm7-KH-Q8O" id="m8g-RB-ty7"/>
-                <outlet property="topLayout" destination="tq4-Fq-yWA" id="vkQ-z9-Vdt"/>
+                <outlet property="topLayoutConstrant" destination="SOn-GV-9lx" id="ndX-f7-IvQ"/>
                 <outlet property="weixiuleixing" destination="CBV-2z-imj" id="oR4-eE-kc8"/>
             </connections>
-            <point key="canvasLocation" x="24.5" y="86.5"/>
+            <point key="canvasLocation" x="24.5" y="86"/>
         </tableViewCell>
     </objects>
     <resources>

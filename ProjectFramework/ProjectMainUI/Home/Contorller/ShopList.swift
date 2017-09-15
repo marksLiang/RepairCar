@@ -16,7 +16,7 @@ class ShopList: CustomTemplateViewController,PYSearchViewControllerDelegate {
     fileprivate var viewModel     = ShopListViewModel()
     /*******************懒加载*********************/
     fileprivate lazy var tableView: UITableView = {
-        let tableView = UITableView.init(frame: CGRect.init(x: 0, y: 64 + 44, width: CommonFunction.kScreenWidth, height: CommonFunction.kScreenHeight-CommonFunction.NavigationControllerHeight-44), style: .plain)
+        let tableView = UITableView.init(frame: CGRect.init(x: 0, y: 64 + 35, width: CommonFunction.kScreenWidth, height: CommonFunction.kScreenHeight-CommonFunction.NavigationControllerHeight-35), style: .plain)
         return tableView
     }()
     fileprivate lazy var model: RepairShopModel = {
@@ -64,12 +64,14 @@ class ShopList: CustomTemplateViewController,PYSearchViewControllerDelegate {
         let requesterNib = UINib(nibName: "RepairShopCell", bundle: nil)
         self.InitCongif(tableView)
         self.tableView.register(requesterNib, forCellReuseIdentifier: identifier)
+        self.tableView.layer.borderWidth = 0.5
+        self.tableView.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
         self.numberOfSections = 1
         self.numberOfRowsInSection = 10
 
     }
     private func setMeunView() -> Void{
-        menuview=MenuView(delegate: self, frame:  CGRect(x: 0, y: 64, width: self.view.frame.width, height: 44))
+        menuview=MenuView(delegate: self, frame:  CGRect(x: 0, y: 64, width: self.view.frame.width, height: 35))
         self.view.addSubview(menuview!)
         let model1       = MenuModel()
         for   i:Int in 0  ..< (self.sfitViewModel.ListData.MaintenanceTypeNames?.count)!{
