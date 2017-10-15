@@ -150,38 +150,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        Global_latitude=userLocation.location.coordinate.latitude
 //        Global_longitude=userLocation.location.coordinate.longitude
 //    }
-    // MARK: - 友盟分享
-    func InitUMshare(){
-        
-        //打开调试log的开关
-        #if DEBUG
-            UMSocialData.openLog(true)
-        #else
-            UMSocialData.openLog(false)
-        #endif
-        
-        //设置友盟社会化组件appkey
-        UMSocialData.setAppKey(UMAPPKey)
-        //如果你要支持不同的屏幕方向，需要这样设置，否则在iPhone只支持一个竖屏方向
-        UMSocialConfig.setSupportedInterfaceOrientations(.all)
-        
-        
-        //设置微信AppId，设置分享url，默认使用友盟的网址
-        UMSocialWechatHandler.setWXAppId(WeiXinShareParameter[0], appSecret: WeiXinShareParameter[1], url: WeiXinShareParameter[2])
-        
-        // 打开新浪微博的SSO开关
-        // 将在新浪微博注册的应用appkey、redirectURL替换下面参数，并在info.plist的URL Scheme中相应添加wb+appkey，如"wb3921700954"，详情请参考官方文档。
-        UMSocialSinaSSOHandler.openNewSinaSSO(withAppKey: XinLangShareParameter[0], secret: XinLangShareParameter[1], redirectURL: XinLangShareParameter[2])
-        
-        //设置分享到QQ空间的应用Id，和分享url 链接
-        UMSocialQQHandler.setQQWithAppId(QQShareParameter[0], appKey:QQShareParameter[1], url: QQShareParameter[2])
-        
-    }
     
-    //分享成功入口(需要设置 否则 didFinishGetUMSocialDataInViewController 无法进入该函数)
-    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        return UMSocialSnsService.handleOpen(url)
-    }
     
     // MARK: - 推送
     ///极光推送

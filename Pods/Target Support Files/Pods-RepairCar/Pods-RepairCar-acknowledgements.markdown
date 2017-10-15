@@ -401,11 +401,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
-## UMengSocialCOM
-
-Copyright 2011 - 2016 UMeng.com. All rights reserved.
-
-
 ## pop
 
 BSD License

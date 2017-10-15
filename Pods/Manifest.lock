@@ -40,7 +40,6 @@ PODS:
   - swiftScan (1.0.8)
   - SwiftTheme (0.3.2)
   - SwiftyJSON (3.1.4)
-  - UMengSocialCOM (5.2.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
@@ -63,7 +62,6 @@ DEPENDENCIES:
   - swiftScan (from `https://github.com/CNKCQ/swiftScan.git`, branch `Swift3.0`)
   - SwiftTheme
   - SwiftyJSON
-  - UMengSocialCOM (~> 5.2.1)
 
 EXTERNAL SOURCES:
   swiftScan:
@@ -96,8 +94,7 @@ SPEC CHECKSUMS:
   swiftScan: 2dc76303bc7c2dcb7bde9c539f9bd6a7520abc8e
   SwiftTheme: 15ff615b8d2a84d24259611f136e1635c747cc77
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
-  UMengSocialCOM: 074c135ce349aa4c8848d3fb8458757bcb6ffb67
 
-PODFILE CHECKSUM: 56fb9be711e14ae6217a966f38fc5cf4ec513bff
+PODFILE CHECKSUM: 17187e2087a3db72482254aa19397bc0dd30acd0
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.4.0.beta.1

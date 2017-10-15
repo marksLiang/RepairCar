@@ -3,7 +3,7 @@ platform :ios, '8.0'
 use_frameworks!
 
 target "RepairCar" do
-    pod 'UMengSocialCOM', '~> 5.2.1'    #友盟分享    (oc)
+    #pod 'UMengSocialCOM', '~> 5.2.1'    #友盟分享    (oc)
     pod 'AFNetworking', '~> 3.0' #网络请求   (OC)
     pod 'SwiftyJSON'            #JSON转字典   (Swift)
     pod 'SDWebImage', '~>3.8'   #图片缓存(网络图片请求拓展类 (oc)

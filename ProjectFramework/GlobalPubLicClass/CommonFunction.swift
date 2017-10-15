@@ -136,8 +136,9 @@ final class   CommonFunction {
     //第三方 CWStatusBarNotification
     static let notification = CWStatusBarNotification()
     // MARK:导航栏高度和屏幕宽高度
+    static let StauteBarHeight = UIApplication.shared.statusBarFrame.height
     ///导航栏的高度
-    static let NavigationControllerHeight:CGFloat=64
+    static let NavigationControllerHeight=CommonFunction.StauteBarHeight+44
     /// 屏幕的宽度
     static let kScreenWidth = UIScreen.main.bounds.size.width
     /// 屏幕的高度
@@ -426,12 +427,7 @@ final class   CommonFunction {
     
     // MARK:友盟分享单利
     //分享单例
-    static var  ShareInstance : ShareView {
-        struct Static {
-            static let instance : ShareView = ShareView()
-        }
-        return Static.instance
-    }
+
     // MARK:HUD (菊花等待加载进度...)
     /**
      HUD显示 msg:  消息   type: 类型  ismask 蒙版（黑色背景) 默认false 用处在.Load

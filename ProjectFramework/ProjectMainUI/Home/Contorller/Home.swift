@@ -40,7 +40,7 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
     //城市选择按钮
     fileprivate lazy var cityBtn: ZPButton = {
         let cityBtn = ZPButton.init(type: .custom)
-        cityBtn.frame = CGRect.init(x: 0, y: 30, width: 80, height: 30)
+        cityBtn.frame = CGRect.init(x: 0, y: CommonFunction.StauteBarHeight, width: 80, height: 30)
         cityBtn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         cityBtn.setImage(UIImage.init(named: "arrow_down"), for: .normal)
         cityBtn.rx.tap.subscribe(
@@ -57,7 +57,7 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
     }()
     //发布按钮
     fileprivate lazy var releaseBtn: UIButton = {
-        let release = UIButton.init(frame: CGRect.init(x: CommonFunction.kScreenWidth - 70, y: 30, width: 60, height: 30))
+        let release = UIButton.init(frame: CGRect.init(x: CommonFunction.kScreenWidth - 70, y: CommonFunction.StauteBarHeight, width: 60, height: 30))
         release.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         release.setTitle("发布需求", for: .normal)
         release.setTitleColor(UIColor.white, for: .normal)
@@ -70,7 +70,7 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
     }()
     //tableView头部
     fileprivate lazy var headerView: HomeHeaderView = {
-        let headerView = HomeHeaderView.init(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: 290))
+        let headerView = HomeHeaderView.init(frame: CGRect.init(x: 0, y: 0, width: CommonFunction.kScreenWidth, height: 290))
         headerView.isHidden = true
         headerView.FuncCallbackValue {[weak self] (tag) in
             if tag == 1 {
@@ -85,7 +85,7 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
     }()
     //轮播图
     fileprivate lazy var shuffling: SDCycleScrollView = {
-        let shuffling = SDCycleScrollView(frame:CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: 150),delegate:self ,placeholderImage:UIImage.init(named: "placeholder"))
+        let shuffling = SDCycleScrollView(frame:CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: 150),delegate:self ,placeholderImage:UIImage.init(named: ""))
         shuffling?.currentPageDotImage = UIImage.init(named: "pageControlCurrentDot")
         shuffling?.pageDotImage = UIImage.init(named: "pageControlDot")
         return shuffling!
@@ -105,6 +105,7 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
         self.position()
         self.setNavgationBar()
         self.initUI()
+        //MARK: 查看全部
         pview.FuncCallbackValue {[weak self] (tag) in
             CommonFunction.isLogin(taget: self!, loginResult: { (result) in
                 
@@ -279,7 +280,7 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
         
         let requesterNib = UINib(nibName: "RepairShopCell", bundle: nil)
         self.InitCongif(tableView)
-        self.tableView.frame = CGRect.init(x: 0, y: CommonFunction.NavigationControllerHeight, width: CommonFunction.kScreenWidth, height: CommonFunction.kScreenHeight - 64 - 49)
+        self.tableView.frame = CGRect.init(x: 0, y: CommonFunction.NavigationControllerHeight, width: CommonFunction.kScreenWidth, height: CommonFunction.kScreenHeight - CommonFunction.NavigationControllerHeight - 49)
         self.tableView.register(requesterNib, forCellReuseIdentifier: identifier)
         self.tableView.tableHeaderView = headerView
         
