@@ -181,7 +181,7 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
         }
     }
     private func GetHttp() -> Void{
-        viewModel.GetHomeMaintenanceInfo(CityName: CurrentCity, Longitude: "", Latitude: "") { (result) in
+        viewModel.GetHomeMaintenanceInfo(CityName: CurrentCity, Longitude: Global_longitude.description, Latitude: Global_latitude.description) { (result) in
             self.header.endRefreshing()
             self.footer.endRefreshing()
             if result == true {
@@ -217,6 +217,8 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
             if ((pm?.locality) != nil) {
                 if self.isFrist == true {
                     print(locations.last!.coordinate.latitude , locations.last!.coordinate.longitude ,(pm?.locality)!)
+                    Global_latitude = locations.last!.coordinate.latitude
+                    Global_longitude = locations.last!.coordinate.longitude
                     CurrentCity = (pm?.locality)!
                     self.cityBtn.setTitle((pm?.locality)!, for: .normal)
                     self.isFrist = false

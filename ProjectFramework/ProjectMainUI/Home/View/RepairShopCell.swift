@@ -53,7 +53,12 @@ class RepairShopCell: UITableViewCell {
         let model = cell as! RepairShopModel
         startView.setscore(CGFloat(model.StarRating))
         titleLabel.text = model.TitleName
-        distanceLabel.text = model.KM
+        let km = model.KM as NSString
+        if km.substring(from: km.length-2) == "公里" {
+            distanceLabel.text = km.substring(to: km.length-2)+"km"
+        }else{
+            distanceLabel.text = model.KM
+        }
         //设置标签，isFirst避免重复设置
         var frame_x = weixiuleixing.frame.maxX
         var frame_X = mainImageView.frame.minX
@@ -91,7 +96,8 @@ class RepairShopCell: UITableViewCell {
     }
     //置顶的时候修改约束
     func atTop() -> Void {
-            topLayoutConstrant.constant = 10
-            topButton.isHidden = false
+        topLayoutConstrant.constant = 10
+        topButton.isHidden = false
+        distanceLabel.isHidden = true
     }
 }
