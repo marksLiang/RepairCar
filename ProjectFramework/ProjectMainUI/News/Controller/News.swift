@@ -32,7 +32,7 @@ class News: CustomTemplateViewController {
     //MARK: initUI
     private func initUI()->Void{
         self.InitCongif(tableView)
-        self.tableView.frame = CGRect.init(x: 0, y: 64, width: self.view.frame.width, height: CommonFunction.kScreenHeight - 64)
+        self.tableView.frame = CGRect.init(x: 0, y: CommonFunction.NavigationControllerHeight, width: self.view.frame.width, height: CommonFunction.kScreenHeight - 64)
         self.tableViewheightForRowAt = 80
         self.numberOfSections = 1
         self.numberOfRowsInSection = 10

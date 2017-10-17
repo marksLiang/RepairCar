@@ -56,7 +56,7 @@ class MyMessage: CustomTemplateViewController {
     //MARK: initUI
     private func initUI()->Void{
         self.InitCongif(tableView)
-        self.tableView.frame = CGRect.init(x: 0, y: 64, width: self.view.frame.width, height: CommonFunction.kScreenHeight - 64)
+        self.tableView.frame = CGRect.init(x: 0, y: CommonFunction.NavigationControllerHeight, width: self.view.frame.width, height: CommonFunction.kScreenHeight - CommonFunction.NavigationControllerHeight)
         self.tableViewheightForRowAt = 50
     }
 }

@@ -35,6 +35,7 @@ class Mine: CustomTemplateViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
         self.getData()
         self.initUI()
     }
@@ -149,7 +150,11 @@ class Mine: CustomTemplateViewController {
     //MARK: initUI
     private func initUI() -> Void {
         self.InitCongif(tableView)
-        self.tableView.frame = CGRect.init(x: 0, y: 0, width: CommonFunction.kScreenWidth, height: CommonFunction.kScreenHeight  - 49)
+        if CommonFunction.isIphoneX {
+            self.tableView.frame = CGRect.init(x: 0, y: -CommonFunction.StauteBarHeight, width: CommonFunction.kScreenWidth, height: CommonFunction.kScreenHeight  - 49)
+        }else{
+            self.tableView.frame = CGRect.init(x: 0, y: 0, width: CommonFunction.kScreenWidth, height: CommonFunction.kScreenHeight  - 49)
+        }
         self.tableView.tableHeaderView = headerView
         self.header.isHidden = true
         self.tableView.backgroundColor = UIColor().TransferStringToColor("#F0EBF0")

@@ -14,7 +14,7 @@ class ReleseDemandManager: CustomTemplateViewController {
     fileprivate let identifier   = "ReleseDemandListCell"
     
     fileprivate lazy var buttonBar: LYFButtonBar = {
-        let buttonBar = LYFButtonBar.init(frame: CGRect.init(x: 0, y: 64, width: CommonFunction.kScreenWidth, height: 40), textArray:["全部","进行中","已完结"], Callback_SelectedValue: { [weak self](buttontag) in
+        let buttonBar = LYFButtonBar.init(frame: CGRect.init(x: 0, y: CommonFunction.NavigationControllerHeight, width: CommonFunction.kScreenWidth, height: 40), textArray:["全部","进行中","已完结"], Callback_SelectedValue: { [weak self](buttontag) in
             
         })
         return buttonBar
@@ -42,6 +42,7 @@ class ReleseDemandManager: CustomTemplateViewController {
     private func initUI() -> Void{
         self.view.addSubview(buttonBar)
         self.InitCongif(tableView)
+        self.tableView.frame = CGRect.init(x: 0, y: CommonFunction.NavigationControllerHeight+40, width: CommonFunction.kScreenWidth, height: CommonFunction.kScreenHeight-CommonFunction.NavigationControllerHeight-40)
         self.numberOfSections = 1
         self.numberOfRowsInSection = 10
         self.tableViewheightForRowAt = 85

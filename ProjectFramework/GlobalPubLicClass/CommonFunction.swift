@@ -62,7 +62,7 @@ enum CommonPhoneDeviceModel : String {
     case iPhone5;case iPhone5c; case iPhone5s ;case iPhone5se
     case iPhone6 ;case iPhone6Plus
     case iPhone6s ;case iPhone6sPlus
-    case iPhone7 ;case iPhone7Plus
+    case iPhone7 ;case iPhone7Plus;case iPhone8;case iPhone8Plus;case iPhoneX;
     case iPad2 ;case iPad3; case iPad4
     case iPadAir ;case iPadAir2
     case iPadMini ;case iPadMini2;case iPadMini3;case iPadMini4
@@ -175,6 +175,7 @@ final class   CommonFunction {
         case "iPhone7,1":                               return CommonPhoneDeviceModel.iPhone6Plus
         case "iPhone8,1":                               return CommonPhoneDeviceModel.iPhone6s
         case "iPhone8,2":                               return CommonPhoneDeviceModel.iPhone6sPlus
+        case "iPhone10,6":                               return CommonPhoneDeviceModel.iPhoneX
         case "iPad2,1", "iPad2,2", "iPad2,3", "iPad2,4":return CommonPhoneDeviceModel.iPad2
         case "iPad3,1", "iPad3,2", "iPad3,3":           return CommonPhoneDeviceModel.iPad3
         case "iPad3,4", "iPad3,5", "iPad3,6":           return CommonPhoneDeviceModel.iPad4
@@ -254,6 +255,14 @@ final class   CommonFunction {
             Version=minorVersion as! String
         }
         return Version
+    }
+    ///是否是iPhoneX
+    static var isIphoneX:Bool {
+        if CommonFunction.kScreenHeight == 812{
+            return true
+        }else{
+            return false
+        }
     }
     ///ios 版本
     static  let Iosversion : NSString = UIDevice.current.systemVersion as NSString

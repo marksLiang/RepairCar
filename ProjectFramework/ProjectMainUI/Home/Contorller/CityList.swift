@@ -113,7 +113,7 @@ class CityList: CustomTemplateViewController , UICollectionViewDelegateFlowLayou
     private func initUI() -> Void {
         self.InitCongifCollection(colletionView, nil)
         self.colletionView.register(CityListHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "header")
-        self.colletionView.frame = CGRect.init(x: 0, y: 64, width: self.view.frame.width, height: CommonFunction.kScreenHeight - 64)
+        self.colletionView.frame = CGRect.init(x: 0, y: CommonFunction.NavigationControllerHeight, width: self.view.frame.width, height: CommonFunction.kScreenHeight - CommonFunction.NavigationControllerHeight)
         self.header.isHidden = true
         self.footer.isHidden = true
     }

@@ -134,28 +134,28 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
     }
     private func payFor() -> Void{
         CommonFunction.AlertController(self, title: "查看店铺详情", message: "需要支付3元，是否支付？", ok_name: "确定", cancel_name: "取消", OK_Callback: {
-//            let vc = PayClass.init(OrderType:1,delegate: self)
-//            vc.OtherID = self.currenModel!.MaintenanceID
-//            self.present(vc, animated: true, completion: {
-//                self.hiddenPview()
-//            })
+            let vc = PayClass.init(OrderType:1,delegate: self)
+            vc.OtherID = self.currenModel!.MaintenanceID
+            self.present(vc, animated: true, completion: {
+                self.hiddenPview()
+            })
 //            self.hiddenPview()
 //            let vc = CommonFunction.ViewControllerWithStoryboardName("ShopDetail", Identifier: "ShopDetail") as! ShopDetail
 //            vc.model = self.currenModel
-//            self.show(vc, sender: self)
-            if self.currenModel!.MaintenanceID == 2 {
-                let vc = PayClass.init(OrderType:1,delegate: self)
-                vc.OtherID = self.currenModel!.MaintenanceID
-                vc.model = self.currenModel
-                self.present(vc, animated: true, completion: {
-                    self.hiddenPview()
-                })
-            }else{
-                self.hiddenPview()
-                let vc = CommonFunction.ViewControllerWithStoryboardName("ShopDetail", Identifier: "ShopDetail") as! ShopDetail
-                vc.model = self.currenModel
-                self.navigationController?.show(vc, sender: self)
-            }
+            self.show(vc, sender: self)
+//            if self.currenModel!.MaintenanceID == 2 {
+//                let vc = PayClass.init(OrderType:1,delegate: self)
+//                vc.OtherID = self.currenModel!.MaintenanceID
+//                vc.model = self.currenModel
+//                self.present(vc, animated: true, completion: {
+//                    self.hiddenPview()
+//                })
+//            }else{
+//                self.hiddenPview()
+//                let vc = CommonFunction.ViewControllerWithStoryboardName("ShopDetail", Identifier: "ShopDetail") as! ShopDetail
+//                vc.model = self.currenModel
+//                self.navigationController?.show(vc, sender: self)
+//            }
         }, Cancel_Callback: {
             
         })
@@ -252,6 +252,7 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
         if self.viewModel.ListData[indexPath.row].IsTop == true {
 //            cell.atTop()
         }
+        cell.distanceLabel.isHidden = true
         return cell
     }
     var isfirstClick = true
@@ -279,7 +280,6 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
     //MARK: initUI
     private func initUI() -> Void {
         self.headerView.addSubview(shuffling)
-        
         let requesterNib = UINib(nibName: "RepairShopCell", bundle: nil)
         self.InitCongif(tableView)
         self.tableView.frame = CGRect.init(x: 0, y: CommonFunction.NavigationControllerHeight, width: CommonFunction.kScreenWidth, height: CommonFunction.kScreenHeight - CommonFunction.NavigationControllerHeight - 49)

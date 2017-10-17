@@ -11,6 +11,8 @@
 		079C974E1D17AD8B00DD539F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079C974D1D17AD8B00DD539F /* CoreGraphics.framework */; };
 		1C07E3CA1F911B9D00547DAE /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C07E3C91F911B9D00547DAE /* Launch Screen.storyboard */; };
 		1C07E3CE1F911F0C00547DAE /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C07E3CD1F911F0C00547DAE /* Home.swift */; };
+		1C07E3D01F965D4700547DAE /* PostedDemand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C07E3CF1F965D4600547DAE /* PostedDemand.swift */; };
+		1C07E3D21F965DFA00547DAE /* PostedDemand.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C07E3D11F965DFA00547DAE /* PostedDemand.storyboard */; };
 		1C5B82F01F376FDF001A9584 /* ShopList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5B82EF1F376FDF001A9584 /* ShopList.swift */; };
 		1C5B82F21F377067001A9584 /* DemandList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5B82F11F377067001A9584 /* DemandList.swift */; };
 		1C5B82F41F38C078001A9584 /* DemandList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C5B82F31F38C078001A9584 /* DemandList.storyboard */; };
@@ -285,6 +287,8 @@
 		079C974F1D17ADA300DD539F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1C07E3C91F911B9D00547DAE /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		1C07E3CD1F911F0C00547DAE /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		1C07E3CF1F965D4600547DAE /* PostedDemand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostedDemand.swift; sourceTree = "<group>"; };
+		1C07E3D11F965DFA00547DAE /* PostedDemand.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PostedDemand.storyboard; sourceTree = "<group>"; };
 		1C5B82EF1F376FDF001A9584 /* ShopList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopList.swift; sourceTree = "<group>"; };
 		1C5B82F11F377067001A9584 /* DemandList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemandList.swift; sourceTree = "<group>"; };
 		1C5B82F31F38C078001A9584 /* DemandList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DemandList.storyboard; sourceTree = "<group>"; };
@@ -1485,6 +1489,7 @@
 				1C5D90181F52FE6900F90380 /* ShopDetail.swift */,
 				1C5D900C1F4DCC9E00F90380 /* AdvertisingWeb.swift */,
 				1C5D90161F52DA5D00F90380 /* PayPublicView.swift */,
+				1C07E3CF1F965D4600547DAE /* PostedDemand.swift */,
 			);
 			path = Contorller;
 			sourceTree = "<group>";
@@ -1506,6 +1511,7 @@
 				1C5D90131F50854400F90380 /* ShopPreviewCell.xib */,
 				1C5D901A1F5307E200F90380 /* ShopDetail.storyboard */,
 				1C5D901C1F53151100F90380 /* ShopDetailCell.swift */,
+				1C07E3D11F965DFA00547DAE /* PostedDemand.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1961,6 +1967,7 @@
 				6F5068831F1C506D00E8EC1B /* RepairShopCell.xib in Resources */,
 				2E2611691E52D55F00CC70F9 /* Main.storyboard in Resources */,
 				2E12CABA1E6F1E67009527BA /* MBProgressHUD.bundle in Resources */,
+				1C07E3D21F965DFA00547DAE /* PostedDemand.storyboard in Resources */,
 				1C5B82FC1F406B80001A9584 /* Myinfo.storyboard in Resources */,
 				2E12CB041E6F1E6F009527BA /* MHSheetFoot.xib in Resources */,
 				6F49050F1F186EE800F74691 /* SB_Login.storyboard in Resources */,
@@ -2177,6 +2184,7 @@
 				6F45EB691EF8F90C00562709 /* JLPhotoBrowser.m in Sources */,
 				5F63E6CC1F693478002280B7 /* MenuView.swift in Sources */,
 				6F4904BD1F186DBA00F74691 /* UIButton+Extension.swift in Sources */,
+				1C07E3D01F965D4700547DAE /* PostedDemand.swift in Sources */,
 				2E12CB0E1E6F1E6F009527BA /* UIView+PYExtension.m in Sources */,
 				6F4904D31F186E9200F74691 /* MainTabBarController.swift in Sources */,
 				1C5D90011F48856700F90380 /* CityListModel.swift in Sources */,

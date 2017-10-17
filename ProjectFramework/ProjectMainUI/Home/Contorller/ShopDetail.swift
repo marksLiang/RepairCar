@@ -19,7 +19,15 @@ class ShopDetail: CustomTemplateViewController {
         lable.alpha = 0.0
         return lable
     }()
-    
+    fileprivate lazy var navgationBar: UIView = {
+        let navgationBar = UIView.init(frame: CGRect.init(x: 0, y: 0, width: CommonFunction.kScreenWidth, height: CommonFunction.NavigationControllerHeight))
+        navgationBar.backgroundColor = UIColor().TransferStringToColor(CommonFunction.SystemColor()).withAlphaComponent(0)
+        self.lable.center.x = navgationBar.center.x
+        self.lable.center.y = navgationBar.center.y + 10
+        self.lable.text = "店铺详情"
+        navgationBar.addSubview(self.lable)
+        return navgationBar
+    }()
     
     /*******************XIB*********************/
     @IBOutlet weak var tableViewHead: UIView!
@@ -42,7 +50,7 @@ class ShopDetail: CustomTemplateViewController {
         self.initUI()
     }
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     override func viewDidLayoutSubviews() {
         shopName.text = "1/\(String(describing: model?.Images?.count))"        
@@ -57,8 +65,8 @@ class ShopDetail: CustomTemplateViewController {
     //MARK: tableViewDelegate
     func scrollViewDidScroll(_ scrollView: UIScrollView){
         let offset: CGFloat = scrollView.contentOffset.y
-        if (offset <= 64) {
-            CustomNavBar.setBackgroundImage(UIImage().ImageWithColor(color: CommonFunction.SystemColor().withAlphaComponent(0), size: CGSize(width: CommonFunction.kScreenWidth, height: CommonFunction.NavigationControllerHeight)), for: .default)
+        if (offset <= CommonFunction.NavigationControllerHeight) {
+            navgationBar.backgroundColor = UIColor().TransferStringToColor(CommonFunction.SystemColor()).withAlphaComponent(0)
             backBtn.backgroundColor = UIColor.gray
             UIView.animate(withDuration: 0.2, animations: {
                 self.lable.alpha = 0.0
@@ -66,7 +74,7 @@ class ShopDetail: CustomTemplateViewController {
         }
         else{
             alph = 1-((200 - offset)/200)
-            CustomNavBar.setBackgroundImage(UIImage().ImageWithColor(color:  CommonFunction.SystemColor().withAlphaComponent(alph), size: CGSize(width: CommonFunction.kScreenWidth, height: CommonFunction.NavigationControllerHeight)), for: .default)
+            navgationBar.backgroundColor = UIColor().TransferStringToColor(CommonFunction.SystemColor()).withAlphaComponent(alph)
             backBtn.backgroundColor = UIColor.gray.withAlphaComponent(1-alph)
             lable.alpha = alph
         }
@@ -80,24 +88,18 @@ class ShopDetail: CustomTemplateViewController {
     }
     //MARK: 设置导航栏
     func setNavBar() -> Void{
-        CustomNavBar = UINavigationBar(frame: CGRect.init(x: 0, y: 0, width: CommonFunction.kScreenWidth, height: CommonFunction.NavigationControllerHeight))
-        //把导航栏渐变效果移除
-        CustomNavBar.setBackgroundImage(UIImage().ImageWithColor(color: CommonFunction.SystemColor().withAlphaComponent(alph), size: CGSize(width: CommonFunction.kScreenWidth, height: CommonFunction.NavigationControllerHeight)), for: .default)
-        CustomNavBar.clipsToBounds=true
-        self.view.addSubview(CustomNavBar)
         
-        let CustomNavItem = UINavigationItem()
         //返回按钮
         backBtn = UIButton(type: .custom)
-        backBtn.frame = CommonFunction.CGRect_fram(0, y: 0, w: 30, h: 30)
+        backBtn.frame = CommonFunction.CGRect_fram(15, y: CommonFunction.StauteBarHeight, w: 30, h: 30)
         backBtn.tag = 100
         backBtn.backgroundColor = UIColor.gray
         backBtn.layer.cornerRadius = 15
         backBtn.setImage(UIImage(named: "back"), for: .normal)
         backBtn.addTarget(self, action:#selector(buttonClick) , for: .touchUpInside)
-        CustomNavItem.leftBarButtonItem=UIBarButtonItem.init(customView: backBtn)
-        CustomNavItem.titleView = self.lable
-        CustomNavBar.pushItem(CustomNavItem, animated: true)
+        self.view.addSubview(navgationBar)
+        self.navgationBar.addSubview(backBtn)
+        
         
     }
     //导航栏按钮方法
@@ -107,7 +109,12 @@ class ShopDetail: CustomTemplateViewController {
     //MARK: initUI
     private func initUI() -> Void {
         self.InitCongif(tableView)
-        self.tableView.frame = CGRect.init(x: 0, y: 0, width: CommonFunction.kScreenWidth, height: CommonFunction.kScreenHeight)
+        if CommonFunction.isIphoneX {
+            self.tableView.frame = CGRect.init(x: 0, y: -CommonFunction.StauteBarHeight, width: CommonFunction.kScreenWidth, height: CommonFunction.kScreenHeight)
+        }else{
+            self.tableView.frame = CGRect.init(x: 0, y: 0, width: CommonFunction.kScreenWidth, height: CommonFunction.kScreenHeight)
+        }
+        
         self.numberOfSections=1//显示行数
         self.numberOfRowsInSection=4
         self.tableViewheightForRowAt=50//行高
@@ -125,7 +132,7 @@ class ShopDetail: CustomTemplateViewController {
             tepyArray = (model?.TypeNames.components(separatedBy: ","))!
             tepyArray.removeLast()
         }
-        var textHeight = model?.Introduce.ContentSize(font: UIFont.systemFont(ofSize: 13), maxSize: CGSize.init(width: CommonFunction.kScreenWidth - 25, height: 0)).height
+        let textHeight = model?.Introduce.ContentSize(font: UIFont.systemFont(ofSize: 13), maxSize: CGSize.init(width: CommonFunction.kScreenWidth - 25, height: 0)).height
         var height:CGFloat=0
         height = tepyArray.count > 3 ? 90 + textHeight! : 130 + textHeight!
         let footView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: CommonFunction.kScreenWidth, height: height))

@@ -74,6 +74,7 @@ class DemandList: CustomTemplateViewController {
     }
     private func initUI() -> Void{
         self.InitCongif(tableView)
+        self.tableView.frame = CGRect.init(x: 0, y: CommonFunction.NavigationControllerHeight, width: CommonFunction.kScreenWidth, height: CommonFunction.kScreenHeight - CommonFunction.NavigationControllerHeight)
         self.tableViewheightForRowAt = 85
     }
     //MARK: 设置导航栏
