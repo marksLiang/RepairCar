@@ -19,8 +19,10 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
     fileprivate let disposeBag   = DisposeBag()//处理包通道
     fileprivate var viewModel    = HomeViewModel()
     fileprivate var aViewModel   = AdvertisingViewModel()
+    fileprivate var cViewModel   = CityListViewModel()
     fileprivate var imagesURLStrings = [String]()
     fileprivate var currenModel: RepairShopModel?=nil
+    fileprivate var city = ""
     /********************  懒加载  ********************/
     //自定义导航栏
     fileprivate lazy var navgationBar: UIView = {
@@ -43,13 +45,16 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
         cityBtn.frame = CGRect.init(x: 0, y: CommonFunction.StauteBarHeight, width: 80, height: 30)
         cityBtn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         cityBtn.setImage(UIImage.init(named: "arrow_down"), for: .normal)
+        cityBtn.setTitle(CurrentCity, for: .normal)
         cityBtn.rx.tap.subscribe(
             onNext:{ [weak self] value in
                 let vc = CommonFunction.ViewControllerWithStoryboardName("CityList", Identifier: "CityList") as! CityList
-                vc.currentCityName = CurrentCity
+                vc.currentCityName = self!.city
                 vc.Callback_SelectedValue {[weak self] (selectCity) in
                     CurrentCity = selectCity
                     cityBtn.setTitle(selectCity, for: .normal)
+                    self?.self.RefreshRequest(isLoading: true, isHiddenFooter: true, isLoadError: true)
+                    self?.GetAdvertising()
                 }
                 self?.navigationController?.show(vc, sender: self)
         }).addDisposableTo(self.disposeBag)
@@ -64,7 +69,8 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
         release.rx.tap.subscribe(
             onNext:{ [weak self] value in
                 print("发布需求")
-                CommonFunction.HUD("此功能程序员正在编写，请耐心等待。。。。", type: .error)
+                let vc = CommonFunction.ViewControllerWithStoryboardName("PostedDemand", Identifier: "PostedDemand") as! PostedDemand
+                self?.navigationController?.show(vc, sender: self)
         }).addDisposableTo(self.disposeBag)
         return release
     }()
@@ -169,6 +175,7 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
         self.GetAdvertising()
     }
     private func GetAdvertising() -> Void{
+        self.imagesURLStrings.removeAll()
         aViewModel.GetAdvList(CityName: CurrentCity, AdvType: 0) { (result) in
             if result == true {
                 for i in 0..<self.aViewModel.ListData.count{
@@ -190,6 +197,11 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
                 self.numberOfRowsInSection = self.viewModel.ListData.count
                 self.headerView.isHidden = false
                 self.RefreshRequest(isLoading: false, isHiddenFooter: true)
+                if self.viewModel.ListData.count == 0 {
+                    self.headerView.isHidden = true
+                    CommonFunction.HUD("暂无\(CurrentCity)的数据!请选择另一个城市", type: .error)
+                    
+                }
             }else{
                 self.RefreshRequest(isLoading: false, isHiddenFooter: true, isLoadError: true)
             }
@@ -213,6 +225,7 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
             if placemarks?.count == 0 || (error != nil) {
                 return
             }
+            
             let pm = placemarks?.first!
             if ((pm?.locality) != nil) {
                 if self.isFrist == true {
@@ -220,11 +233,11 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
                     Global_latitude = locations.last!.coordinate.latitude
                     Global_longitude = locations.last!.coordinate.longitude
                     CurrentCity = (pm?.locality)!
+                    self.city = (pm?.locality)!
                     self.cityBtn.setTitle((pm?.locality)!, for: .normal)
                     self.isFrist = false
-                    
-                    //MARK: 定位完获取数据
                     self.GetAdvertising()
+                    
                 }
             }
         }
@@ -236,6 +249,7 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
         let vc = AdvertisingWeb()
         vc.urlString = self.aViewModel.ListData[index].JumpURL
         self.navigationController?.show(vc, sender: self)
+        
     }
     //MARK: tableViewDelegate
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

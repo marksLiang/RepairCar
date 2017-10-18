@@ -118,6 +118,7 @@
 		5F8441021F639F8F0005FED9 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8441011F639F8F0005FED9 /* AboutViewController.swift */; };
 		5F8441041F639F970005FED9 /* Disclaimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8441031F639F970005FED9 /* Disclaimer.swift */; };
 		5F8441061F63A65D0005FED9 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8441051F63A65D0005FED9 /* NewsCell.swift */; };
+		5F94DA561F974E0600DA6D07 /* DemanEditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F94DA551F974E0600DA6D07 /* DemanEditCell.swift */; };
 		6F1F878F1E9E071F008E9B09 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F1F878E1E9E071F008E9B09 /* OpenGLES.framework */; };
 		6F1F879C1E9F07D4008E9B09 /* PanoramaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F1F879B1E9F07D4008E9B09 /* PanoramaViewController.m */; };
 		6F22E38B1E9B133E0090291F /* XHStarRateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F22E38A1E9B133E0090291F /* XHStarRateView.m */; };
@@ -441,6 +442,7 @@
 		5F8441011F639F8F0005FED9 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		5F8441031F639F970005FED9 /* Disclaimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Disclaimer.swift; sourceTree = "<group>"; };
 		5F8441051F63A65D0005FED9 /* NewsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
+		5F94DA551F974E0600DA6D07 /* DemanEditCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemanEditCell.swift; sourceTree = "<group>"; };
 		6F1F878E1E9E071F008E9B09 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		6F1F879A1E9F07D4008E9B09 /* PanoramaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanoramaViewController.h; sourceTree = "<group>"; };
 		6F1F879B1E9F07D4008E9B09 /* PanoramaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PanoramaViewController.m; sourceTree = "<group>"; };
@@ -1512,6 +1514,7 @@
 				1C5D901A1F5307E200F90380 /* ShopDetail.storyboard */,
 				1C5D901C1F53151100F90380 /* ShopDetailCell.swift */,
 				1C07E3D11F965DFA00547DAE /* PostedDemand.storyboard */,
+				5F94DA551F974E0600DA6D07 /* DemanEditCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1884,9 +1887,8 @@
 				TargetAttributes = {
 					27609BCB1CB257810041E8B7 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 9A5L5W6464;
 						LastSwiftMigration = 0800;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -2239,6 +2241,7 @@
 				2E12CAB91E6F1E67009527BA /* MBProgressHUD+NJ.m in Sources */,
 				1C5B82F81F4052F2001A9584 /* MineHeaderView.swift in Sources */,
 				1C5D8F951F442F2700F90380 /* MyInfoViewController.swift in Sources */,
+				5F94DA561F974E0600DA6D07 /* DemanEditCell.swift in Sources */,
 				6FF51D361EBD7E9E00021790 /* UpLoadPicManagerView.swift in Sources */,
 				6F45EB611EF8F90C00562709 /* JLAssetGroup.m in Sources */,
 				6F45EB6A1EF8F90C00562709 /* JLPieProgressView.m in Sources */,
@@ -2407,7 +2410,8 @@
 				CODE_SIGN_ENTITLEMENTS = ProjectFramework/RepairCar.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 9A5L5W6464;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2455,7 +2459,8 @@
 				CODE_SIGN_ENTITLEMENTS = ProjectFramework/RepairCar.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 9A5L5W6464;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

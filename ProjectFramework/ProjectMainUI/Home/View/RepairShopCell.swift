@@ -52,6 +52,9 @@ class RepairShopCell: UITableViewCell {
         self.topButton.isHidden = true
         let model = cell as! RepairShopModel
         startView.setscore(CGFloat(model.StarRating))
+        if (model.Images?.count)! > 0 {
+            mainImageView.ImageLoad(PostUrl: HttpsUrlImage+model.Images![0].ImgPath)
+        }
         titleLabel.text = model.TitleName
         let km = model.KM as NSString
         if km.substring(from: km.length-2) == "公里" {
