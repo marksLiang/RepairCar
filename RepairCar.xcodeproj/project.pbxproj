@@ -119,6 +119,10 @@
 		5F8441041F639F970005FED9 /* Disclaimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8441031F639F970005FED9 /* Disclaimer.swift */; };
 		5F8441061F63A65D0005FED9 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8441051F63A65D0005FED9 /* NewsCell.swift */; };
 		5F94DA561F974E0600DA6D07 /* DemanEditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F94DA551F974E0600DA6D07 /* DemanEditCell.swift */; };
+		5F94DA581F98461400DA6D07 /* CurrenAdressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F94DA571F98461400DA6D07 /* CurrenAdressCell.swift */; };
+		5F9676B51F98966F009030A1 /* DemanContenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F9676B41F98966F009030A1 /* DemanContenView.xib */; };
+		5F9676B71F989B1D009030A1 /* DemanContenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9676B61F989B1D009030A1 /* DemanContenView.swift */; };
+		5F9676B91F99EF0D009030A1 /* MyMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9676B81F99EF0D009030A1 /* MyMapView.swift */; };
 		6F1F878F1E9E071F008E9B09 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F1F878E1E9E071F008E9B09 /* OpenGLES.framework */; };
 		6F1F879C1E9F07D4008E9B09 /* PanoramaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F1F879B1E9F07D4008E9B09 /* PanoramaViewController.m */; };
 		6F22E38B1E9B133E0090291F /* XHStarRateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F22E38A1E9B133E0090291F /* XHStarRateView.m */; };
@@ -443,6 +447,10 @@
 		5F8441031F639F970005FED9 /* Disclaimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Disclaimer.swift; sourceTree = "<group>"; };
 		5F8441051F63A65D0005FED9 /* NewsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
 		5F94DA551F974E0600DA6D07 /* DemanEditCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemanEditCell.swift; sourceTree = "<group>"; };
+		5F94DA571F98461400DA6D07 /* CurrenAdressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrenAdressCell.swift; sourceTree = "<group>"; };
+		5F9676B41F98966F009030A1 /* DemanContenView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DemanContenView.xib; sourceTree = "<group>"; };
+		5F9676B61F989B1D009030A1 /* DemanContenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemanContenView.swift; sourceTree = "<group>"; };
+		5F9676B81F99EF0D009030A1 /* MyMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMapView.swift; sourceTree = "<group>"; };
 		6F1F878E1E9E071F008E9B09 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		6F1F879A1E9F07D4008E9B09 /* PanoramaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanoramaViewController.h; sourceTree = "<group>"; };
 		6F1F879B1E9F07D4008E9B09 /* PanoramaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PanoramaViewController.m; sourceTree = "<group>"; };
@@ -1492,6 +1500,7 @@
 				1C5D900C1F4DCC9E00F90380 /* AdvertisingWeb.swift */,
 				1C5D90161F52DA5D00F90380 /* PayPublicView.swift */,
 				1C07E3CF1F965D4600547DAE /* PostedDemand.swift */,
+				5F9676B81F99EF0D009030A1 /* MyMapView.swift */,
 			);
 			path = Contorller;
 			sourceTree = "<group>";
@@ -1515,6 +1524,9 @@
 				1C5D901C1F53151100F90380 /* ShopDetailCell.swift */,
 				1C07E3D11F965DFA00547DAE /* PostedDemand.storyboard */,
 				5F94DA551F974E0600DA6D07 /* DemanEditCell.swift */,
+				5F94DA571F98461400DA6D07 /* CurrenAdressCell.swift */,
+				5F9676B41F98966F009030A1 /* DemanContenView.xib */,
+				5F9676B61F989B1D009030A1 /* DemanContenView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1887,8 +1899,9 @@
 				TargetAttributes = {
 					27609BCB1CB257810041E8B7 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 9A5L5W6464;
 						LastSwiftMigration = 0800;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -1944,6 +1957,7 @@
 				1C5D8F971F442F6800F90380 /* ReleseDemandManager.storyboard in Resources */,
 				5F4823F61F61259D00BE04AC /* MyMessage.storyboard in Resources */,
 				27609BD71CB257810041E8B7 /* Assets.xcassets in Resources */,
+				5F9676B51F98966F009030A1 /* DemanContenView.xib in Resources */,
 				6F4905481F18AD9300F74691 /* Mine.storyboard in Resources */,
 				6F45EB5B1EF8F90C00562709 /* compose_guide_check_box_right@2x.png in Resources */,
 				27609BFE1CB257E40041E8B7 /* Podfile in Resources */,
@@ -2139,6 +2153,7 @@
 				2E12CABC1E6F1E67009527BA /* Reachability.m in Sources */,
 				6F45EB661EF8F90C00562709 /* JLGroupCell.m in Sources */,
 				6F4905051F186EE800F74691 /* HttpsRegion.swift in Sources */,
+				5F94DA581F98461400DA6D07 /* CurrenAdressCell.swift in Sources */,
 				6F22E38B1E9B133E0090291F /* XHStarRateView.m in Sources */,
 				6F91AD671EBC5BE200A9E617 /* HcdPopMenuItem.m in Sources */,
 				6F4904CB1F186E4800F74691 /* CustomTemplateViewController.swift in Sources */,
@@ -2161,6 +2176,7 @@
 				6F49050A1F186EE800F74691 /* Forget+passwordViewController.swift in Sources */,
 				2E12CB031E6F1E6F009527BA /* MHSheetFoot.m in Sources */,
 				6F4905071F186EE800F74691 /* loginResultModel.swift in Sources */,
+				5F9676B91F99EF0D009030A1 /* MyMapView.swift in Sources */,
 				6F4904C31F186DBA00F74691 /* UINavigationBar+Extension.swift in Sources */,
 				6F45EB671EF8F90C00562709 /* JLScrollView.m in Sources */,
 				5F3E31821F6392000018FE01 /* FeedbackViewModel.swift in Sources */,
@@ -2206,6 +2222,7 @@
 				5F62EFEA1F62A7BD00D8305B /* MyinfoViewModel.swift in Sources */,
 				5F8441041F639F970005FED9 /* Disclaimer.swift in Sources */,
 				6FDB2E0D1EC4612E0092FAFC /* RSADataVerifier.m in Sources */,
+				5F9676B71F989B1D009030A1 /* DemanContenView.swift in Sources */,
 				6FDB2E0A1EC4612E0092FAFC /* NSDataEx.m in Sources */,
 				5F62EFEE1F62A7E400D8305B /* MessageModel.swift in Sources */,
 				1C5B82F01F376FDF001A9584 /* ShopList.swift in Sources */,
@@ -2410,8 +2427,8 @@
 				CODE_SIGN_ENTITLEMENTS = ProjectFramework/RepairCar.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9A5L5W6464;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2459,8 +2476,8 @@
 				CODE_SIGN_ENTITLEMENTS = ProjectFramework/RepairCar.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9A5L5W6464;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

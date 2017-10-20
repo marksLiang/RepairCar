@@ -2,8 +2,8 @@
 //  UpLoadPicManagerViewController.swift
 //  ProjectFramework
 //
-//  Created by 购友住朋 on 16/6/27.
-//  Copyright © 2016年 HCY. All rights reserved.
+//  Created by 恋康科技 on 17/10/19.
+//  Copyright © 2017年 梁元峰. All rights reserved.
 //
 
 import UIKit
@@ -35,6 +35,7 @@ class UpLoadPicManagerView: UIView, UICollectionViewDelegate, UICollectionViewDa
    fileprivate var SelectedImgMaxCount:Int  = 10
     ///self
     fileprivate weak var delegate : UIViewController?
+    fileprivate var currenImageCount = 0
     /// 获取图片高度
     var GetImgHeight:CGFloat=0
     /// 是否选择过图片 如果是true 表示是选择过
@@ -141,7 +142,7 @@ class UpLoadPicManagerView: UIView, UICollectionViewDelegate, UICollectionViewDa
         for url in imgUrl {
             let data = NSData(contentsOf: URL(string: HttpsUrlImage+url)!)
             if(data != nil ){
-               let img = UIImage(data: data as! Data)
+                let img = UIImage(data: data! as Data)
                 if(img != nil ) {
                         self.ImgItem.append(img!)
                 }else{
@@ -164,12 +165,12 @@ class UpLoadPicManagerView: UIView, UICollectionViewDelegate, UICollectionViewDa
         
         //设置flowlayout
         let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing=2 // minimumInteritemSpacingForSectionAtIndex  上下间距
-        layout.minimumInteritemSpacing=2     //minimumLineSpacingForSectionAtIndex  左右间距
-        layout.sectionInset=UIEdgeInsets(top: 0, left: 2, bottom:0, right: 2)   //设置每个cell的间距
-        let itemsSpacing=layout.minimumLineSpacing + layout.sectionInset.left-1 //获取设置间距长度
-        GetImgHeight = GetImgHeight == 0 ? (self.bounds.size.width/Showrowsitem)/120.0*90 : GetImgHeight
-        layout.itemSize = CGSize(width: self.bounds.size.width/Showrowsitem-itemsSpacing, height: GetImgHeight)
+        layout.minimumLineSpacing=5 // minimumInteritemSpacingForSectionAtIndex  上下间距
+        layout.minimumInteritemSpacing=5     //minimumLineSpacingForSectionAtIndex  左右间距
+        layout.sectionInset=UIEdgeInsets(top: 0, left: 5, bottom:5, right:5 )   //设置每个cell的间距
+//        let itemsSpacing=layout.minimumLineSpacing + layout.sectionInset.left-1 //获取设置间距长度
+        //GetImgHeight = GetImgHeight == 0 ? (self.bounds.size.width/Showrowsitem)/120.0*90 : GetImgHeight
+        layout.itemSize = CGSize(width: (self.bounds.size.width-30)/Showrowsitem, height: (self.bounds.size.width-30)/Showrowsitem)
         layout.headerReferenceSize = CGSize(width: self.frame.width, height: 0.5) //设置顶部高度
         
         self.collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height), collectionViewLayout: layout)
@@ -270,12 +271,35 @@ class UpLoadPicManagerView: UIView, UICollectionViewDelegate, UICollectionViewDa
         }
         self.isEditImage=true
         self.collectionView.reloadData()
+        
+        //删除一次回调一次
+        if(self.myCallbackValue != nil){    //必包回调
+            //如果不等于最大个数
+            if self.ImgItem.count != SelectedImgMaxCount {
+                //那么返回减掉默认图片
+                self.imageArray.removeLast()
+                self.myCallbackValue!(self.imageArray)
+            }else{
+                //如果最后一张为默认的添加  那么返回减掉默认图片
+                if self.ImgItem.last == DefaultImg {
+                    self.imageArray.removeLast()
+                    self.myCallbackValue!(self.imageArray)
+                }else{//否则直接返回图片数组
+                    self.myCallbackValue!(self.imageArray)
+                }
+            }
+        }
     }
     
     //选择图片
     fileprivate func SelectedImg(){
-         
-        let vc = TZImagePickerController(maxImagesCount: Int(SelectedImgMaxCount), columnNumber: 4, delegate: self, pushPhotoPickerVc: false)
+        
+        if ImgItem.count == 1 {
+            currenImageCount = 0
+        }else{
+            currenImageCount = ImgItem.count - 1
+        }
+        let vc = TZImagePickerController(maxImagesCount: Int(SelectedImgMaxCount-currenImageCount), columnNumber: 4, delegate: self, pushPhotoPickerVc: false)
         self.delegate?.navigationController?.present(vc!, animated: true, completion: nil)
        
     }
@@ -357,14 +381,28 @@ class UpLoadPicManagerView: UIView, UICollectionViewDelegate, UICollectionViewDa
         collectionView = nil
         ImgItem.removeAll()
     }
-    
+    var imageArray = [UIImage]()
     //选择的图片 回调
     func imagePickerController(_ picker: TZImagePickerController!, didFinishPickingPhotos photos: [UIImage]!, sourceAssets assets: [Any]!, isSelectOriginalPhoto: Bool) {
         self.isEditImage=true
         self.SetImgItem(photos)
+        imageArray = self.ImgItem
         
         if(self.myCallbackValue != nil){    //必包回调
-            self.myCallbackValue!(photos)
+            //如果不等于最大个数
+            if self.ImgItem.count != SelectedImgMaxCount {
+                //那么返回减掉默认图片
+                self.imageArray.removeLast()
+                self.myCallbackValue!(self.imageArray)
+            }else{
+                //如果最后一张为默认的添加  那么返回减掉默认图片
+                if self.ImgItem.last == DefaultImg {
+                    self.imageArray.removeLast()
+                    self.myCallbackValue!(self.imageArray)
+                }else{//否则直接返回图片数组
+                    self.myCallbackValue!(self.imageArray)
+                }
+            }
         }
         
     }

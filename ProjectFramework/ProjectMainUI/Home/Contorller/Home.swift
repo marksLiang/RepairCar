@@ -42,7 +42,11 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
     //城市选择按钮
     fileprivate lazy var cityBtn: ZPButton = {
         let cityBtn = ZPButton.init(type: .custom)
-        cityBtn.frame = CGRect.init(x: 0, y: CommonFunction.StauteBarHeight, width: 80, height: 30)
+        if CommonFunction.isIphoneX {
+            cityBtn.frame = CGRect.init(x: 0, y: CommonFunction.StauteBarHeight, width: 80, height: 30)
+        }else{
+            cityBtn.frame = CGRect.init(x: 0, y: CommonFunction.StauteBarHeight+10, width: 80, height: 30)
+        }
         cityBtn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         cityBtn.setImage(UIImage.init(named: "arrow_down"), for: .normal)
         cityBtn.setTitle(CurrentCity, for: .normal)
@@ -63,6 +67,10 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
     //发布按钮
     fileprivate lazy var releaseBtn: UIButton = {
         let release = UIButton.init(frame: CGRect.init(x: CommonFunction.kScreenWidth - 70, y: CommonFunction.StauteBarHeight, width: 60, height: 30))
+        if CommonFunction.isIphoneX {
+        }else{
+            release.frame = CGRect.init(x: CommonFunction.kScreenWidth - 70, y: CommonFunction.StauteBarHeight+10, width: 60, height: 30)
+        }
         release.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         release.setTitle("发布需求", for: .normal)
         release.setTitleColor(UIColor.white, for: .normal)
