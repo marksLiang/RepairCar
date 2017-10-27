@@ -40,7 +40,9 @@ class DemandListCell: UITableViewCell {
     }
     override func InitConfig(_ cell: Any) {
         let model = cell as! DemandListModel
-//        mainImage.ImageLoad(PostUrl: HttpsUrlImage)
+        if (model.Images?.count)! > 0 {
+            mainImage.ImageLoad(PostUrl: HttpsUrlImage+model.Images![0].ImgPath)
+        }
         titleLable.text = model.Title
         detail.text = model.Describe
         date.text = model.CreateTime

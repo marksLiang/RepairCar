@@ -15,13 +15,18 @@ class PostedDemand: CustomTemplateViewController {
     fileprivate lazy var savaBtn: UIButton = {
         let savaBtn = UIButton.init(frame: CGRect.init(x: 0, y: 0, width: 60, height: 30))
         savaBtn.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        savaBtn.setTitle("保存", for: .normal)
+        savaBtn.setTitle("发布", for: .normal)
         savaBtn.setTitleColor(UIColor.white, for: .normal)
         savaBtn.rx.tap.subscribe(
             onNext:{ [weak self] value in
-                print("保存")
-                
+                self?.viewModel.currenLocation = self?.currenLocation
+                self?.viewModel.adress =  (self?.currenAdress)!
+                self?.viewModel.isUrgency = (self?.demanView.demanSwich.isOn)!
+                self?.viewModel.currenImageList = (self?.currenImageList)!
         }).addDisposableTo(self.disposeBag)
+        savaBtn.rx.tap
+            .bind(to: self.viewModel.saveEvent)  //绑定事件 (点击注册)
+            .addDisposableTo(self.disposeBag)
         return savaBtn
     }()
     fileprivate lazy var demanView: DemanContenView = {
@@ -37,6 +42,8 @@ class PostedDemand: CustomTemplateViewController {
     fileprivate var currenAdress = ""//当前地址
     fileprivate var currenImageList = [UIImage]()//当前图片数组
     fileprivate var currenType = ""
+    fileprivate var currenLocation:CLLocation!=nil
+    fileprivate var viewModel = PostedDemandViewModel()
     @IBOutlet weak var tableView: UITableView!
     
     
@@ -47,10 +54,7 @@ class PostedDemand: CustomTemplateViewController {
         self.setNavhationBar()
         self.initUI()
         self.RXbind()
-    }
-    //取消键盘
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
+        self.getResult()
         
     }
     //MARK: tableViewdelegate
@@ -59,14 +63,34 @@ class PostedDemand: CustomTemplateViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! DemanEditCell
             cell.keyTitle.text = ketArray[indexPath.row]
             switch indexPath.row {
+            case 0:
+                //绑定标题
+                cell.textfield.rx.text.orEmpty
+                    .bind(to: viewModel.titlename)
+                    .addDisposableTo(disposeBag)
+                break;
+            case 1:
+                //绑定联系人
+                cell.textfield.rx.text.orEmpty
+                    .bind(to: viewModel.username)
+                    .addDisposableTo(disposeBag)
+                break;
             case 2:
                 cell.textfield.keyboardType = .numberPad
+                //绑定联系人
+                cell.textfield.rx.text.orEmpty
+                    .bind(to: viewModel.phoneNumber)
+                    .addDisposableTo(disposeBag)
                 break;
             case 3:
                 cell.textfield.isUserInteractionEnabled = false
                 cell.textfield.placeholder = "请选择"
                 cell.textfield.text = self.currenType
                 cell.littleImage.isHidden = false
+                //绑定维修类型
+                cell.textfield.rx.text.orEmpty
+                    .bind(to: viewModel.typeName)
+                    .addDisposableTo(disposeBag)
                 break;
             default:
                 break;
@@ -85,13 +109,21 @@ class PostedDemand: CustomTemplateViewController {
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 3 {
+            self.view.endEditing(true)
             CommonFunction.ActionSheet(ShowTitle: Global_MaintenanceType, sheetWithTitle: "请选择维修的类型", ItemsTextColor: UIColor.black, ReturnSelectedIndex: { (inedx, value) in
                 self.currenType = value
                 self.tableView.reloadRows(at: [IndexPath.init(row: indexPath.row, section: indexPath.section)], with: .automatic)
             })
         }
         if indexPath.row == 4 {
+            self.view.endEditing(true)
             let vc = MyMapView()
+            vc.FuncCallbackValue(value: {[weak self](location,adress) in
+                let cell = self?.tableView.cellForRow(at: indexPath) as! CurrenAdressCell
+                self?.currenAdress = adress
+                cell.currenAdress.text = adress
+                self?.currenLocation = location
+            })
             self.navigationController?.show(vc, sender: self)
         }
     }
@@ -139,5 +171,38 @@ class PostedDemand: CustomTemplateViewController {
         IsValid
             .bind(to: demanView.tishiLable.rx.isHidden)
             .disposed(by: disposeBag)
+        //内容绑定
+        demanView.demanContent.rx.text.orEmpty
+            .bind(to: viewModel.content)
+            .addDisposableTo(disposeBag)
+
+    }
+    private func getResult()->Void{
+        //收到ViewModel逻辑校验的消息回调
+        _ = self.viewModel.saveResult?.subscribe(onNext: { (result) in
+            switch result {
+            case   .ok: //处理成功的业务
+                //发起支付请求
+                let OrderType = self.demanView.demanSwich.isOn ? 4 : 3
+                let vc = PayClass.init(OrderType:OrderType,delegate: self)
+                vc.OtherID = 0
+                vc.FuncCallbackValue(value: {[weak self] (payEesult) in
+                    if payEesult == payResultTepy.success {
+                        self?.viewModel.delegate = self
+                        self?.viewModel.SetDemandInfo()//收到支付成功回调就发起发布需求的请求
+                    }
+                })
+                self.present(vc, animated: true, completion: nil)
+                
+                //self.viewModel.SetDemandInfo()//收到支付成功回调就发起发布需求的请求
+                break
+            case   .empty:
+                
+                break
+            case   .error:
+                
+                break
+            }
+        }).addDisposableTo(self.disposeBag)
     }
 }

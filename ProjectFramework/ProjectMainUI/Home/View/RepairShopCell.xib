@@ -18,8 +18,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="109.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="caicon.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="iGg-Nk-k8d">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iGg-Nk-k8d">
                         <rect key="frame" x="10" y="9" width="70" height="70"/>
+                        <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="70" id="XYk-vh-a1x"/>
                             <constraint firstAttribute="width" constant="70" id="s8V-nI-A5O"/>
@@ -29,7 +30,8 @@
                         <rect key="frame" x="85" y="10" width="193" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="IxN-6N-Cag"/>
-                            <constraint firstAttribute="width" constant="193" id="mGB-Am-HSL"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="193" id="mGB-Am-HSL"/>
+                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="235" id="n2B-Z1-Mo2"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
@@ -105,7 +107,4 @@
             <point key="canvasLocation" x="24.5" y="86"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="caicon.jpg" width="300" height="200"/>
-    </resources>
 </document>

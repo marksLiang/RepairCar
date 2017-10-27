@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 class ShopPreview: UIView ,UITableViewDelegate,UITableViewDataSource{
     typealias CallbackValue=( _ value:Int)->Void //类似于OC中的typedef
     var myCallbackValue:CallbackValue?  //声明一个闭包 类似OC的Block属性

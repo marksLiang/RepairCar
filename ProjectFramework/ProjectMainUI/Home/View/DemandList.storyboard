@@ -33,8 +33,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="84.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="caicon.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="kSY-ZQ-ZAV">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kSY-ZQ-ZAV">
                                                     <rect key="frame" x="15" y="5" width="85" height="70"/>
+                                                    <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="85" id="May-1n-jIm"/>
                                                         <constraint firstAttribute="height" constant="70" id="zVV-fv-7qZ"/>
@@ -105,7 +106,4 @@
             <point key="canvasLocation" x="-122.40000000000001" y="136.28185907046478"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="caicon.jpg" width="300" height="200"/>
-    </resources>
 </document>

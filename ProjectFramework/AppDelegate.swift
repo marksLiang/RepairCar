@@ -19,8 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var IsPushuProduction=false     //是否是发布产品  （用于极光推送)
  
     var conn:Reachability?  //苹果提供的网络检测类
-    var locService: BMKLocationService?
-    var _mapManager:BMKMapManager?
+//    var locService: BMKLocationService?
+//    var _mapManager:BMKMapManager?
     // MARK: - 初始化
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         InitUI()    //初始化UI   (第一次启动的导航页，需要在里面设置)

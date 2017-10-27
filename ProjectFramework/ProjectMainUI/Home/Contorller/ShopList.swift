@@ -22,6 +22,7 @@ class ShopList: CustomTemplateViewController,PYSearchViewControllerDelegate {
     fileprivate var StarRating=0
     fileprivate var Distance=0
     fileprivate var currenModel: RepairShopModel?=nil
+    fileprivate var isSearch = false
     /*******************懒加载*********************/
     fileprivate lazy var tableView: UITableView = {
         let tableView = UITableView.init(frame: CGRect.init(x: 0, y: CommonFunction.NavigationControllerHeight + 35, width: CommonFunction.kScreenWidth, height: CommonFunction.kScreenHeight-CommonFunction.NavigationControllerHeight-35), style: .plain)
@@ -104,10 +105,14 @@ class ShopList: CustomTemplateViewController,PYSearchViewControllerDelegate {
     private func remexParmeter(isAllRemex:Bool) -> Void{
         if isAllRemex == true {
             PageIndex = 0
-            SearchName=""
+            
             MaintenanceTypeName="全部"
             StarRating=0
             Distance=0
+            if !isSearch {
+                SearchName=""
+            }
+            isSearch = false
         }
         self.viewModel.ListData.removeAll()
         self.numberOfRowsInSection = 0
@@ -255,6 +260,8 @@ class ShopList: CustomTemplateViewController,PYSearchViewControllerDelegate {
     func searchViewController(_ searchViewController: PYSearchViewController!, didSearchWithsearchBar searchBar: UISearchBar!, searchText: String!) {
         print("点击搜索代理")
         self.SearchName = searchText
+        self.isSearch = true
         self.remexParmeter(isAllRemex: true)
+        searchViewController.dismiss(animated: false, completion: nil)
     }
 }

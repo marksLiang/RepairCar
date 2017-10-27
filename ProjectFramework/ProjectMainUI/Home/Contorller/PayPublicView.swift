@@ -8,12 +8,23 @@
 
 import Foundation
 
+enum payResultTepy{
+    case success//支付成功
+    case felid//支付失败
+    case error//支付错误
+}
 
 class PayClass:UIViewController {
     
+    typealias CallbackValue=( _ result:payResultTepy)->Void //类似于OC中的typedef
+    var myCallbackValue:CallbackValue?  //声明一个闭包 类似OC的Block属性
+    func  FuncCallbackValue(value:CallbackValue?){
+        myCallbackValue = value //返回值
+    }
+    
     fileprivate  var menu:HcdPopMenuView?
     fileprivate weak var delegate:UIViewController?=nil
-    fileprivate var OrderType = 0
+    fileprivate var OrderType = 0//1查看店铺2查看需求3发布需求
     var OtherID = 0
     var model:RepairShopModel?=nil
     init(OrderType:Int,delegate:UIViewController) {
@@ -78,36 +89,53 @@ class PayClass:UIViewController {
                 print("aaa:\(String(describing: resultDic))")
             })
         }
+        
     }
     
     //利用KVO来改变该属性的值   ---支付宝
     @objc internal func  PayResultStatus(notification:NSNotification){
         let dic = notification.userInfo as! [String:Any]
         let resultStatus =  dic["resultStatus"] as! String
-        
+        var paytype:payResultTepy!=nil
         if resultStatus == "9000"{
             print("OK,支付完成")
 //            self.delegate?.navigationController?.popToRootViewController(animated: true)
-            let vc = CommonFunction.ViewControllerWithStoryboardName("ShopDetail", Identifier: "ShopDetail") as! ShopDetail
-            vc.model = self.model
-            self.delegate?.navigationController?.show(vc, sender: self)
+            
+            switch self.OrderType {
+            case 1:
+                let vc = CommonFunction.ViewControllerWithStoryboardName("ShopDetail", Identifier: "ShopDetail") as! ShopDetail
+                vc.model = self.model
+                self.delegate?.navigationController?.show(vc, sender: self)
+                break;
+            case 3,4:
+                paytype = payResultTepy.success
+                break;
+            default:
+                break;
+            }
             CommonFunction.MessageNotification("您已支付成功", interval: 2, msgtype: .success)
         }else if resultStatus == "8000" {
             print("正在处理中")
         }else if resultStatus == "4000" {
+            paytype = payResultTepy.felid
             print("订单支付失败")
             CommonFunction.MessageNotification("支付失败，订单已生成，请到我的订单查看", interval: 3, msgtype: .error)
         }else if resultStatus == "6001" {
+            paytype = payResultTepy.error
             print("用户中途取消")
 //            self.delegate?.navigationController?.popToRootViewController(animated: true)
             // self.delegate?.navigationController.pop
             CommonFunction.MessageNotification("您已取消支付", interval: 2, msgtype: .error)
         }else if resultStatus == "6002" {
+            paytype = payResultTepy.error
             print("网络连接出错")
         }
-        
+        if myCallbackValue != nil {
+            myCallbackValue!(paytype)
+        }
         self.menu?.menuItemdismiss()
         self.dismiss(animated: false, completion: nil)
+        
     }
     
     deinit {    //销毁当前通知 通道

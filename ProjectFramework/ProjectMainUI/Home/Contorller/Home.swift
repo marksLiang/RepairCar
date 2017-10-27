@@ -153,23 +153,9 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
             self.present(vc, animated: true, completion: {
                 self.hiddenPview()
             })
-//            self.hiddenPview()
-//            let vc = CommonFunction.ViewControllerWithStoryboardName("ShopDetail", Identifier: "ShopDetail") as! ShopDetail
-//            vc.model = self.currenModel
+
             self.show(vc, sender: self)
-//            if self.currenModel!.MaintenanceID == 2 {
-//                let vc = PayClass.init(OrderType:1,delegate: self)
-//                vc.OtherID = self.currenModel!.MaintenanceID
-//                vc.model = self.currenModel
-//                self.present(vc, animated: true, completion: {
-//                    self.hiddenPview()
-//                })
-//            }else{
-//                self.hiddenPview()
-//                let vc = CommonFunction.ViewControllerWithStoryboardName("ShopDetail", Identifier: "ShopDetail") as! ShopDetail
-//                vc.model = self.currenModel
-//                self.navigationController?.show(vc, sender: self)
-//            }
+
         }, Cancel_Callback: {
             
         })
@@ -180,6 +166,7 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
     }
     override func Error_Click() {
         self.imagesURLStrings.removeAll()
+        self.RefreshRequest(isLoading: true)
         self.GetAdvertising()
     }
     private func GetAdvertising() -> Void{
@@ -227,7 +214,7 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
     }
     var isFrist = true //只允许执行一次
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
+        self.mgr?.stopUpdatingLocation()
         let geocoder = CLGeocoder.init()
         geocoder.reverseGeocodeLocation(locations.last!) { (placemarks, error) in
             if placemarks?.count == 0 || (error != nil) {

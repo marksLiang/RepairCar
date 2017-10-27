@@ -27,6 +27,7 @@ class HomeViewModel: NSObject {
         CommonFunction.Global_Get(entity: nil, IsListData: false, url: HttpsUrl + "api/Maintenance/GetMaintenanceDetailsIsPay", isHUD: true, isHUDMake: true, parameters: parameters as NSDictionary) { (resultModel) in
             if(resultModel?.Success==true){
                 if resultModel?.ret == 0 {
+                    debugPrint("支付信息",resultModel?.Result as Any)
                     let bool = resultModel?.Content as! Bool
                     result?(bool)
                 }else{

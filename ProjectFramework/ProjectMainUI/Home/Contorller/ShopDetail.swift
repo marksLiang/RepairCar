@@ -43,6 +43,7 @@ class ShopDetail: CustomTemplateViewController {
     fileprivate let titleKey = ["店铺名称：","店面地址：","联系电话：","店铺面积："]
     fileprivate let imageArray = ["","ionicons","phone",""]
     fileprivate var titleValue = [String]()
+    //MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         self.getData()
@@ -52,8 +53,15 @@ class ShopDetail: CustomTemplateViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
+    
     override func viewDidLayoutSubviews() {
-        shopName.text = "1/\(String(describing: model?.Images?.count))"        
+        if model?.Images?.count == 0 {
+            shopName.text = "暂无图片"
+        }else{
+            shopName.text = "1/\((model?.Images?.count)!)"
+            shopImage.ImageLoad(PostUrl: HttpsUrlImage+(model?.Images![0].ImgPath)!)
+        }
+        
     }
     //MARK: getData
     private func getData() -> Void{
@@ -85,6 +93,20 @@ class ShopDetail: CustomTemplateViewController {
         cell.setData(titleKey: titleKey[indexPath.row], titleValue: titleValue[indexPath.row], imageList:imageArray[indexPath.row] )
         return cell
         
+    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 1:
+            let vc = ShopMapView()
+            vc.model = self.model
+            self.navigationController?.show(vc, sender: self)
+            break;
+        case 2:
+            CommonFunction.CallPhone(self, number: (model?.Phone)!)
+            break;
+        default:
+            break;
+        }
     }
     //MARK: 设置导航栏
     func setNavBar() -> Void{

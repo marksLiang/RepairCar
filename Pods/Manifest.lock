@@ -14,7 +14,6 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
-  - BaiduMapKit (3.3.1)
   - CWStatusBarNotification (2.3.5)
   - CYLTabBarController (1.10.0)
   - DOPDropDownMenu-Enhanced (1.0.0)
@@ -43,7 +42,6 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
-  - BaiduMapKit
   - CWStatusBarNotification (~> 2.3.5)
   - CYLTabBarController
   - DOPDropDownMenu-Enhanced (~> 1.0.0)
@@ -75,7 +73,6 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  BaiduMapKit: 9e8ff80bbcfb8f96b4a58b2844d728590dac90ca
   CWStatusBarNotification: 3d2738b25c3207f60cc50201388d3c96182545ff
   CYLTabBarController: 2de9a4c26f50d33574398becf8e7b0aaed794240
   DOPDropDownMenu-Enhanced: 9ec473b16351b5b0b2d6ef87e7f666fe5ff54ad5
@@ -95,6 +92,6 @@ SPEC CHECKSUMS:
   SwiftTheme: 15ff615b8d2a84d24259611f136e1635c747cc77
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 17187e2087a3db72482254aa19397bc0dd30acd0
+PODFILE CHECKSUM: d6b8cd5c109cd20a7422477219455a7f6a41ec1c
 
-COCOAPODS: 1.4.0.beta.1
+COCOAPODS: 1.3.1

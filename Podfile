@@ -16,7 +16,7 @@ target "RepairCar" do
     pod 'DOPDropDownMenu-Enhanced', '~> 1.0.0'  #多级菜单 (oc)
     pod 'IQKeyboardManager'                     #键盘管理 (oc)
     pod 'DZNEmptyDataSet'                       #UITableview UICollectionView 空值时视图
-    pod 'BaiduMapKit'                           #百度地图SDK
+    #pod 'BaiduMapKit'                           #百度地图SDK
     pod 'swiftScan', :git => 'https://github.com/CNKCQ/swiftScan.git', :branch => 'Swift3.0'        #二维码扫描 (swift）
     pod 'SwiftTheme'                            #第三方主题库(Swift)
     pod 'SnapKit'                           #第三方约束库(swift)
