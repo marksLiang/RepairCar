@@ -135,6 +135,14 @@ class ShopList: CustomTemplateViewController,PYSearchViewControllerDelegate {
             self.header.endRefreshing()
             self.footer.endRefreshing()
             if result == true {
+                //没有数据
+                if noData == true {
+                    self.numberOfSections = 1
+                    self.numberOfRowsInSection = 0
+                    self.RefreshRequest(isLoading: false, isHiddenFooter: true)
+                    return
+                }
+                //没有分页数据
                 if noMore == true || self.viewModel.ListData.count < self.PageSize {
                     self.footer.endRefreshingWithNoMoreData()
                 }
@@ -154,7 +162,7 @@ class ShopList: CustomTemplateViewController,PYSearchViewControllerDelegate {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! RepairShopCell
         cell.InitConfig(self.viewModel.ListData[indexPath.row])
-        if indexPath.row < 2 {
+        if self.viewModel.ListData[indexPath.row].IsTop == true {
             cell.atTop()
         }
         return cell

@@ -14,7 +14,7 @@ class ShopListViewModel: NSObject {
         
         let parameters=["PageIndex":PageIndex,"PageSize":PageSize,"CityName":CityName,"SearchName":SearchName,"MaintenanceTypeName":MaintenanceTypeName,"StarRating":StarRating,"Longitude":Longitude,"Latitude":Latitude,"Distance":Distance] as [String : Any]
         CommonFunction.Global_Get(entity: RepairShopModel(), IsListData: true, url: HttpsUrl+"api/Maintenance/GetMaintenanceInfo", isHUD: false, isHUDMake: false, parameters: parameters as NSDictionary) { (resultModel) in
-            
+            //debugPrint(parameters,resultModel?.Content)
             if resultModel?.Success == true {
                 //没有数据
                 if resultModel?.ret == 5 {
@@ -25,16 +25,20 @@ class ShopListViewModel: NSObject {
                     result?(true,true,false)
                     return
                 }
-                //有数据PageIndex>=2
-                let model =  resultModel?.Content   as!  [RepairShopModel]
-                if(PageIndex>=2){
-                    for item in model {
-                        self.ListData.append(item)
+                if resultModel?.Content != nil {
+                    //有数据PageIndex>=2
+                    let model =  resultModel?.Content   as!  [RepairShopModel]
+                    if(PageIndex>=2){
+                        for item in model {
+                            self.ListData.append(item)
+                        }
+                    }else{
+                        self.ListData = model
                     }
-                }else{
-                    self.ListData = model
+                    result?(true,false,false)
+                    return
                 }
-                result?(true,false,false)
+                result?(true,false,true)
             }else{
                 result?(false,false,false)
             }

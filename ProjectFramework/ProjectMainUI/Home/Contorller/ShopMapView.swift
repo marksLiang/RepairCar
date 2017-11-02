@@ -12,7 +12,10 @@ class ShopMapView: UIViewController {
     
     fileprivate var _locationManager: CLLocationManager?=nil
     fileprivate var endLocation:CLLocationCoordinate2D!=nil
-    var model:RepairShopModel?=nil
+    //var model:RepairShopModel?=nil
+    var Lat = 0.00000000000000
+    var lng = 0.00000000000000
+    var annotationTitle = ""
     fileprivate lazy var _mapView: MKMapView = {
         let _mapView = MKMapView.init(frame: self.view.bounds)
         _mapView.showsUserLocation = true
@@ -23,7 +26,7 @@ class ShopMapView: UIViewController {
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "店铺地址"
+        //self.title = "店铺地址"
         self.view.backgroundColor = UIColor.white
         self.inspectionService()
         self.view.addSubview(_mapView)
@@ -32,8 +35,8 @@ class ShopMapView: UIViewController {
     private func initMapView()->Void{
         //添加大头针
         let span = MKCoordinateSpan.init(latitudeDelta: 0.2, longitudeDelta: 0.2)
-        let lat = CLLocationDegrees((model?.Lat)!)
-        let Lng = CLLocationDegrees((model?.Lng)!)
+        let lat = CLLocationDegrees(Lat)
+        let Lng = CLLocationDegrees(lng)
         //百度坐标转火星坐标
         let center = MapTool.transformFromBaidu(toGCJ: CLLocationCoordinate2D.init(latitude: lat, longitude: Lng))
         self.endLocation = center
@@ -41,7 +44,7 @@ class ShopMapView: UIViewController {
         let region = MKCoordinateRegion.init(center: center, span: span)
         let annotation = MKPointAnnotation.init()
         annotation.coordinate = center
-        annotation.title = model!.TitleName
+        annotation.title = annotationTitle
         self._mapView.addAnnotation(annotation)
         //延时一秒选中动画
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(1 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: {() -> Void in
@@ -87,7 +90,7 @@ extension ShopMapView: CLLocationManagerDelegate,MKMapViewDelegate  {
                 mpinView.annotation = annotation
                 mpinView.animatesDrop = true
                 mpinView.canShowCallout = true
-                mpinView.image = UIImage.init(named: "weixiu")
+                pinView?.image = UIImage.init(named: "weixiu")
 //                if #available(iOS 9.0, *) {
 //                    pinView.pinTintColor = CommonFunction.SystemColor()
 //                }

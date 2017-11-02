@@ -36,6 +36,21 @@ class HomeViewModel: NSObject {
             }
         }
     }
+    //MARK: 获取维修类型
+    class func GetMaintenanceTypeList() -> Void {
+        CommonFunction.Global_Get(entity: TypeModel(), IsListData: true, url: HttpsUrl+"api/System/GetMaintenanceTypeList", isHUD: false, isHUDMake: false, parameters: nil) { (resultModel) in
+            if(resultModel?.Success==true){
+                if resultModel?.ret == 0 && resultModel?.Content != nil {
+                    let array = resultModel?.Content as! [TypeModel]
+                    var typeArray = Array<String>()
+                    for model in array {
+                        typeArray.append(model.Name)
+                    }
+                    Global_MaintenanceType = typeArray
+                }
+            }
+        }
+    }
 }
 
 class AdvertisingViewModel: NSObject {

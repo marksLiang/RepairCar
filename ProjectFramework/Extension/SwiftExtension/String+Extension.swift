@@ -16,6 +16,7 @@ extension  String {
     /// 移除字符串最后一位字符
     ///
     /// - returns: NewString
+    
     func RemoveLastChar()->String{
         let index = self.index(self.startIndex, offsetBy:self.characters.count-1)
         return  self.substring(to: index)

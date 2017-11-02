@@ -179,12 +179,12 @@ class PostedDemand: CustomTemplateViewController {
     }
     private func getResult()->Void{
         //收到ViewModel逻辑校验的消息回调
-        _ = self.viewModel.saveResult?.subscribe(onNext: { (result) in
+        _ = self.viewModel.saveResult?.subscribe(onNext: {[weak self] (result) in
             switch result {
             case   .ok: //处理成功的业务
                 //发起支付请求
-                let OrderType = self.demanView.demanSwich.isOn ? 4 : 3
-                let vc = PayClass.init(OrderType:OrderType,delegate: self)
+                let OrderType = (self?.demanView.demanSwich.isOn)! ? 4 : 3
+                let vc = PayClass.init(OrderType:OrderType,delegate: self!)
                 vc.OtherID = 0
                 vc.FuncCallbackValue(value: {[weak self] (payEesult) in
                     if payEesult == payResultTepy.success {
@@ -192,8 +192,8 @@ class PostedDemand: CustomTemplateViewController {
                         self?.viewModel.SetDemandInfo()//收到支付成功回调就发起发布需求的请求
                     }
                 })
-                self.present(vc, animated: true, completion: nil)
-                
+                self?.present(vc, animated: true, completion: nil)
+                 
                 //self.viewModel.SetDemandInfo()//收到支付成功回调就发起发布需求的请求
                 break
             case   .empty:

@@ -30,6 +30,8 @@ class Mine: CustomTemplateViewController {
     //MARK: viewload
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+        debugPrint(Global_UserInfo.UserType)
+        getHttpData()
         headerView.setData()
     }
     override func viewDidLoad() {
@@ -38,6 +40,15 @@ class Mine: CustomTemplateViewController {
         
         self.getData()
         self.initUI()
+    }
+    //实时获取用户数据
+    func getHttpData() -> Void {
+        MineViewModel.GetUserInfo { (result, userType) in
+            if result == true {
+                Global_UserInfo.UserType = userType!
+                self.getData()
+            }
+        }
     }
     //MARK: 登录
     private func login(index:Int) -> Void{
@@ -52,7 +63,7 @@ class Mine: CustomTemplateViewController {
                     self.navigationController?.show(vc, sender: nil)
                 break
                 case 1:
-                    
+                    self.pushShop()
                 break
                 case 2:
                     let vc = CommonFunction.ViewControllerWithStoryboardName("MyMessage", Identifier: "MyMessage") as! MyMessage
@@ -64,6 +75,23 @@ class Mine: CustomTemplateViewController {
                 break
                 default:
                     break
+            }
+        }
+    }
+    //MARK: 跳转至店铺
+    private func pushShop()->Void{
+        MineViewModel.GetMaintenanceStatus { (result, type) in
+            if result == true {
+                if type != 0 {
+//                    debugPrint(type!)
+                    let vc = MyShopReminder()
+                    vc.type = type!
+                    self.navigationController?.show(vc, sender: self)
+                }else{
+                    
+                }
+            }else{
+                CommonFunction.HUD("请求失败", type: .error)
             }
         }
     }
@@ -83,7 +111,7 @@ class Mine: CustomTemplateViewController {
             setion1.append("安全退出")
             titleArray.append(setion0)
             titleArray.append(setion1)
-            if Global_UserInfo.UserType == 2 || Global_UserInfo.UserType == 3 {
+            if Global_UserInfo.UserType == 3 || Global_UserInfo.UserType == 4 || Global_UserInfo.UserType == 5{
                 titleArray.append(setion2)
             }
         }
@@ -135,15 +163,15 @@ class Mine: CustomTemplateViewController {
                 
             })
             break
-        case "我是店主":
-            CommonFunction.HUD("此功能程序员正在编写，请耐心等待。。。。", type: .error)
-            break
+//        case "我是店主":
+//
+//            break;
         case "设置":
             let vc = CommonFunction.ViewControllerWithStoryboardName("MySetting", Identifier: "MySetting") as! MySetting
             self.navigationController?.show(vc, sender: self)
-            break
+            break;
         default:
-            break
+            break;
         }
     }
 

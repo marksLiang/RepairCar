@@ -7,8 +7,24 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class DemandList: CustomTemplateViewController {
+    //发布按钮
+    fileprivate lazy var releaseBtn: UIButton = {
+        let release = UIButton.init(frame: CGRect.init(x: 0, y: 0, width: 60, height: 30))
+        release.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        release.setTitle("发布需求", for: .normal)
+        release.setTitleColor(UIColor.white, for: .normal)
+        release.rx.tap.subscribe(
+            onNext:{ [weak self] value in
+                print("发布需求")
+                let vc = CommonFunction.ViewControllerWithStoryboardName("PostedDemand", Identifier: "PostedDemand") as! PostedDemand
+                self?.navigationController?.show(vc, sender: self)
+        }).addDisposableTo(self.disposeBag)
+        return release
+    }()
     /*******************XIB属性*********************/
     @IBOutlet weak var tableView: UITableView!
     /*******************属性*********************/
@@ -16,10 +32,12 @@ class DemandList: CustomTemplateViewController {
     fileprivate var PageIndex: Int      = 1
     fileprivate var PageSize:  Int      = 10
     fileprivate var viewModel           = DemandListViewModel()
+    fileprivate let disposeBag   = DisposeBag()//处理包通道
     //MARK: 视图加载
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "车主需求"
+        self.setNavbar()
         self.initUI()
         self.GetHtpsData()
     }
@@ -72,6 +90,11 @@ class DemandList: CustomTemplateViewController {
         cell.InitConfig(self.viewModel.ListData[indexPath.row])
         return cell
     }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = CommonFunction.ViewControllerWithStoryboardName("DemandDetail", Identifier: "DemandDetail") as! DemandDetail
+        vc.DemandID = self.viewModel.ListData[indexPath.row].DemandID
+        self.navigationController?.show(vc, sender: self)
+    }
     private func initUI() -> Void{
         self.InitCongif(tableView)
         self.tableView.frame = CGRect.init(x: 0, y: CommonFunction.NavigationControllerHeight, width: CommonFunction.kScreenWidth, height: CommonFunction.kScreenHeight - CommonFunction.NavigationControllerHeight)
@@ -79,7 +102,7 @@ class DemandList: CustomTemplateViewController {
     }
     //MARK: 设置导航栏
     private func setNavbar() -> Void{
-//        let CustomNavItem                = self.navigationItem
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: releaseBtn)
     }
 
 

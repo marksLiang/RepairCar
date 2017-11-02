@@ -98,7 +98,10 @@ class ShopDetail: CustomTemplateViewController {
         switch indexPath.row {
         case 1:
             let vc = ShopMapView()
-            vc.model = self.model
+            vc.Lat = self.model?.Lat ?? 0.0
+            vc.lng = self.model?.Lng ?? 0.0
+            vc.annotationTitle = (self.model?.TitleName)!
+            vc.title = "店铺地址"
             self.navigationController?.show(vc, sender: self)
             break;
         case 2:

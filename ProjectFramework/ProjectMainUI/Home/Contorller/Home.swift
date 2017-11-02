@@ -119,6 +119,8 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
         self.position()
         self.setNavgationBar()
         self.initUI()
+        //获取维修类型
+        HomeViewModel.GetMaintenanceTypeList()
         //MARK: 查看全部
         pview.FuncCallbackValue {[weak self] (tag) in
             CommonFunction.isLogin(taget: self!, loginResult: { (result) in

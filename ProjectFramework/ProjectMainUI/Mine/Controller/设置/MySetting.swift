@@ -82,7 +82,7 @@ class MySetting: CustomTemplateViewController {
     }
     private func initUI()->Void{
         self.InitCongif(tableView)
-        self.tableView.frame = CGRect.init(x: 0, y: CommonFunction.NavigationControllerHeight, width: self.view.frame.width, height:CommonFunction.NavigationControllerHeight)
+        self.tableView.frame = CGRect.init(x: 0, y: CommonFunction.NavigationControllerHeight, width: self.view.frame.width, height:CommonFunction.kScreenHeight - CommonFunction.NavigationControllerHeight)
         self.tableView.backgroundColor = UIColor().TransferStringToColor("#F0EBF0")
         self.tableViewheightForRowAt = 50
         self.numberOfSections = 1

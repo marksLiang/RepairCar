@@ -79,7 +79,7 @@ var Global_latitude:CLLocationDegrees=0    //全局纬度
 var Global_longitude:CLLocationDegrees=0   //全局经度
 var Global_cityName=""
 var Global_UserInfo=MyInfoModel()          //我的信息全局
-let Global_MaintenanceType=["电器类","机修类","门窗类","轮胎类","冷工类","装饰类","油类","焊类"]
+var Global_MaintenanceType=["电器类","机修类","门窗类","轮胎类","冷工类","装饰类","油类","焊类"]
 let StartOneImageList:[String] = ["index1","index2","index4"]       //第一次启动引导页图片
 
 /// TabBarController 全局参数变量
