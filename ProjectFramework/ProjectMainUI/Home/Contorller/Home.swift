@@ -149,7 +149,7 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
         }
     }
     private func payFor() -> Void{
-        CommonFunction.AlertController(self, title: "查看店铺详情", message: "需要支付3元，是否支付？", ok_name: "确定", cancel_name: "取消", OK_Callback: {
+        CommonFunction.AlertController(self, title: "查看店铺详情", message: "需要支付，是否支付？", ok_name: "确定", cancel_name: "取消", OK_Callback: {
             let vc = PayClass.init(OrderType:1,delegate: self)
             vc.OtherID = self.currenModel!.MaintenanceID
             self.present(vc, animated: true, completion: {

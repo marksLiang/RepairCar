@@ -139,6 +139,10 @@
 		5F9676B91F99EF0D009030A1 /* MyMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9676B81F99EF0D009030A1 /* MyMapView.swift */; };
 		5FAF823A1FAABCEE009994B2 /* TypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FAF82391FAABCEE009994B2 /* TypeModel.swift */; };
 		5FAF823D1FAACD03009994B2 /* MyShopReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FAF823C1FAACD03009994B2 /* MyShopReminder.swift */; };
+		5FAF823F1FAB17B5009994B2 /* MyShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FAF823E1FAB17B5009994B2 /* MyShop.swift */; };
+		5FAF82411FAB1955009994B2 /* MyShop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FAF82401FAB1955009994B2 /* MyShop.storyboard */; };
+		5FAF82431FAB279B009994B2 /* MyShopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FAF82421FAB279B009994B2 /* MyShopCell.swift */; };
+		5FAF82451FAB27D7009994B2 /* MyShopAdressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FAF82441FAB27D7009994B2 /* MyShopAdressCell.swift */; };
 		5FD7147F1FA034DA00A1904B /* ShopMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD7147E1FA034DA00A1904B /* ShopMapView.swift */; };
 		6F1F878F1E9E071F008E9B09 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F1F878E1E9E071F008E9B09 /* OpenGLES.framework */; };
 		6F1F879C1E9F07D4008E9B09 /* PanoramaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F1F879B1E9F07D4008E9B09 /* PanoramaViewController.m */; };
@@ -483,6 +487,10 @@
 		5F9676B81F99EF0D009030A1 /* MyMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMapView.swift; sourceTree = "<group>"; };
 		5FAF82391FAABCEE009994B2 /* TypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeModel.swift; sourceTree = "<group>"; };
 		5FAF823C1FAACD03009994B2 /* MyShopReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyShopReminder.swift; sourceTree = "<group>"; };
+		5FAF823E1FAB17B5009994B2 /* MyShop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyShop.swift; sourceTree = "<group>"; };
+		5FAF82401FAB1955009994B2 /* MyShop.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyShop.storyboard; sourceTree = "<group>"; };
+		5FAF82421FAB279B009994B2 /* MyShopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyShopCell.swift; sourceTree = "<group>"; };
+		5FAF82441FAB27D7009994B2 /* MyShopAdressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyShopAdressCell.swift; sourceTree = "<group>"; };
 		5FD7147E1FA034DA00A1904B /* ShopMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopMapView.swift; sourceTree = "<group>"; };
 		6F1F878E1E9E071F008E9B09 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		6F1F879A1E9F07D4008E9B09 /* PanoramaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanoramaViewController.h; sourceTree = "<group>"; };
@@ -1134,6 +1142,7 @@
 			isa = PBXGroup;
 			children = (
 				5FAF823C1FAACD03009994B2 /* MyShopReminder.swift */,
+				5FAF823E1FAB17B5009994B2 /* MyShop.swift */,
 			);
 			path = "我的店铺";
 			sourceTree = "<group>";
@@ -1643,6 +1652,9 @@
 				5F3E31831F63945A0018FE01 /* Feedback.storyboard */,
 				5F8440FD1F639F780005FED9 /* About.storyboard */,
 				5F8440FF1F639F7F0005FED9 /* Disclaimer.storyboard */,
+				5FAF82401FAB1955009994B2 /* MyShop.storyboard */,
+				5FAF82421FAB279B009994B2 /* MyShopCell.swift */,
+				5FAF82441FAB27D7009994B2 /* MyShopAdressCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2012,6 +2024,7 @@
 				5F4823F61F61259D00BE04AC /* MyMessage.storyboard in Resources */,
 				27609BD71CB257810041E8B7 /* Assets.xcassets in Resources */,
 				5F9676B51F98966F009030A1 /* DemanContenView.xib in Resources */,
+				5FAF82411FAB1955009994B2 /* MyShop.storyboard in Resources */,
 				6F4905481F18AD9300F74691 /* Mine.storyboard in Resources */,
 				6F45EB5B1EF8F90C00562709 /* compose_guide_check_box_right@2x.png in Resources */,
 				27609BFE1CB257E40041E8B7 /* Podfile in Resources */,
@@ -2218,6 +2231,7 @@
 				6F4904CB1F186E4800F74691 /* CustomTemplateViewController.swift in Sources */,
 				5F0BF3281FA8748400089F74 /* UIView+Extension.swift in Sources */,
 				6FDB2E091EC4612E0092FAFC /* base64.m in Sources */,
+				5FAF82431FAB279B009994B2 /* MyShopCell.swift in Sources */,
 				6FC61D1D1F355EAE00B8BA1C /* XMLDictionary.m in Sources */,
 				6F4905191F186EE800F74691 /* ForgotPasswordCell.swift in Sources */,
 				6FF51D411EBD7EC500021790 /* ZFChooseTimeCollectionViewCell.m in Sources */,
@@ -2245,6 +2259,7 @@
 				6F4904BC1F186DBA00F74691 /* UIBarButtonItem+Extension.swift in Sources */,
 				6F5068791F1C474700E8EC1B /* TAAbstractDotView.m in Sources */,
 				2E12CB151E6F1E6F009527BA /* TZPhotoPickerController.m in Sources */,
+				5FAF823F1FAB17B5009994B2 /* MyShop.swift in Sources */,
 				6FF51D2E1EBD7E9E00021790 /* PictrueSelectedViewController.swift in Sources */,
 				5F62EFF31F62A91900D8305B /* HomeViewModel.swift in Sources */,
 				6F4904C51F186DBA00F74691 /* UITapGestureRecognizer+Extension.swift in Sources */,
@@ -2267,6 +2282,7 @@
 				1C07E3D01F965D4700547DAE /* PostedDemand.swift in Sources */,
 				2E12CB0E1E6F1E6F009527BA /* UIView+PYExtension.m in Sources */,
 				6F4904D31F186E9200F74691 /* MainTabBarController.swift in Sources */,
+				5FAF82451FAB27D7009994B2 /* MyShopAdressCell.swift in Sources */,
 				1C5D90011F48856700F90380 /* CityListModel.swift in Sources */,
 				1C5D900D1F4DCC9E00F90380 /* AdvertisingWeb.swift in Sources */,
 				1C07E3CE1F911F0C00547DAE /* Home.swift in Sources */,

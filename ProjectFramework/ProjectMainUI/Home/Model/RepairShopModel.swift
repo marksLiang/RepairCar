@@ -23,7 +23,7 @@ class RepairShopModel: NSObject {
     var Introduce=""
     var StarRating=0.0
     var UserID=1
-    var IsRecommend=true
+    var IsRecommend=false
     var IsTop=false
     var IsAudit=false
     var Views=0

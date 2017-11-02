@@ -51,6 +51,7 @@ class MyShopReminder: UIViewController {
         self.view.addSubview(lable)
     }
     func buttonClick() -> Void {
-        
+        let vc = CommonFunction.ViewControllerWithStoryboardName("MyShop", Identifier: "MyShop") as! MyShop
+        self.navigationController?.show(vc, sender: nil)
     }
 }
