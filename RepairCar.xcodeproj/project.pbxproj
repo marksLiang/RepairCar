@@ -13,6 +13,9 @@
 		1C07E3CE1F911F0C00547DAE /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C07E3CD1F911F0C00547DAE /* Home.swift */; };
 		1C07E3D01F965D4700547DAE /* PostedDemand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C07E3CF1F965D4600547DAE /* PostedDemand.swift */; };
 		1C07E3D21F965DFA00547DAE /* PostedDemand.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C07E3D11F965DFA00547DAE /* PostedDemand.storyboard */; };
+		1C2CA57A1FADF8F80018989F /* MyShopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2CA5791FADF8F80018989F /* MyShopViewModel.swift */; };
+		1C2CA57C1FAE0D360018989F /* MyShopIntroduceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C2CA57B1FAE0D350018989F /* MyShopIntroduceView.xib */; };
+		1C2CA57E1FAE11140018989F /* MyShopIntroduceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2CA57D1FAE11140018989F /* MyShopIntroduceView.swift */; };
 		1C5B82F01F376FDF001A9584 /* ShopList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5B82EF1F376FDF001A9584 /* ShopList.swift */; };
 		1C5B82F21F377067001A9584 /* DemandList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5B82F11F377067001A9584 /* DemandList.swift */; };
 		1C5B82F41F38C078001A9584 /* DemandList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C5B82F31F38C078001A9584 /* DemandList.storyboard */; };
@@ -314,6 +317,9 @@
 		1C07E3CD1F911F0C00547DAE /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		1C07E3CF1F965D4600547DAE /* PostedDemand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostedDemand.swift; sourceTree = "<group>"; };
 		1C07E3D11F965DFA00547DAE /* PostedDemand.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PostedDemand.storyboard; sourceTree = "<group>"; };
+		1C2CA5791FADF8F80018989F /* MyShopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyShopViewModel.swift; sourceTree = "<group>"; };
+		1C2CA57B1FAE0D350018989F /* MyShopIntroduceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyShopIntroduceView.xib; sourceTree = "<group>"; };
+		1C2CA57D1FAE11140018989F /* MyShopIntroduceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyShopIntroduceView.swift; sourceTree = "<group>"; };
 		1C5B82EF1F376FDF001A9584 /* ShopList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopList.swift; sourceTree = "<group>"; };
 		1C5B82F11F377067001A9584 /* DemandList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemandList.swift; sourceTree = "<group>"; };
 		1C5B82F31F38C078001A9584 /* DemandList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DemandList.storyboard; sourceTree = "<group>"; };
@@ -1104,6 +1110,7 @@
 				5F3E31811F6392000018FE01 /* FeedbackViewModel.swift */,
 				5F92346A1FA9A9C700F1A040 /* MyReleseViewModel.swift */,
 				5F92346E1FA9D86500F1A040 /* MineViewModel.swift */,
+				1C2CA5791FADF8F80018989F /* MyShopViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1655,6 +1662,8 @@
 				5FAF82401FAB1955009994B2 /* MyShop.storyboard */,
 				5FAF82421FAB279B009994B2 /* MyShopCell.swift */,
 				5FAF82441FAB27D7009994B2 /* MyShopAdressCell.swift */,
+				1C2CA57B1FAE0D350018989F /* MyShopIntroduceView.xib */,
+				1C2CA57D1FAE11140018989F /* MyShopIntroduceView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2058,6 +2067,7 @@
 				5F62EFE21F62869300D8305B /* MySetting.storyboard in Resources */,
 				5F8441001F639F7F0005FED9 /* Disclaimer.storyboard in Resources */,
 				6F45EB571EF8F90C00562709 /* camera_image_capture_badge@2x.png in Resources */,
+				1C2CA57C1FAE0D360018989F /* MyShopIntroduceView.xib in Resources */,
 				6F4904A01F186DA200F74691 /* TemplatesSettings.bundle in Resources */,
 				5F0BF3221FA8609400089F74 /* DemandDetail.storyboard in Resources */,
 				2E596AB41DD23F720027E03C /* loading.gif in Resources */,
@@ -2236,6 +2246,7 @@
 				6F4905191F186EE800F74691 /* ForgotPasswordCell.swift in Sources */,
 				6FF51D411EBD7EC500021790 /* ZFChooseTimeCollectionViewCell.m in Sources */,
 				6F2588841F1E0C6D00137DF1 /* TagsFrame.m in Sources */,
+				1C2CA57A1FADF8F80018989F /* MyShopViewModel.swift in Sources */,
 				6F4905171F186EE800F74691 /* RegisterModel.swift in Sources */,
 				6F49053E1F18AB9800F74691 /* News.swift in Sources */,
 				6F4904D11F186E8800F74691 /* CreatedbBase.swift in Sources */,
@@ -2286,6 +2297,7 @@
 				1C5D90011F48856700F90380 /* CityListModel.swift in Sources */,
 				1C5D900D1F4DCC9E00F90380 /* AdvertisingWeb.swift in Sources */,
 				1C07E3CE1F911F0C00547DAE /* Home.swift in Sources */,
+				1C2CA57E1FAE11140018989F /* MyShopIntroduceView.swift in Sources */,
 				1C5D8FF51F4493CC00F90380 /* LYFButtonBar.swift in Sources */,
 				6F45EB551EF8F90C00562709 /* UIImage+Extend.m in Sources */,
 				6F4905131F186EE800F74691 /* ForgotPasswordController.swift in Sources */,

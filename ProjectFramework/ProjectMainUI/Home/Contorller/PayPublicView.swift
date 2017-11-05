@@ -72,6 +72,8 @@ class PayClass:UIViewController {
                 print(resultData?.Content as Any)
                 if resultData?.Content != nil {
                     self.AliplayFunc(OrderString: resultData?.Content as! String)
+                }else{
+                    CommonFunction.HUD(resultData!.Result, type: .error)
                 }
             }else{
                 CommonFunction.HUD(resultData!.Result, type: .error)                

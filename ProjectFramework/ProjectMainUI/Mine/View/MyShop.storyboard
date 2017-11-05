@@ -34,9 +34,9 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zD5-wf-P89">
-                                                    <rect key="frame" x="95" y="14.5" width="230" height="20"/>
+                                                    <rect key="frame" x="95" y="14.5" width="280" height="20"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="20" id="JTD-BW-DrX"/>
+                                                        <constraint firstAttribute="height" constant="20" id="JGn-no-QoB"/>
                                                     </constraints>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -54,11 +54,11 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="zD5-wf-P89" firstAttribute="centerY" secondItem="ewc-rv-4WZ" secondAttribute="centerY" id="8xs-Vo-yUw"/>
                                                 <constraint firstItem="ewc-rv-4WZ" firstAttribute="leading" secondItem="h3b-55-uEe" secondAttribute="leading" constant="15" id="HIh-mn-olu"/>
                                                 <constraint firstItem="zD5-wf-P89" firstAttribute="leading" secondItem="ewc-rv-4WZ" secondAttribute="trailing" constant="20" id="WwQ-Mf-3F6"/>
                                                 <constraint firstItem="ewc-rv-4WZ" firstAttribute="centerY" secondItem="h3b-55-uEe" secondAttribute="centerY" id="duA-ha-N9U"/>
-                                                <constraint firstAttribute="trailing" secondItem="zD5-wf-P89" secondAttribute="trailing" constant="50" id="uhx-TC-K64"/>
+                                                <constraint firstAttribute="trailing" secondItem="zD5-wf-P89" secondAttribute="trailing" id="uhx-TC-K64"/>
+                                                <constraint firstItem="zD5-wf-P89" firstAttribute="centerY" secondItem="ewc-rv-4WZ" secondAttribute="centerY" id="zGD-Er-E6A"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -83,7 +83,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请选择您的位置" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T0Q-RB-JV4">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请选择店铺位置" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T0Q-RB-JV4">
                                                     <rect key="frame" x="95" y="10" width="230" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="OU4-XM-yME"/>

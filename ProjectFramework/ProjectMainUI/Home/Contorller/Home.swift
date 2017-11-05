@@ -99,7 +99,7 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
     }()
     //轮播图
     fileprivate lazy var shuffling: SDCycleScrollView = {
-        let shuffling = SDCycleScrollView(frame:CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: 150),delegate:self ,placeholderImage:UIImage.init(named: ""))
+        let shuffling = SDCycleScrollView(frame:CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: 150),delegate:self ,placeholderImage:UIImage.init(named: "placeholder"))
         shuffling?.currentPageDotImage = UIImage.init(named: "pageControlCurrentDot")
         shuffling?.pageDotImage = UIImage.init(named: "pageControlDot")
         return shuffling!
@@ -173,11 +173,12 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
     }
     private func GetAdvertising() -> Void{
         self.imagesURLStrings.removeAll()
-        aViewModel.GetAdvList(CityName: CurrentCity, AdvType: 0) { (result) in
+        aViewModel.GetAdvList(CityName: "全国", AdvType: 0) { (result) in
             if result == true {
                 for i in 0..<self.aViewModel.ListData.count{
-                    self.imagesURLStrings.append(self.aViewModel.ListData[i].ImgPath)
+                    self.imagesURLStrings.append(HttpsUrlImage+self.aViewModel.ListData[i].ImgPath)
                 }
+                debugPrint("广告图片",self.imagesURLStrings.count)
                 self.GetHttp()
             }else{
                 CommonFunction.HUD("网络异常", type: .error)
