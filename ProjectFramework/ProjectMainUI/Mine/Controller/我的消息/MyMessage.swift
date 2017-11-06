@@ -40,7 +40,7 @@ class MyMessage: CustomTemplateViewController {
             self.footer.endRefreshing()
             if result == true {
                 self.numberOfSections = 1
-                self.numberOfRowsInSection = 10
+                self.numberOfRowsInSection = self.viewModel.ListData.count
                 self.RefreshRequest(isLoading: false, isHiddenFooter: true)
             }else{
                 self.RefreshRequest(isLoading: false, isHiddenFooter: true, isLoadError: true)
@@ -50,7 +50,7 @@ class MyMessage: CustomTemplateViewController {
     //MARK: tableViewDelegate
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! MyMessageCell
-        //cell.InitConfig(model)
+        cell.InitConfig(self.viewModel.ListData[indexPath.row])
         return cell
     }
     //MARK: initUI

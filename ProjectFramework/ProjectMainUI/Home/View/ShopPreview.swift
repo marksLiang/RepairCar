@@ -21,6 +21,7 @@ class ShopPreview: UIView ,UITableViewDelegate,UITableViewDataSource{
     fileprivate var headImage: UIImageView = {
         let headImage = UIImageView.init(frame: CGRect.init(x: 0, y: 50, width: CommonFunction.kScreenWidth - 100, height: 150))
         headImage.image = UIImage.init(named: "placeholder")
+        headImage.contentMode = .scaleAspectFill
         return headImage
     }()
     fileprivate var header: UIView = {
@@ -114,6 +115,9 @@ class ShopPreview: UIView ,UITableViewDelegate,UITableViewDataSource{
     }
     func setModel(_ model:RepairShopModel) -> Void {
         self._model = model
+        if (model.Images?.count)! > 0 {
+            self.headImage.ImageLoad(PostUrl: HttpsUrlImage+model.Images![0].ImgPath)
+        }
         self.tableview.reloadData()
     }
 }

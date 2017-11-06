@@ -28,7 +28,8 @@ class MyInfoModel:NSObject  {
     var  Token=""
     ///用户类型 1普通用户，2管理员(拥有城市后台管理)，3超级管理员都能管
     var UserType=1
-    
+    var ProvinceName=""
+    var cityName=""
 }
 
 

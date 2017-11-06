@@ -13,17 +13,18 @@ class Mine: CustomTemplateViewController {
     @IBOutlet weak var tableView: UITableView!
     /********************  属性  ********************/
     fileprivate let identifier   = "MineCell"
-    let setion0    = ["发布管理","我是店主","系统通知"]
+    let setion0    = ["店铺浏览","发布管理","我是店主","系统通知"]
     var setion1    = ["设置"]
     let setion2    = ["后台管理"]
     var titleArray = [[String]]()
     var isfirt     = true
+    var viewModel = MineViewModel()
     /*******************懒加载*********************/
     fileprivate lazy var headerView: MineHeaderView = {
         let headerView = Bundle.main.loadNibNamed("MineHeaderView", owner: self, options: nil)?.last as! MineHeaderView
         headerView.frame = CGRect.init(x: 0, y: 0, width: CommonFunction.kScreenWidth, height: 150)
         headerView.FuncCallbackValue {[weak self] (text) in
-            self?.login(index: 6)
+            self?.login(index: 7)
         }
         return headerView
     }()
@@ -59,17 +60,20 @@ class Mine: CustomTemplateViewController {
         }) {
             switch index {
                 case 0:
+                    debugPrint(Global_UserInfo.ProvinceName)
+                break;
+                case 1:
                     let vc = CommonFunction.ViewControllerWithStoryboardName("ReleseDemandManager", Identifier: "ReleseDemandManager") as! ReleseDemandManager
                     self.navigationController?.show(vc, sender: nil)
                 break
-                case 1:
+                case 2:
                     self.pushShop()
                 break
-                case 2:
+                case 3:
                     let vc = CommonFunction.ViewControllerWithStoryboardName("MyMessage", Identifier: "MyMessage") as! MyMessage
                     self.navigationController?.show(vc, sender: nil)
                 break
-                case 6:
+                case 7:
                 let vc = CommonFunction.ViewControllerWithStoryboardName("Myinfo", Identifier: "Myinfo") as! MyInfoViewController
                 self.navigationController?.show(vc, sender: nil)
                 break
@@ -80,7 +84,7 @@ class Mine: CustomTemplateViewController {
     }
     //MARK: 跳转至店铺
     private func pushShop()->Void{
-        MineViewModel.GetMaintenanceStatus { (result, type) in
+        viewModel.GetMaintenanceStatus { (result, type) in
             if result == true {
                 if type != 0 {
 //                    debugPrint(type!)
@@ -88,7 +92,10 @@ class Mine: CustomTemplateViewController {
                     vc.type = type!
                     self.navigationController?.show(vc, sender: self)
                 }else{
-                    
+                    let vc = CommonFunction.ViewControllerWithStoryboardName("MyShop", Identifier: "MyShop") as! MyShop
+                    vc.MaintenanceID = self.viewModel.model.MaintenanceID
+                    vc.isHaveShop = true
+                    self.navigationController?.show(vc, sender: nil)
                 }
             }else{
                 CommonFunction.HUD("请求失败", type: .error)
@@ -163,9 +170,11 @@ class Mine: CustomTemplateViewController {
                 
             })
             break
-//        case "我是店主":
-//
-//            break;
+        case "后台管理":
+            BackgroundViewModel().GetAuthorizationCityIsisProvince(city: Global_UserInfo.cityName, result: { (result) in
+                
+            })
+            break;
         case "设置":
             let vc = CommonFunction.ViewControllerWithStoryboardName("MySetting", Identifier: "MySetting") as! MySetting
             self.navigationController?.show(vc, sender: self)

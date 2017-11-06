@@ -43,6 +43,7 @@ class ShopDetail: CustomTemplateViewController {
     fileprivate let titleKey = ["店铺名称：","店面地址：","联系电话：","店铺面积："]
     fileprivate let imageArray = ["","ionicons","phone",""]
     fileprivate var titleValue = [String]()
+    fileprivate var imageList = [Any]()
     //MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,13 +56,37 @@ class ShopDetail: CustomTemplateViewController {
     }
     
     override func viewDidLayoutSubviews() {
+        shopImage.contentMode = .scaleAspectFill
+        shopImage.clipsToBounds = true
         if model?.Images?.count == 0 {
             shopName.text = "暂无图片"
         }else{
+            shopImage.isUserInteractionEnabled = true
+            let tap = UITapGestureRecognizer.init(target: self, action: #selector(ShopDetail.tap))
+            shopImage.addGestureRecognizer(tap)
             shopName.text = "1/\((model?.Images?.count)!)"
             shopImage.ImageLoad(PostUrl: HttpsUrlImage+(model?.Images![0].ImgPath)!)
+                self.imageList.removeAll()
+                var i = 0
+                for imageModel in (model?.Images)! {
+                    let imageView = UIImageView.init(frame: CGRect.init(x: 25, y: 10, width: self.view.frame.width - 50, height: 200))
+                    imageView.ImageLoad(PostUrl: HttpsUrlImage+imageModel.ImgPath)
+                    let pohtoView = JLPhoto.init()
+                    pohtoView.sourceImageView = imageView
+                    pohtoView.bigImgUrl = HttpsUrlImage+imageModel.ImgPath
+                    pohtoView.tag = i
+                    i = i + 1
+                    self.imageList.append(pohtoView)
+                }
         }
         
+    }
+    func tap() -> Void {
+        //查看图片
+        let photoBrowser = JLPhotoBrowser.init()
+        photoBrowser.photos = self.imageList
+        photoBrowser.currentIndex = Int32(0)
+        photoBrowser.show()
     }
     //MARK: getData
     private func getData() -> Void{

@@ -151,6 +151,7 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
     private func payFor() -> Void{
         CommonFunction.AlertController(self, title: "查看店铺详情", message: "需要支付，是否支付？", ok_name: "确定", cancel_name: "取消", OK_Callback: {
             let vc = PayClass.init(OrderType:1,delegate: self)
+            vc.model = self.currenModel
             vc.OtherID = self.currenModel!.MaintenanceID
             self.present(vc, animated: true, completion: {
                 self.hiddenPview()
@@ -261,10 +262,10 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! RepairShopCell
         cell.InitConfig(self.viewModel.ListData[indexPath.row])
-        if self.viewModel.ListData[indexPath.row].IsTop == true {
-//            cell.atTop()
-        }
         cell.distanceLabel.isHidden = true
+        if self.viewModel.ListData[indexPath.row].IsRecommend == true {
+            //cell.setHot()
+        }
         return cell
     }
     var isfirstClick = true

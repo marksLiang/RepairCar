@@ -12,6 +12,7 @@ class MyShopIntroduceView: UIView {
     @IBOutlet weak var shopLabel: UILabel!
     @IBOutlet weak var shopContent: UITextView!
     @IBOutlet weak var defultImage: UIImageView!
+    @IBOutlet weak var lable: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

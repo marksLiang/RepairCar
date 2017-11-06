@@ -22,4 +22,5 @@ class LoginMode: NSObject
     var UserType=1
     var CityName=""
     var CreateTime=""
+    var ProvinceName=""
 }

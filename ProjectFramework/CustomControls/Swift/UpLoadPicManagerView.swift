@@ -130,6 +130,7 @@ class UpLoadPicManagerView: UIView, UICollectionViewDelegate, UICollectionViewDa
             //如果当前选择的图片小鱼设定的图片总数
             self.ImgItem.append(self.DefaultImg)    //添加一张默认的 add 图片
         }
+        
         self.collectionView.reloadData()
     }
     
@@ -156,8 +157,10 @@ class UpLoadPicManagerView: UIView, UICollectionViewDelegate, UICollectionViewDa
             //如果当前选择的图片小鱼设定的图片总数
             self.ImgItem.append(self.DefaultImg)    //添加一张默认的 add 图片
         }
+        
         self.collectionView.reloadData()
-         
+        imageArray = self.ImgItem
+        self.callback()
     }
     
     func load(){
@@ -257,7 +260,7 @@ class UpLoadPicManagerView: UIView, UICollectionViewDelegate, UICollectionViewDa
     }
     //删除
     @objc fileprivate  func DeleteImg(_ sender: UIButton){
-     
+        
         ImgItem.remove(at: sender.tag)
         var defaultImg=false    //是否存在默认图片
         for item in ImgItem {
@@ -271,7 +274,7 @@ class UpLoadPicManagerView: UIView, UICollectionViewDelegate, UICollectionViewDa
         }
         self.isEditImage=true
         self.collectionView.reloadData()
-        
+        self.imageArray = self.ImgItem
         //删除一次回调一次
         if(self.myCallbackValue != nil){    //必包回调
             //如果不等于最大个数
@@ -406,6 +409,23 @@ class UpLoadPicManagerView: UIView, UICollectionViewDelegate, UICollectionViewDa
         }
         
     }
-    
+    func callback() -> Void {
+        if(self.myCallbackValue != nil){    //必包回调
+            //如果不等于最大个数
+            if self.ImgItem.count != SelectedImgMaxCount {
+                //那么返回减掉默认图片
+                self.imageArray.removeLast()
+                self.myCallbackValue!(self.imageArray)
+            }else{
+                //如果最后一张为默认的添加  那么返回减掉默认图片
+                if self.ImgItem.last == DefaultImg {
+                    self.imageArray.removeLast()
+                    self.myCallbackValue!(self.imageArray)
+                }else{//否则直接返回图片数组
+                    self.myCallbackValue!(self.imageArray)
+                }
+            }
+        }
+    }
     
 }

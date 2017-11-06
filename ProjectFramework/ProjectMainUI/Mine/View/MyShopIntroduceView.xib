@@ -12,7 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="2BC-Mz-EMT" customClass="MyShopIntroduceView" customModule="RepairCar" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="店铺简介" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WjJ-hY-anq">
@@ -26,20 +26,23 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jdu-qN-Lqh">
-                    <rect key="frame" x="15" y="41" width="345" height="73"/>
+                    <rect key="frame" x="15" y="41" width="345" height="123"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="123" id="9oK-Gb-3NI"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shopDefault" translatesAutoresizingMaskIntoConstraints="NO" id="HQY-LB-eBQ">
-                    <rect key="frame" x="20" y="160" width="80" height="80"/>
+                    <rect key="frame" x="20" y="210" width="80" height="80"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="80" id="OJg-gl-88b"/>
                         <constraint firstAttribute="width" constant="80" id="kKh-Sv-teq"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="营业执照" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i1x-hF-njY">
-                    <rect key="frame" x="15" y="134" width="60" height="21"/>
+                    <rect key="frame" x="15" y="184" width="60" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="DMW-Qo-tpI"/>
                         <constraint firstAttribute="height" constant="21" id="TE9-gp-Fry"/>
@@ -49,7 +52,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入内容" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nlR-fp-ZqR">
-                    <rect key="frame" x="16" y="42" width="139" height="21"/>
+                    <rect key="frame" x="16" y="43" width="139" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="GKQ-2g-kqg"/>
                         <constraint firstAttribute="width" constant="139" id="cxv-Ym-xZD"/>
@@ -62,10 +65,9 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="i1x-hF-njY" firstAttribute="leading" secondItem="2BC-Mz-EMT" secondAttribute="leading" constant="15" id="4ui-SX-RQV"/>
-                <constraint firstItem="nlR-fp-ZqR" firstAttribute="top" secondItem="WjJ-hY-anq" secondAttribute="bottom" constant="11" id="56t-Qn-YC0"/>
+                <constraint firstItem="nlR-fp-ZqR" firstAttribute="top" secondItem="WjJ-hY-anq" secondAttribute="bottom" constant="12" id="56t-Qn-YC0"/>
                 <constraint firstAttribute="trailing" secondItem="jdu-qN-Lqh" secondAttribute="trailing" constant="15" id="5WA-3J-oKb"/>
                 <constraint firstAttribute="bottom" secondItem="HQY-LB-eBQ" secondAttribute="bottom" constant="10" id="8yy-w8-rHA"/>
-                <constraint firstItem="i1x-hF-njY" firstAttribute="top" secondItem="jdu-qN-Lqh" secondAttribute="bottom" constant="20" id="9nN-2X-HsH"/>
                 <constraint firstItem="jdu-qN-Lqh" firstAttribute="top" secondItem="WjJ-hY-anq" secondAttribute="bottom" constant="10" id="FWF-5z-ul7"/>
                 <constraint firstItem="HQY-LB-eBQ" firstAttribute="leading" secondItem="2BC-Mz-EMT" secondAttribute="leading" constant="20" id="Sdm-36-2dT"/>
                 <constraint firstItem="WjJ-hY-anq" firstAttribute="top" secondItem="2BC-Mz-EMT" secondAttribute="top" constant="10" id="aDf-Id-dRQ"/>
@@ -77,6 +79,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="defultImage" destination="HQY-LB-eBQ" id="ktv-BZ-jpu"/>
+                <outlet property="lable" destination="i1x-hF-njY" id="pFh-SQ-Z4W"/>
                 <outlet property="shopContent" destination="jdu-qN-Lqh" id="uWh-BB-BUf"/>
                 <outlet property="shopLabel" destination="nlR-fp-ZqR" id="naR-Ee-dWx"/>
             </connections>

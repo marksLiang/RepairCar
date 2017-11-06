@@ -28,4 +28,9 @@ class MyMessageCell: UITableViewCell {
         leftImageView.layer.cornerRadius = 4
         leftImageView.clipsToBounds = true
     }
+    override func InitConfig(_ cell: Any) {
+        let model = cell as! MessageModel
+        messageContent.text = model.Msg
+        messageTime.text = model.CreateTime
+    }
 }

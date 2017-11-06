@@ -9,6 +9,7 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import SDWebImage
 
 class MyShop: CustomTemplateViewController {
     //提交&&保存
@@ -35,6 +36,7 @@ class MyShop: CustomTemplateViewController {
     }()
     /********************  属性  ********************/
     var isHaveShop = false      //是否有店铺  否就填数据  是就请求数据填充
+    var MaintenanceID = 0 //店铺ID
     fileprivate  var isEndRefresh = false  //是否结束刷新  刷新数据
     fileprivate let ketArray = ["店面名称","联系号码","店面面积","所属城市","维修类型"]
     fileprivate var viewModel = MyShopViewModel()
@@ -45,16 +47,60 @@ class MyShop: CustomTemplateViewController {
     fileprivate var currenAdress="" //当前店铺地址
     fileprivate var currenLocation:CLLocation!=nil//当前坐标
     fileprivate var currenImageList = [UIImage]()//当前图片数组
+    /********************  店铺存在时候的数据  ********************/
+    fileprivate var pohtoView:UpLoadPicManagerView!=nil
+    fileprivate var shopName = ""
+    fileprivate var phone = ""
+    fileprivate var area = ""
+    fileprivate var content = ""
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         if isHaveShop == true {
             self.title = "我的店铺"
-            
+            debugPrint("我的店铺ID===\(MaintenanceID)")
+            self.getData()
         }else{
             self.title = "申请店铺"
         }
         self.initUI()
+    }
+    //MARK: 获取数据
+    private func getData()->Void{
+        viewModel.GetMaintenanceInfoSingle(MaintenanceID: MaintenanceID) { (result) in
+            if result == true {
+                self.isEndRefresh = true // 结束刷新
+                self.initFootView()
+                self.setData()
+                self.RefreshRequest(isLoading: false, isHiddenFooter: true)
+            }else{
+                self.RefreshRequest(isLoading: false, isHiddenFooter: true, isLoadError: true)
+            }
+        }
+    }
+    //重新赋值数据
+    private func setData()->Void{
+        shopName = viewModel.model.TitleName
+        phone = viewModel.model.Phone
+        area = viewModel.model.Area
+        cityName = viewModel.model.CityName
+        currenType = viewModel.model.TypeNames
+        demanView.shopContent.text = viewModel.model.Introduce
+//        //地址
+        currenAdress = viewModel.model.Address
+        //百度坐标转火星坐标
+        let center = MapTool.transformFromBaidu(toGCJ: CLLocationCoordinate2D.init(latitude: viewModel.model.Lat, longitude: viewModel.model.Lng))
+        //火星坐标转高德坐标
+        let coor = MapTool.marsGS2WorldGS(center)
+        self.currenLocation = CLLocation.init(latitude: coor.latitude, longitude: coor.longitude)
+        demanView.defultImage.ImageLoad(PostUrl: HttpsUrlImage+viewModel.model.LicenseImgs![0].ImgPath)
+        var imageList = [String]()
+        for model in viewModel.model.Images! {
+            imageList.append(model.ImgPath)
+        }
+        pohtoView.SetImageUrl(imageList)
+        viewModel.isHave = true
+        viewModel.MaintenanceID = self.MaintenanceID
     }
     //MARK: tableViewDelegate
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -78,12 +124,17 @@ class MyShop: CustomTemplateViewController {
             cell.keyLable.text = ketArray[indexPath.row]
             switch indexPath.row {
             case 0:
+                if isHaveShop {
+                    cell.shopTextfield.isUserInteractionEnabled = false //不能随意修改店铺名
+                }
+                cell.shopTextfield.text = shopName
                 //绑定店名
                 cell.shopTextfield.rx.text.orEmpty
                     .bind(to: viewModel.shopName)
                     .addDisposableTo(disposeBag)
                 break;
             case 1:
+                cell.shopTextfield.text = phone
                 cell.shopTextfield.keyboardType = .numberPad
                 //绑定电话
                 cell.shopTextfield.rx.text.orEmpty
@@ -91,6 +142,7 @@ class MyShop: CustomTemplateViewController {
                     .addDisposableTo(disposeBag)
                 break;
             case 2:
+                cell.shopTextfield.text = area
                 //绑定面积
                 cell.shopTextfield.rx.text.orEmpty
                     .bind(to: viewModel.arae)
@@ -126,6 +178,7 @@ class MyShop: CustomTemplateViewController {
         if indexPath.row == ketArray.count  {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MyShopAdressCell", for: indexPath) as! MyShopAdressCell
             cell.accessoryType = .disclosureIndicator
+            cell.shopAdress.text = currenAdress
             return cell
         }
         return UITableViewCell()
@@ -169,9 +222,9 @@ class MyShop: CustomTemplateViewController {
             self.view.endEditing(true)
             let vc = MyMapView()
             vc.FuncCallbackValue(value: {[weak self](location,adress) in
-                let cell = self?.tableView.cellForRow(at: indexPath) as! CurrenAdressCell
+                let cell = self?.tableView.cellForRow(at: indexPath) as! MyShopAdressCell
                 self?.currenAdress = adress
-                cell.currenAdress.text = adress
+                cell.shopAdress.text = adress
                 self?.currenLocation = location
             })
             self.navigationController?.show(vc, sender: self)
@@ -201,24 +254,36 @@ class MyShop: CustomTemplateViewController {
         }
     }
     private func initFootView() -> Void{
-        let footView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: 650))
+        let footView = UIView.init()
+        if isHaveShop == true {
+            demanView.frame = CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: 180)//过审核不用显示营业执照
+            demanView.defultImage.isHidden = true
+            demanView.lable.isHidden = true
+            footView.frame = CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: 530)
+        }else{
+            footView.frame = CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: 650)
+            demanView.frame = CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: 300)
+        }
         self.tableView.tableFooterView = footView
-        demanView.frame = CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: 300)
         footView.addSubview(demanView)
-        
         let tap = UITapGestureRecognizer.init(target: self, action: #selector(MyShop.chooseImage))
         demanView.defultImage.addGestureRecognizer(tap)
         
-        let viw = UIView.init(frame: CGRect.init(x: 0, y: 308, width: self.view.frame.width, height:350))
+        let viw = UIView.init()
+        if isHaveShop == true {
+            viw.frame = CGRect.init(x: 0, y: 188, width: self.view.frame.width, height:350)
+        }else{
+            viw.frame = CGRect.init(x: 0, y: 308, width: self.view.frame.width, height:350)
+        }
         viw.backgroundColor = UIColor.white
         footView.addSubview(viw)
         
         let lable = UILabel.init(frame: CGRect.init(x: 15, y: 5, width: 100, height: 20))
-        lable.text = "请选择图片"
+        lable.text = "店铺图片"
         lable.font = UIFont.systemFont(ofSize: 13)
         viw.addSubview(lable)
         
-        let pohtoView = UpLoadPicManagerView.init(frame: CGRect.init(x: 0, y: 30, width: self.view.frame.width, height: 250), delegate: self, ShowRowsItem: 3, SelectedImgMaxCount: 4) {[weak self] (imageList) in
+        self.pohtoView = UpLoadPicManagerView.init(frame: CGRect.init(x: 0, y: 30, width: self.view.frame.width, height: 250), delegate: self, ShowRowsItem: 3, SelectedImgMaxCount: 4) {[weak self] (imageList) in
             self?.currenImageList = imageList
             debugPrint(imageList.count)
         }

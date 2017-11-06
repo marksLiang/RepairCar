@@ -125,9 +125,7 @@ class PayClass:UIViewController {
         }else if resultStatus == "6001" {
             paytype = payResultTepy.error
             print("用户中途取消")
-//            self.delegate?.navigationController?.popToRootViewController(animated: true)
-            // self.delegate?.navigationController.pop
-            CommonFunction.MessageNotification("您已取消支付", interval: 2, msgtype: .error)
+            CommonFunction.HUD("您已取消支付", type: .error)
         }else if resultStatus == "6002" {
             paytype = payResultTepy.error
             print("网络连接出错")

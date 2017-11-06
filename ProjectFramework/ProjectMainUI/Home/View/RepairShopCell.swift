@@ -50,6 +50,7 @@ class RepairShopCell: UITableViewCell {
     }
     override func InitConfig(_ cell: Any) {
         self.topButton.isHidden = true
+        self.distanceLabel.isHidden = false
         let model = cell as! RepairShopModel
         startView.setscore(CGFloat(model.StarRating))
         if (model.Images?.count)! > 0 {
@@ -102,5 +103,11 @@ class RepairShopCell: UITableViewCell {
         topLayoutConstrant.constant = 10
         topButton.isHidden = false
         distanceLabel.isHidden = true
+    }
+    func setHot() -> Void {
+        topLayoutConstrant.constant = 10
+        topButton.isHidden = false
+        topButton.backgroundColor = UIColor().TransferStringToColor("#E7262C")
+        topButton.setTitle("热门", for: .normal)
     }
 }

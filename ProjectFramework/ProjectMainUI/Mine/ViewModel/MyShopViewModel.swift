@@ -28,7 +28,10 @@ class MyShopViewModel: NSObject {
     // 保存数据信号回调
     var saveResult: Observable<ValidationResult>? = nil
     var delegate: UIViewController? = nil
-    var MaintenanceID = 0
+    var MaintenanceID=0
+    //店铺模型
+    var model = MaintenanceModel()
+    var isHave = false
     override init() {
         super.init()
         self.bindtoValue()
@@ -87,7 +90,7 @@ class MyShopViewModel: NSObject {
                     return Observable.just(ValidationResult.error)
                 }
                 //营业执照
-                if self.permit == UIImage.init(named: "shopDefault")! {
+                if self.permit == UIImage.init(named: "shopDefault")!  {
                     CommonFunction.HUD("请上传营业执照", type: .error)
                     return Observable.just(ValidationResult.error)
                 }
@@ -100,7 +103,7 @@ class MyShopViewModel: NSObject {
                 
             }).shareReplay(1)
     }
-    
+    //MARK: 上传店铺图片
     func upLoadImage() -> Void {
         var dataArray = [Data]()
         for image in currenImageList {
@@ -111,6 +114,7 @@ class MyShopViewModel: NSObject {
             if resultModel?.Success == true {
                 if resultModel?.Content != nil {
                     self.imageListString = resultModel?.Content as! [String]
+                    debugPrint(self.imageListString)
                     self.upLoadPermit()//上传营业执照
                 }
             }else{
@@ -124,10 +128,29 @@ class MyShopViewModel: NSObject {
             if resultModel?.Success == true {
                 if resultModel?.Content != nil {
                     self.permitString = resultModel?.Content as! [String]
-                    self.SetMaintenanceApplyFor()
+                    if self.isHave {
+                        self.SetUserMaintenanceEditSave()
+                    }else{
+                        self.SetMaintenanceApplyFor()
+                    }
                 }
             }else{
                 CommonFunction.HUD("上传图片失败", type: .error)
+            }
+        }
+    }
+    //MARK: 保存店铺数据
+    private func SetUserMaintenanceEditSave()->Void{
+        let coordinate = MapTool.bd09(fromGCJ02: self.currenLocation.coordinate)
+        let parameters = ["MaintenanceID":self.MaintenanceID,"TitleName":shopName.value,"Address":self.adress,"Phone":phoneNumber.value,"Area":arae.value,"CityName":city.value,"TypeNames":typeName.value,"Introduce":content.value,"UserID":Global_UserInfo.UserID,"Lng":coordinate.longitude,"Lat":coordinate.latitude,"PathImages":self.imageListString,"LicenseImages":self.permitString] as [String : Any]
+        CommonFunction.Global_Post(entity: nil, IsListData: false, url: HttpsUrl+"api/Maintenance/SetUserMaintenanceEditSave", isHUD: true, HUDMsg: "正在提交中...",isHUDMake: false, parameters: parameters as NSDictionary) { (resultData) in
+            
+            if(resultData?.Success==true){
+                if resultData?.Content != nil {
+                    CommonFunction.HUD("保存成功", type: .success)
+                }
+            }else{
+                CommonFunction.HUD("发布失败", type: .error)
             }
         }
     }
@@ -146,6 +169,21 @@ class MyShopViewModel: NSObject {
                 }
             }else{
                 CommonFunction.HUD("发布失败", type: .error)
+            }
+        }
+    }
+    //MARK: 获取店铺数据
+    func GetMaintenanceInfoSingle(MaintenanceID:Int,result:((_ result:Bool?) -> Void)?) {
+        CommonFunction.Global_Get(entity: MaintenanceModel(), IsListData: false, url: HttpsUrl+"api/Maintenance/GetMaintenanceInfoSingle", isHUD: false, isHUDMake: false, parameters: ["MaintenanceID":MaintenanceID] as NSDictionary) { (resultData) in
+            if resultData?.Success == true {
+                if resultData?.ret == 0 && resultData?.Content != nil {
+                    self.model = resultData?.Content as! MaintenanceModel
+                    result?(true)
+                    return
+                }
+                result?(false)
+            }else{
+                result?(false)
             }
         }
     }

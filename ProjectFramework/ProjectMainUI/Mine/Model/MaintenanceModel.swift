@@ -1,28 +1,29 @@
 //
-//  RepairShopModel.swift
+//  MaintenanceModel.swift
 //  RepairCar
 //
-//  Created by 住朋购友 on 2017/7/18.
+//  Created by 恋康科技 on 2017/11/6.
 //  Copyright © 2017年 HCY. All rights reserved.
 //
 
 import UIKit
 
-class RepairShopModel: NSObject {
+class MaintenanceModel: NSObject {
     var Images:[ImageList]?
+    var LicenseImgs:[ImageList]?
     var KM=""
     var MaintenanceID=0
     var TitleName=""
     var Address=""
     var Phone=""
     var Area=""
-    var Lng=0.0
-    var Lat=0.0
+    var Lng=0.00000000000000
+    var Lat=0.00000000000000
     var CityName=""
     var TypeNames=""
     var Introduce=""
     var StarRating=0.0
-    var UserID=0
+    var UserID=1
     var IsRecommend=false
     var IsTop=false
     var IsAudit=false
@@ -30,16 +31,9 @@ class RepairShopModel: NSObject {
     var ViewsFlase=0
     var IsDel=false
     var CreateTime=""
+    var ProvinceName=""
+    var TopTime=""
     override static func mj_objectClassInArray() -> [AnyHashable : Any]! {
-        return ["Images":ImageList.self]
+        return ["Images":ImageList.self,"LicenseImgs":ImageList.self]
     }
-}
-
-class ImageList: NSObject {
-    var ImgID=0
-    var ImgPath=""
-    var ImgDescribe=""
-    var ImgType=0
-    var OtherID=0
-    var CreateTime=""
 }
