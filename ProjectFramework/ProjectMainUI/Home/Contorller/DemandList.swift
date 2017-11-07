@@ -55,7 +55,7 @@ class DemandList: CustomTemplateViewController {
     }
     //MARK: getData
     private func GetHtpsData() -> Void{
-        viewModel.GetDemandInfoList(PageIndex: PageIndex, PageSize: PageSize, CityName: "南宁市") { (result, NoMore, NoData) in
+        viewModel.GetDemandInfoList(PageIndex: PageIndex, PageSize: PageSize, CityName: CurrentCity) { (result, NoMore, NoData) in
             self.header.endRefreshing()
             self.footer.endRefreshing()
             
@@ -84,9 +84,6 @@ class DemandList: CustomTemplateViewController {
     //MARK: tableviewdelegate
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! DemandListCell
-        if self.viewModel.ListData[indexPath.row].Images?.count == 0 {
-            cell.hiddenImage()
-        }
         cell.InitConfig(self.viewModel.ListData[indexPath.row])
         return cell
     }

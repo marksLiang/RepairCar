@@ -8,6 +8,17 @@
 
 import UIKit
 
+class BackgroundModel: NSObject {
+    var UserAddStatistics=0
+    var DemandReleaseStatistics=0
+    var TurnoverDayStatistics=0.00
+    var TurnoverMonthStatistics=0.00
+    var AddMaintenanceCount=0
+    var MaintenanceInfoList:[MaintenanceModel]?
+    override static func mj_objectClassInArray() -> [AnyHashable : Any]! {
+        return ["MaintenanceInfoList":MaintenanceModel.self]
+    }
+}
 class MaintenanceModel: NSObject {
     var Images:[ImageList]?
     var LicenseImgs:[ImageList]?

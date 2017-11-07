@@ -30,21 +30,21 @@ class DemandListCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    func hiddenImage() -> Void {
-        if isFirst == true {
-            isFirst = false
-            titleLeading.constant = 15
-            titleTraling.constant-=80
-            mainImage.isHidden = true
-        }
-    }
+
     override func InitConfig(_ cell: Any) {
         let model = cell as! DemandListModel
         if (model.Images?.count)! > 0 {
+            titleLeading.constant = 108
+            mainImage.isHidden = false
             mainImage.ImageLoad(PostUrl: HttpsUrlImage+model.Images![0].ImgPath)
+        }else{
+            titleLeading.constant = 15
+            mainImage.isHidden = true
         }
         titleLable.text = model.Title
         detail.text = model.Describe
         date.text = model.CreateTime
+        
+        
     }
 }

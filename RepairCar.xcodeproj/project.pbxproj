@@ -129,6 +129,8 @@
 		5F7780731FB0614F00E74351 /* BackgroundManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7780721FB0614F00E74351 /* BackgroundManagement.swift */; };
 		5F7780751FB0644E00E74351 /* BackgroundManagement.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F7780741FB0644E00E74351 /* BackgroundManagement.storyboard */; };
 		5F7780771FB064BA00E74351 /* BackgroundViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7780761FB064BA00E74351 /* BackgroundViewModel.swift */; };
+		5F7780791FB1A31A00E74351 /* ShopBackgroundCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7780781FB1A31A00E74351 /* ShopBackgroundCell.swift */; };
+		5F77807B1FB1BBBC00E74351 /* AuditShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F77807A1FB1BBBC00E74351 /* AuditShop.swift */; };
 		5F78464E1FA1883500591803 /* LYFMKPinAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F78464D1FA1883500591803 /* LYFMKPinAnnotationView.swift */; };
 		5F8440FE1F639F780005FED9 /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F8440FD1F639F780005FED9 /* About.storyboard */; };
 		5F8441001F639F7F0005FED9 /* Disclaimer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F8440FF1F639F7F0005FED9 /* Disclaimer.storyboard */; };
@@ -482,6 +484,8 @@
 		5F7780721FB0614F00E74351 /* BackgroundManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundManagement.swift; sourceTree = "<group>"; };
 		5F7780741FB0644E00E74351 /* BackgroundManagement.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BackgroundManagement.storyboard; sourceTree = "<group>"; };
 		5F7780761FB064BA00E74351 /* BackgroundViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundViewModel.swift; sourceTree = "<group>"; };
+		5F7780781FB1A31A00E74351 /* ShopBackgroundCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopBackgroundCell.swift; sourceTree = "<group>"; };
+		5F77807A1FB1BBBC00E74351 /* AuditShop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditShop.swift; sourceTree = "<group>"; };
 		5F78464D1FA1883500591803 /* LYFMKPinAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LYFMKPinAnnotationView.swift; sourceTree = "<group>"; };
 		5F8440FD1F639F780005FED9 /* About.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = About.storyboard; sourceTree = "<group>"; };
 		5F8440FF1F639F7F0005FED9 /* Disclaimer.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Disclaimer.storyboard; sourceTree = "<group>"; };
@@ -1150,6 +1154,7 @@
 			isa = PBXGroup;
 			children = (
 				5F7780721FB0614F00E74351 /* BackgroundManagement.swift */,
+				5F77807A1FB1BBBC00E74351 /* AuditShop.swift */,
 			);
 			path = "后台管理";
 			sourceTree = "<group>";
@@ -1684,6 +1689,7 @@
 				1C2CA57B1FAE0D350018989F /* MyShopIntroduceView.xib */,
 				1C2CA57D1FAE11140018989F /* MyShopIntroduceView.swift */,
 				5F7780741FB0644E00E74351 /* BackgroundManagement.storyboard */,
+				5F7780781FB1A31A00E74351 /* ShopBackgroundCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2319,6 +2325,7 @@
 				5FAF82451FAB27D7009994B2 /* MyShopAdressCell.swift in Sources */,
 				1C5D90011F48856700F90380 /* CityListModel.swift in Sources */,
 				1C5D900D1F4DCC9E00F90380 /* AdvertisingWeb.swift in Sources */,
+				5F7780791FB1A31A00E74351 /* ShopBackgroundCell.swift in Sources */,
 				1C07E3CE1F911F0C00547DAE /* Home.swift in Sources */,
 				1C2CA57E1FAE11140018989F /* MyShopIntroduceView.swift in Sources */,
 				1C5D8FF51F4493CC00F90380 /* LYFButtonBar.swift in Sources */,
@@ -2397,6 +2404,7 @@
 				6F50687D1F1C474700E8EC1B /* SDCollectionViewCell.m in Sources */,
 				6F45EB541EF8F90C00562709 /* ALAsset+Associate.m in Sources */,
 				2E12CB0B1E6F1E6F009527BA /* PYSearchSuggestionViewController.m in Sources */,
+				5F77807B1FB1BBBC00E74351 /* AuditShop.swift in Sources */,
 				6F4905161F186EE800F74691 /* LoginModel.swift in Sources */,
 				6F45EB641EF8F90C00562709 /* JLBadgeView.m in Sources */,
 				5F92346B1FA9A9C700F1A040 /* MyReleseViewModel.swift in Sources */,

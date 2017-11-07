@@ -106,6 +106,7 @@ class PostedDemandViewModel: NSObject {
         }
     }
     private func PostDemand()->Void{
+        debugPrint(self.imageListString)
         let coordinate = MapTool.bd09(fromGCJ02: self.currenLocation.coordinate)
         let parameters = ["Title":titlename.value,"Contact":username.value,"Phone":phoneNumber.value,"TypeNames":typeName.value,"Describe":content.value,"IsUrgent":isUrgency,"UserID":Global_UserInfo.UserID,"Lng":coordinate.longitude,"Lat":coordinate.latitude,"PathImages":self.imageListString,"CityName":CurrentCity] as [String : Any]
         CommonFunction.Global_Post(entity: nil, IsListData: false, url: HttpsUrl+"api/System/SetDemandInfo", isHUD: true, HUDMsg: "正在提交中...",isHUDMake: false, parameters: parameters as NSDictionary) { (resultData) in

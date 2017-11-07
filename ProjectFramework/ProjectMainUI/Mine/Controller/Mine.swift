@@ -172,7 +172,9 @@ class Mine: CustomTemplateViewController {
             break
         case "后台管理":
             BackgroundViewModel().GetAuthorizationCityIsisProvince(city: Global_UserInfo.cityName, result: { (result) in
-                
+                let vc = CommonFunction.ViewControllerWithStoryboardName("BackgroundManagement", Identifier: "BackgroundManagement") as! BackgroundManagement
+                vc.isProvinceSelece = result!
+                self.navigationController?.show(vc, sender: self)
             })
             break;
         case "设置":
