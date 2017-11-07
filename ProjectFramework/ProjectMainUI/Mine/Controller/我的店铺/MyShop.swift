@@ -36,6 +36,7 @@ class MyShop: CustomTemplateViewController {
     }()
     /********************  属性  ********************/
     var isHaveShop = false      //是否有店铺  否就填数据  是就请求数据填充
+    var isBohui = false
     var MaintenanceID = 0 //店铺ID
     fileprivate  var isEndRefresh = false  //是否结束刷新  刷新数据
     fileprivate let ketArray = ["店面名称","联系号码","店面面积","所属城市","维修类型"]
@@ -126,6 +127,9 @@ class MyShop: CustomTemplateViewController {
             case 0:
                 if isHaveShop {
                     cell.shopTextfield.isUserInteractionEnabled = false //不能随意修改店铺名
+                }
+                if isBohui {
+                    cell.shopTextfield.isUserInteractionEnabled = true //驳回的店铺可以修改店名
                 }
                 cell.shopTextfield.text = shopName
                 //绑定店名

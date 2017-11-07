@@ -34,7 +34,7 @@ class MyShopReminder: UIViewController {
     }()
     var type = 0
     fileprivate let imageArray = ["shopDeleta","notapply","auditing"]
-    fileprivate let textArray = ["您的店铺未审核通过,请联系管理员！","您暂未申请店铺！","您的店铺正在审核...请耐心等待"]
+    fileprivate let textArray = ["您的店铺未审核通过,请重新提交！","您暂未申请店铺！","您的店铺正在审核...请耐心等待"]
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "我的店铺"
@@ -44,9 +44,7 @@ class MyShopReminder: UIViewController {
             imageView.image = UIImage.init(named: imageArray[type-1])
             lable.text = textArray[type-1]
         }
-        if type == 2 {
-            self.view.addSubview(applyForBtn)
-        }
+        self.view.addSubview(applyForBtn)
         self.view.addSubview(imageView)
         self.view.addSubview(lable)
     }
