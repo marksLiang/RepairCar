@@ -122,7 +122,7 @@ class MyShopViewModel: NSObject {
             }
         }
     }
-    private func upLoadPermit() -> Void{
+    func upLoadPermit() -> Void{
         let data = UIImageJPEGRepresentation(permit, 0.9)!
         MyinfoViewModel().SetImageUpload(datas: [data]) { (resultModel) in
             if resultModel?.Success == true {
@@ -156,7 +156,14 @@ class MyShopViewModel: NSObject {
     }
     //MARK: 提交数据
     private func SetMaintenanceApplyFor() -> Void{
-        let coordinate = MapTool.bd09(fromGCJ02: self.currenLocation.coordinate)
+        var coordinate=self.currenLocation.coordinate
+        if model.Address == "" {
+            coordinate = MapTool.bd09(fromGCJ02: self.currenLocation.coordinate)
+        }else{
+            if self.adress != model.Address {
+               coordinate = MapTool.bd09(fromGCJ02: self.currenLocation.coordinate)
+            }
+        }
         let parameters = ["MaintenanceID":self.MaintenanceID,"TitleName":shopName.value,"Address":self.adress,"Phone":phoneNumber.value,"Area":arae.value,"CityName":city.value,"TypeNames":typeName.value,"Introduce":content.value,"UserID":Global_UserInfo.UserID,"Lng":coordinate.longitude,"Lat":coordinate.latitude,"PathImages":self.imageListString,"LicenseImages":self.permitString] as [String : Any]
         CommonFunction.Global_Post(entity: nil, IsListData: false, url: HttpsUrl+"api/Maintenance/SetMaintenanceApplyFor", isHUD: true, HUDMsg: "正在提交中...",isHUDMake: false, parameters: parameters as NSDictionary) { (resultData) in
             

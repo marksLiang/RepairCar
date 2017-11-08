@@ -64,6 +64,9 @@ class MyShop: CustomTemplateViewController {
             self.getData()
         }else{
             self.title = "申请店铺"
+            if isBohui {
+                self.getData()
+            }
         }
         self.initUI()
     }
@@ -101,17 +104,19 @@ class MyShop: CustomTemplateViewController {
             imageList.append(model.ImgPath)
         }
         pohtoView.SetImageUrl(imageList)
-        viewModel.isHave = true
+        if isBohui == false {
+            viewModel.isHave = true
+        }
         viewModel.MaintenanceID = self.MaintenanceID
         viewModel.permitString = [viewModel.model.LicenseImgs![0].ImgPath]
         viewModel.imageListString = imageList
     }
     //MARK: tableViewDelegate
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return isHaveShop ? (isEndRefresh ? 1 : 0) : 1
+        return isHaveShop || isBohui ? (isEndRefresh ? 1 : 0) : 1
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return isHaveShop ? (isEndRefresh ? ketArray.count + 2 : 0) : ketArray.count + 2
+        return isHaveShop || isBohui ? (isEndRefresh ? ketArray.count + 2 : 0) : ketArray.count + 2
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row < ketArray.count {
@@ -134,14 +139,18 @@ class MyShop: CustomTemplateViewController {
                 if isBohui {
                     cell.shopTextfield.isUserInteractionEnabled = true //驳回的店铺可以修改店名
                 }
-                cell.shopTextfield.text = shopName
+                if isHaveShop || isBohui {
+                    cell.shopTextfield.text = shopName
+                }
                 //绑定店名
                 cell.shopTextfield.rx.text.orEmpty
                     .bind(to: viewModel.shopName)
                     .addDisposableTo(disposeBag)
                 break;
             case 1:
-                cell.shopTextfield.text = phone
+                if isHaveShop || isBohui {
+                    cell.shopTextfield.text = phone
+                }
                 cell.shopTextfield.keyboardType = .numberPad
                 //绑定电话
                 cell.shopTextfield.rx.text.orEmpty
@@ -149,13 +158,16 @@ class MyShop: CustomTemplateViewController {
                     .addDisposableTo(disposeBag)
                 break;
             case 2:
-                cell.shopTextfield.text = area
+                if isHaveShop || isBohui {
+                    cell.shopTextfield.text = area
+                }
                 //绑定面积
                 cell.shopTextfield.rx.text.orEmpty
                     .bind(to: viewModel.arae)
                     .addDisposableTo(disposeBag)
                 break;
             case 3:
+                
                 cell.shopTextfield.placeholder = "请选择"
                 cell.accessoryType = .disclosureIndicator
                 cell.shopTextfield.text = cityName
@@ -255,7 +267,7 @@ class MyShop: CustomTemplateViewController {
         self.header.isHidden = true
         
         //还不是店铺的情况
-        if isHaveShop == false {
+        if isHaveShop == false && isBohui == false {
             self.initFootView()
             self.RefreshRequest(isLoading: false, isHiddenFooter: true)
         }
@@ -329,11 +341,8 @@ class MyShop: CustomTemplateViewController {
             case   .ok: //处理成功的业务
                 debugPrint("OK")
                 self?.viewModel.delegate = self
-                if (self?.edingCount)! > 1 {
-                    self?.viewModel.upLoadImage()
-                }else{
-                    self?.viewModel.SetUserMaintenanceEditSave()
-                }
+                self?.viewModel.upLoadImage()
+                
                 break
             case   .empty:
                 

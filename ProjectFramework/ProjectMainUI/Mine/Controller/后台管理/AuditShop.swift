@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 class AuditShop: CustomTemplateViewController {
     fileprivate lazy var demanView: MyShopIntroduceView = {
@@ -16,9 +18,10 @@ class AuditShop: CustomTemplateViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var MaintenanceID = 0 //店铺ID
+    fileprivate let disposeBag   = DisposeBag()//处理包通道
     fileprivate var isEndRefresh = false  //是否结束刷新  刷新数据
     fileprivate let ketArray = ["店面名称","联系号码","店面面积","所属城市","维修类型"]
-    fileprivate var viewModel = MyShopViewModel()
+    fileprivate var viewModel = AuditShopViewMdeol()
     fileprivate var cityName = ""
     fileprivate var currenType = ""
     fileprivate var currenTypeArray = Array<String>()//选择的维修类型
@@ -66,16 +69,13 @@ class AuditShop: CustomTemplateViewController {
         //火星坐标转高德坐标
         let coor = MapTool.marsGS2WorldGS(center)
         self.currenLocation = CLLocation.init(latitude: coor.latitude, longitude: coor.longitude)
-//        demanView.defultImage.ImageLoad(PostUrl: HttpsUrlImage+viewModel.model.LicenseImgs![0].ImgPath)
-//        var imageList = [String]()
-//        for model in viewModel.model.Images! {
-//            imageList.append(model.ImgPath)
-//        }
-//        pohtoView.SetImageUrl(imageList)
-//        viewModel.isHave = true
-//        viewModel.MaintenanceID = self.MaintenanceID
-//        viewModel.permitString = [viewModel.model.LicenseImgs![0].ImgPath]
-//        viewModel.imageListString = imageList
+        demanView.defultImage.ImageLoad(PostUrl: HttpsUrlImage+viewModel.model.LicenseImgs![0].ImgPath)
+        var imageList = [String]()
+        for model in viewModel.model.Images! {
+            imageList.append(model.ImgPath)
+        }
+        viewModel.imageString = imageList
+        pohtoView.SetImageUrl(imageList)
     }
     //MARK: tableViewDelegate
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -138,17 +138,24 @@ class AuditShop: CustomTemplateViewController {
         return UITableViewCell()
     }
     private func initUI()->Void{
-        let button = UIButton.init(frame: CGRect.init(x: 0, y: CommonFunction.kScreenHeight-50, width:  CommonFunction.kScreenWidth, height: 50))
-        button.backgroundColor = UIColor.red.withAlphaComponent(0.7)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        button.setTitle("驳回", for: .normal)
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.addTarget(self, action: #selector(AuditShop.rejectEvent), for: .touchUpInside)
-        self.view.addSubview(button)
+        for i in 0..<2 {
+            let button = UIButton.init(frame: CGRect.init(x: CGFloat(i)*CommonFunction.kScreenWidth/2, y: CommonFunction.kScreenHeight-50, width:  CommonFunction.kScreenWidth/2, height: 50))
+            button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+            button.tag = i
+            if i == 0 {
+                button.setTitle("通过", for: .normal)
+                button.backgroundColor = CommonFunction.SystemColor().withAlphaComponent(0.7)
+            }else{
+                button.setTitle("驳回", for: .normal)
+                button.backgroundColor = UIColor.red.withAlphaComponent(0.7)
+            }
+            button.setTitleColor(UIColor.white, for: .normal)
+            button.addTarget(self, action: #selector(AuditShop.rejectEvent(button:)), for: .touchUpInside)
+            self.view.addSubview(button)
+        }
+        
         
         self.InitCongif(tableView)
-        tableView.register(UINib(nibName: "MyShopCell", bundle: nil), forCellReuseIdentifier: "MyShopCell")
-        tableView.register(UINib(nibName: "MyShopAdressCell", bundle: nil), forCellReuseIdentifier: "MyShopAdressCell")
         self.tableView.frame = CGRect.init(x: 0, y: CommonFunction.NavigationControllerHeight, width: CommonFunction.kScreenWidth, height: CommonFunction.kScreenHeight-CommonFunction.NavigationControllerHeight-50)
         self.tableView.backgroundColor = UIColor().TransferStringToColor("#EEEEEE")
         self.header.isHidden = true
@@ -160,7 +167,7 @@ class AuditShop: CustomTemplateViewController {
         demanView.frame = CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: 300)
         self.tableView.tableFooterView = footView
         footView.addSubview(demanView)
-        let tap = UITapGestureRecognizer.init(target: self, action: #selector(MyShop.chooseImage))
+        let tap = UITapGestureRecognizer.init(target: self, action: #selector(AuditShop.tapClick))
         demanView.defultImage.addGestureRecognizer(tap)
         
         let viw = UIView.init()
@@ -179,8 +186,36 @@ class AuditShop: CustomTemplateViewController {
         }
         viw.addSubview(pohtoView)
         
+        //需求描述绑定
+        let IsValid: Observable = demanView.shopContent.rx.text.orEmpty
+            .map { text in text.characters.count > 0 }
+        IsValid
+            .bind(to: demanView.shopLabel.rx.isHidden)
+            .disposed(by: disposeBag)
     }
-    func rejectEvent() -> Void {
-        debugPrint("驳回")
+    func rejectEvent(button:UIButton) -> Void {
+        if button.tag == 0 {
+            viewModel.SetAdminMaintenanceEditSave(IsAudit: true, IsReject: false, RejectMsg: "", result: { (result) in
+                if result == true {
+                    CommonFunction.AlertController(self, title: "已通过审核", message: "返回上一层", ok_name: "确定", cancel_name: nil, OK_Callback: {
+                        self.navigationController?.popViewController(animated: true)
+                    }, Cancel_Callback: nil)
+                }
+            })
+        }else{
+            let vc = CommonFunction.ViewControllerWithStoryboardName("RejectInfo", Identifier: "RejectInfo") as! RejectInfo
+            vc.FuncCallbackValue(value: {[weak self] (text) in
+                self?.viewModel.SetAdminMaintenanceEditSave(IsAudit: false, IsReject: true, RejectMsg: text, result: { (reult) in
+                    CommonFunction.HUD("该店铺审核已驳回", type: .success)
+                    self?.navigationController?.popViewController(animated: true)
+                })
+            })
+            self.navigationController?.show(vc, sender: self)
+        }
+    }
+    func tapClick(button:UIButton) -> Void {
+        let vc = ShowImageViewController()
+        vc.image=demanView.defultImage.image!
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

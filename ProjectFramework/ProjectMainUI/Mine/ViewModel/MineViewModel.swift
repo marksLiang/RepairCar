@@ -11,6 +11,7 @@ import Foundation
 class MineViewModel {
     //MARK: 实时获取用户信息
     var model = MaintenanceModel()
+    var resultString = ""
    class func GetUserInfo(result:((_ result:Bool?,_ UserType:Int?) -> Void)?)  {
         CommonFunction.Global_Get(entity: LoginMode(), IsListData: false, url: HttpsUrl+"api/My/GetUserInfo", isHUD: false, isHUDMake: false, parameters: ["UserID":Global_UserInfo.UserID] as NSDictionary) { (resultModel) in
             if resultModel?.Success == true {
@@ -48,7 +49,11 @@ class MineViewModel {
                 }
                 //被驳回
                 if resultModel?.ret == 2 {
-                    result?(true,3)
+                    debugPrint(resultModel?.Result ?? "")
+                    self.resultString = resultModel?.Result ?? ""
+                    let model = MaintenanceModel.mj_object(withKeyValues: resultModel?.Content)
+                    self.model = model!
+                    result?(true,4)
                     return
                 }
                 if resultModel?.ret == 0 && resultModel?.Content != nil {

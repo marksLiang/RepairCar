@@ -90,6 +90,10 @@ class Mine: CustomTemplateViewController {
 //                    debugPrint(type!)
                     let vc = MyShopReminder()
                     vc.type = type!
+                    if type == 4 {
+                        vc.resultString = self.viewModel.resultString
+                        vc.MaintenanceID = self.viewModel.model.MaintenanceID
+                    }
                     self.navigationController?.show(vc, sender: self)
                 }else{
                     let vc = CommonFunction.ViewControllerWithStoryboardName("MyShop", Identifier: "MyShop") as! MyShop

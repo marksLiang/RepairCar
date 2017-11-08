@@ -13,6 +13,8 @@
 		1C07E3CE1F911F0C00547DAE /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C07E3CD1F911F0C00547DAE /* Home.swift */; };
 		1C07E3D01F965D4700547DAE /* PostedDemand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C07E3CF1F965D4600547DAE /* PostedDemand.swift */; };
 		1C07E3D21F965DFA00547DAE /* PostedDemand.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C07E3D11F965DFA00547DAE /* PostedDemand.storyboard */; };
+		1C15BB9D1FB36BFB00300BC7 /* ShopBrowse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C15BB9C1FB36BFB00300BC7 /* ShopBrowse.swift */; };
+		1C15BB9F1FB36C2B00300BC7 /* ShopBrowse.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C15BB9E1FB36C2B00300BC7 /* ShopBrowse.storyboard */; };
 		1C2CA57A1FADF8F80018989F /* MyShopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2CA5791FADF8F80018989F /* MyShopViewModel.swift */; };
 		1C2CA57C1FAE0D360018989F /* MyShopIntroduceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C2CA57B1FAE0D350018989F /* MyShopIntroduceView.xib */; };
 		1C2CA57E1FAE11140018989F /* MyShopIntroduceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2CA57D1FAE11140018989F /* MyShopIntroduceView.swift */; };
@@ -20,8 +22,9 @@
 		1C2CA5821FB1F3C70018989F /* BackgroudCityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2CA5811FB1F3C70018989F /* BackgroudCityModel.swift */; };
 		1C2CA5841FB1F4740018989F /* BackgroudCityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2CA5831FB1F4740018989F /* BackgroudCityViewModel.swift */; };
 		1C2CA5861FB1FE4B0018989F /* AuditShop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C2CA5851FB1FE4A0018989F /* AuditShop.storyboard */; };
-		1C2CA5881FB200030018989F /* ShopImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2CA5871FB200030018989F /* ShopImageCell.swift */; };
-		1C2CA58A1FB211480018989F /* ShopInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2CA5891FB211480018989F /* ShopInfoCell.swift */; };
+		1C2CA58C1FB3449D0018989F /* AuditShopViewMdeol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2CA58B1FB3449D0018989F /* AuditShopViewMdeol.swift */; };
+		1C2CA58E1FB356FD0018989F /* RejectInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2CA58D1FB356FD0018989F /* RejectInfo.swift */; };
+		1C2CA5901FB357160018989F /* RejectInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C2CA58F1FB357160018989F /* RejectInfo.storyboard */; };
 		1C5B82F01F376FDF001A9584 /* ShopList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5B82EF1F376FDF001A9584 /* ShopList.swift */; };
 		1C5B82F21F377067001A9584 /* DemandList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5B82F11F377067001A9584 /* DemandList.swift */; };
 		1C5B82F41F38C078001A9584 /* DemandList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C5B82F31F38C078001A9584 /* DemandList.storyboard */; };
@@ -329,6 +332,8 @@
 		1C07E3CD1F911F0C00547DAE /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		1C07E3CF1F965D4600547DAE /* PostedDemand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostedDemand.swift; sourceTree = "<group>"; };
 		1C07E3D11F965DFA00547DAE /* PostedDemand.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PostedDemand.storyboard; sourceTree = "<group>"; };
+		1C15BB9C1FB36BFB00300BC7 /* ShopBrowse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopBrowse.swift; sourceTree = "<group>"; };
+		1C15BB9E1FB36C2B00300BC7 /* ShopBrowse.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShopBrowse.storyboard; sourceTree = "<group>"; };
 		1C2CA5791FADF8F80018989F /* MyShopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyShopViewModel.swift; sourceTree = "<group>"; };
 		1C2CA57B1FAE0D350018989F /* MyShopIntroduceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyShopIntroduceView.xib; sourceTree = "<group>"; };
 		1C2CA57D1FAE11140018989F /* MyShopIntroduceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyShopIntroduceView.swift; sourceTree = "<group>"; };
@@ -336,8 +341,9 @@
 		1C2CA5811FB1F3C70018989F /* BackgroudCityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroudCityModel.swift; sourceTree = "<group>"; };
 		1C2CA5831FB1F4740018989F /* BackgroudCityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroudCityViewModel.swift; sourceTree = "<group>"; };
 		1C2CA5851FB1FE4A0018989F /* AuditShop.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AuditShop.storyboard; sourceTree = "<group>"; };
-		1C2CA5871FB200030018989F /* ShopImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopImageCell.swift; sourceTree = "<group>"; };
-		1C2CA5891FB211480018989F /* ShopInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopInfoCell.swift; sourceTree = "<group>"; };
+		1C2CA58B1FB3449D0018989F /* AuditShopViewMdeol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditShopViewMdeol.swift; sourceTree = "<group>"; };
+		1C2CA58D1FB356FD0018989F /* RejectInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RejectInfo.swift; sourceTree = "<group>"; };
+		1C2CA58F1FB357160018989F /* RejectInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RejectInfo.storyboard; sourceTree = "<group>"; };
 		1C5B82EF1F376FDF001A9584 /* ShopList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopList.swift; sourceTree = "<group>"; };
 		1C5B82F11F377067001A9584 /* DemandList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemandList.swift; sourceTree = "<group>"; };
 		1C5B82F31F38C078001A9584 /* DemandList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DemandList.storyboard; sourceTree = "<group>"; };
@@ -850,6 +856,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		1C15BB9B1FB367C000300BC7 /* 店铺浏览 */ = {
+			isa = PBXGroup;
+			children = (
+				1C15BB9C1FB36BFB00300BC7 /* ShopBrowse.swift */,
+			);
+			path = "店铺浏览";
+			sourceTree = "<group>";
+		};
 		1C5D8F901F442EDB00F90380 /* 发布管理 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1137,6 +1151,7 @@
 				1C2CA5791FADF8F80018989F /* MyShopViewModel.swift */,
 				5F7780761FB064BA00E74351 /* BackgroundViewModel.swift */,
 				1C2CA5831FB1F4740018989F /* BackgroudCityViewModel.swift */,
+				1C2CA58B1FB3449D0018989F /* AuditShopViewMdeol.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1170,6 +1185,7 @@
 				5F7780721FB0614F00E74351 /* BackgroundManagement.swift */,
 				1C2CA57F1FB1F0260018989F /* BackgroudCityList.swift */,
 				5F77807A1FB1BBBC00E74351 /* AuditShop.swift */,
+				1C2CA58D1FB356FD0018989F /* RejectInfo.swift */,
 			);
 			path = "后台管理";
 			sourceTree = "<group>";
@@ -1671,6 +1687,7 @@
 			isa = PBXGroup;
 			children = (
 				6F4905451F18AD0100F74691 /* Mine.swift */,
+				1C15BB9B1FB367C000300BC7 /* 店铺浏览 */,
 				5F7780711FB0607D00E74351 /* 后台管理 */,
 				5FAF823B1FAACBCA009994B2 /* 我的店铺 */,
 				5F62EFDE1F6284DE00D8305B /* 设置 */,
@@ -1706,8 +1723,8 @@
 				5F7780741FB0644E00E74351 /* BackgroundManagement.storyboard */,
 				5F7780781FB1A31A00E74351 /* ShopBackgroundCell.swift */,
 				1C2CA5851FB1FE4A0018989F /* AuditShop.storyboard */,
-				1C2CA5871FB200030018989F /* ShopImageCell.swift */,
-				1C2CA5891FB211480018989F /* ShopInfoCell.swift */,
+				1C2CA58F1FB357160018989F /* RejectInfo.storyboard */,
+				1C15BB9E1FB36C2B00300BC7 /* ShopBrowse.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2089,6 +2106,7 @@
 				6F4905421F18ABB800F74691 /* Home.storyboard in Resources */,
 				2E12CB131E6F1E6F009527BA /* TZImagePickerController.bundle in Resources */,
 				6F45EB5F1EF8F90C00562709 /* navigationbar_back_withtext@2x.png in Resources */,
+				1C15BB9F1FB36C2B00300BC7 /* ShopBrowse.storyboard in Resources */,
 				6FDB2E041EC4612E0092FAFC /* AlipaySDK.bundle in Resources */,
 				1C2CA5861FB1FE4B0018989F /* AuditShop.storyboard in Resources */,
 				1C5D90151F50854400F90380 /* ShopPreviewCell.xib in Resources */,
@@ -2120,6 +2138,7 @@
 				1C5D901B1F5307E200F90380 /* ShopDetail.storyboard in Resources */,
 				6F45EB581EF8F90C00562709 /* camera_image_capture_badge@3x.png in Resources */,
 				6FF51D451EBD7EC500021790 /* ZFTimerCollectionReusableView.xib in Resources */,
+				1C2CA5901FB357160018989F /* RejectInfo.storyboard in Resources */,
 				6F45EB5C1EF8F90C00562709 /* compose_guide_check_box_right@3x.png in Resources */,
 				2E12CB021E6F1E6F009527BA /* MHSheetCell.xib in Resources */,
 				6F4905091F186EE800F74691 /* LoginSettings.bundle in Resources */,
@@ -2277,6 +2296,7 @@
 				1C5D901D1F53151100F90380 /* ShopDetailCell.swift in Sources */,
 				6F4905031F186EE800F74691 /* HttpsForget+Password.swift in Sources */,
 				2E12CABC1E6F1E67009527BA /* Reachability.m in Sources */,
+				1C2CA58E1FB356FD0018989F /* RejectInfo.swift in Sources */,
 				5FD7147F1FA034DA00A1904B /* ShopMapView.swift in Sources */,
 				5F0BF32C1FA8799600089F74 /* DemandViewModel.swift in Sources */,
 				6F45EB661EF8F90C00562709 /* JLGroupCell.m in Sources */,
@@ -2310,7 +2330,6 @@
 				6F49050A1F186EE800F74691 /* Forget+passwordViewController.swift in Sources */,
 				2E12CB031E6F1E6F009527BA /* MHSheetFoot.m in Sources */,
 				6F4905071F186EE800F74691 /* loginResultModel.swift in Sources */,
-				1C2CA58A1FB211480018989F /* ShopInfoCell.swift in Sources */,
 				5F9676B91F99EF0D009030A1 /* MyMapView.swift in Sources */,
 				6F4904C31F186DBA00F74691 /* UINavigationBar+Extension.swift in Sources */,
 				6F45EB671EF8F90C00562709 /* JLScrollView.m in Sources */,
@@ -2413,6 +2432,7 @@
 				6F4904BA1F186DBA00F74691 /* FMDatabase+Extension.swift in Sources */,
 				1C5D90091F4B41A700F90380 /* DemandListModel.swift in Sources */,
 				6FDB2E0C1EC4612E0092FAFC /* RSADataSigner.m in Sources */,
+				1C2CA58C1FB3449D0018989F /* AuditShopViewMdeol.swift in Sources */,
 				6F4905061F186EE800F74691 /* HttpsRegister.swift in Sources */,
 				2E12CB161E6F1E6F009527BA /* TZPhotoPreviewCell.m in Sources */,
 				6FF51D341EBD7E9E00021790 /* QQScanViewController.swift in Sources */,
@@ -2421,8 +2441,8 @@
 				6F4904BB1F186DBA00F74691 /* String+Extension.swift in Sources */,
 				6F4905081F186EE800F74691 /* Region.swift in Sources */,
 				2E12CB0D1E6F1E6F009527BA /* UIColor+PYExtension.m in Sources */,
+				1C15BB9D1FB36BFB00300BC7 /* ShopBrowse.swift in Sources */,
 				6FDB2E081EC4612E0092FAFC /* Order.m in Sources */,
-				1C2CA5881FB200030018989F /* ShopImageCell.swift in Sources */,
 				1C2CA5821FB1F3C70018989F /* BackgroudCityModel.swift in Sources */,
 				6F4905041F186EE800F74691 /* HttpsLogin.swift in Sources */,
 				6F50687D1F1C474700E8EC1B /* SDCollectionViewCell.m in Sources */,

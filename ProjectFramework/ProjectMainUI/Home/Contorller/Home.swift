@@ -149,7 +149,7 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
         }
     }
     private func payFor() -> Void{
-        CommonFunction.AlertController(self, title: "查看店铺详情", message: "需要支付，是否支付？", ok_name: "确定", cancel_name: "取消", OK_Callback: {
+        CommonFunction.AlertController(self, title: "查看店铺详情", message: "需要支付服务费，是否支付？", ok_name: "确定", cancel_name: "取消", OK_Callback: {
             let vc = PayClass.init(OrderType:1,delegate: self)
             vc.model = self.currenModel
             vc.OtherID = self.currenModel!.MaintenanceID
@@ -157,7 +157,6 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
                 self.hiddenPview()
             })
 
-            self.show(vc, sender: self)
 
         }, Cancel_Callback: {
             
@@ -182,7 +181,8 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
                 debugPrint("广告图片",self.imagesURLStrings.count)
                 self.GetHttp()
             }else{
-                CommonFunction.HUD("网络异常", type: .error)
+                self.GetHttp()
+                CommonFunction.HUD("获取广告失败", type: .error)
             }
         }
     }

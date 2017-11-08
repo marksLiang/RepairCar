@@ -41,12 +41,15 @@ class BackgroundManagement: CustomTemplateViewController {
     fileprivate var cityName = Global_UserInfo.cityName
     fileprivate var viewModel = BackgroundViewModel()
     fileprivate let disposeBag   = DisposeBag()//处理包通道
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.getHttpData()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "后台管理"
         self.initUI()
-        self.getHttpData()
-        
+        //self.getHttpData()
     }
     override func headerRefresh() {
         self.getHttpData()
@@ -109,6 +112,7 @@ class BackgroundManagement: CustomTemplateViewController {
     private func getHttpData()->Void{
         
         viewModel.GetAdminHome(CityName: cityName, UserID: Global_UserInfo.UserID, isProvinceSelece: isProvinceSelece) { (result) in
+            self.header.endRefreshing()
             if result == true {
                 self.numberOfSections = 1
                 self.numberOfRowsInSection = self.viewModel.ListData.MaintenanceInfoList?.count ?? 0
