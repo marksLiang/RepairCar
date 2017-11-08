@@ -26,7 +26,7 @@ class MineViewModel {
             }
         }
     }
-    //MARK: 获取店铺状态   1//被后台删除  2//未申请入驻   3//正在审核   0 //存在店铺
+    //MARK: 获取店铺状态   1//被后台删除  2//未申请入驻   3//正在审核  4//被驳回 0 //存在店铺
     func GetMaintenanceStatus(result:((_ result:Bool?,_ type:Int?) -> Void)?) -> Void {
         CommonFunction.Global_Get(entity: nil, IsListData: false, url: HttpsUrl+"api/Maintenance/GetMaintenanceStatus", isHUD: true, isHUDMake: false, parameters: ["UserID":Global_UserInfo.UserID] as NSDictionary) { (resultModel) in
             
@@ -43,6 +43,11 @@ class MineViewModel {
                 }
                 //正在审核
                 if resultModel?.ret == 0 && resultModel?.Content == nil {
+                    result?(true,3)
+                    return
+                }
+                //被驳回
+                if resultModel?.ret == 2 {
                     result?(true,3)
                     return
                 }

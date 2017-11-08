@@ -21,8 +21,8 @@ class MyShopViewModel: NSObject {
     let content = Variable<String>("")     //店铺描述
     var permit = UIImage() //营业执照
     var currenImageList = [UIImage]()     //当前图片数组
-    fileprivate var permitString = [String]() //营业执照
-    fileprivate var imageListString = [String]()//店铺图片
+    var permitString = [String]() //营业执照
+    var imageListString = [String]()//店铺图片
     // 保存按钮点击 绑定的 事件
     let saveEvent = PublishSubject<Void>()
     // 保存数据信号回调
@@ -140,7 +140,7 @@ class MyShopViewModel: NSObject {
         }
     }
     //MARK: 保存店铺数据
-    private func SetUserMaintenanceEditSave()->Void{
+    func SetUserMaintenanceEditSave()->Void{
         let coordinate = MapTool.bd09(fromGCJ02: self.currenLocation.coordinate)
         let parameters = ["MaintenanceID":self.MaintenanceID,"TitleName":shopName.value,"Address":self.adress,"Phone":phoneNumber.value,"Area":arae.value,"CityName":city.value,"TypeNames":typeName.value,"Introduce":content.value,"UserID":Global_UserInfo.UserID,"Lng":coordinate.longitude,"Lat":coordinate.latitude,"PathImages":self.imageListString,"LicenseImages":self.permitString] as [String : Any]
         CommonFunction.Global_Post(entity: nil, IsListData: false, url: HttpsUrl+"api/Maintenance/SetUserMaintenanceEditSave", isHUD: true, HUDMsg: "正在提交中...",isHUDMake: false, parameters: parameters as NSDictionary) { (resultData) in

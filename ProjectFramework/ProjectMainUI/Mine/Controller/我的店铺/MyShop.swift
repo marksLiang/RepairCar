@@ -38,7 +38,8 @@ class MyShop: CustomTemplateViewController {
     var isHaveShop = false      //是否有店铺  否就填数据  是就请求数据填充
     var isBohui = false
     var MaintenanceID = 0 //店铺ID
-    fileprivate  var isEndRefresh = false  //是否结束刷新  刷新数据
+    fileprivate var edingCount = 0
+    fileprivate var isEndRefresh = false  //是否结束刷新  刷新数据
     fileprivate let ketArray = ["店面名称","联系号码","店面面积","所属城市","维修类型"]
     fileprivate var viewModel = MyShopViewModel()
     fileprivate let disposeBag   = DisposeBag()//处理包通道
@@ -102,6 +103,8 @@ class MyShop: CustomTemplateViewController {
         pohtoView.SetImageUrl(imageList)
         viewModel.isHave = true
         viewModel.MaintenanceID = self.MaintenanceID
+        viewModel.permitString = [viewModel.model.LicenseImgs![0].ImgPath]
+        viewModel.imageListString = imageList
     }
     //MARK: tableViewDelegate
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -182,7 +185,7 @@ class MyShop: CustomTemplateViewController {
         if indexPath.row == ketArray.count  {
             let cell = tableView.dequeueReusableCell(withIdentifier: "MyShopAdressCell", for: indexPath) as! MyShopAdressCell
             cell.accessoryType = .disclosureIndicator
-            cell.shopAdress.text = currenAdress
+            cell.shopAdress.text = currenAdress == "" ? "请选择店铺位置" : currenAdress
             return cell
         }
         return UITableViewCell()
@@ -282,14 +285,15 @@ class MyShop: CustomTemplateViewController {
         viw.backgroundColor = UIColor.white
         footView.addSubview(viw)
         
-        let lable = UILabel.init(frame: CGRect.init(x: 15, y: 5, width: 100, height: 20))
-        lable.text = "店铺图片"
+        let lable = UILabel.init(frame: CGRect.init(x: 15, y: 5, width: 300, height: 20))
+        lable.text = "店铺图片 (第一张为店铺封面)"
         lable.font = UIFont.systemFont(ofSize: 13)
         viw.addSubview(lable)
         
         self.pohtoView = UpLoadPicManagerView.init(frame: CGRect.init(x: 0, y: 30, width: self.view.frame.width, height: 250), delegate: self, ShowRowsItem: 3, SelectedImgMaxCount: 4) {[weak self] (imageList) in
             self?.currenImageList = imageList
-            debugPrint(imageList.count)
+            self?.edingCount += 1
+            debugPrint(imageList.count,self?.edingCount ?? 0)
         }
         viw.addSubview(pohtoView)
         
@@ -325,7 +329,11 @@ class MyShop: CustomTemplateViewController {
             case   .ok: //处理成功的业务
                 debugPrint("OK")
                 self?.viewModel.delegate = self
-                self?.viewModel.upLoadImage()
+                if (self?.edingCount)! > 1 {
+                    self?.viewModel.upLoadImage()
+                }else{
+                    self?.viewModel.SetUserMaintenanceEditSave()
+                }
                 break
             case   .empty:
                 
