@@ -115,6 +115,9 @@
 		5F0BF3281FA8748400089F74 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0BF3271FA8748400089F74 /* UIView+Extension.swift */; };
 		5F0BF32A1FA877B100089F74 /* DemandModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0BF3291FA877B100089F74 /* DemandModel.swift */; };
 		5F0BF32C1FA8799600089F74 /* DemandViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0BF32B1FA8799600089F74 /* DemandViewModel.swift */; };
+		5F157CA61FB42E4000DDE060 /* ShopBrowseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F157CA51FB42E4000DDE060 /* ShopBrowseCell.swift */; };
+		5F157CA81FB44C7A00DDE060 /* ShopBrowseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F157CA71FB44C7A00DDE060 /* ShopBrowseViewModel.swift */; };
+		5F157CAA1FB44C9400DDE060 /* ShopBrowseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F157CA91FB44C9400DDE060 /* ShopBrowseModel.swift */; };
 		5F2310F31FA887DE0058B14A /* PulickWebCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2310F21FA887DE0058B14A /* PulickWebCell.swift */; };
 		5F2310F91FA966100058B14A /* DemandCententCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2310F81FA966100058B14A /* DemandCententCell.swift */; };
 		5F3E31821F6392000018FE01 /* FeedbackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3E31811F6392000018FE01 /* FeedbackViewModel.swift */; };
@@ -479,6 +482,9 @@
 		5F0BF3271FA8748400089F74 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		5F0BF3291FA877B100089F74 /* DemandModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemandModel.swift; sourceTree = "<group>"; };
 		5F0BF32B1FA8799600089F74 /* DemandViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemandViewModel.swift; sourceTree = "<group>"; };
+		5F157CA51FB42E4000DDE060 /* ShopBrowseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopBrowseCell.swift; sourceTree = "<group>"; };
+		5F157CA71FB44C7A00DDE060 /* ShopBrowseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopBrowseViewModel.swift; sourceTree = "<group>"; };
+		5F157CA91FB44C9400DDE060 /* ShopBrowseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopBrowseModel.swift; sourceTree = "<group>"; };
 		5F2310F21FA887DE0058B14A /* PulickWebCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulickWebCell.swift; sourceTree = "<group>"; };
 		5F2310F81FA966100058B14A /* DemandCententCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemandCententCell.swift; sourceTree = "<group>"; };
 		5F3E31811F6392000018FE01 /* FeedbackViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewModel.swift; sourceTree = "<group>"; };
@@ -1152,6 +1158,7 @@
 				5F7780761FB064BA00E74351 /* BackgroundViewModel.swift */,
 				1C2CA5831FB1F4740018989F /* BackgroudCityViewModel.swift */,
 				1C2CA58B1FB3449D0018989F /* AuditShopViewMdeol.swift */,
+				5F157CA71FB44C7A00DDE060 /* ShopBrowseViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1162,6 +1169,7 @@
 				5F62EFED1F62A7E400D8305B /* MessageModel.swift */,
 				5F77806F1FAFFD8300E74351 /* MaintenanceModel.swift */,
 				1C2CA5811FB1F3C70018989F /* BackgroudCityModel.swift */,
+				5F157CA91FB44C9400DDE060 /* ShopBrowseModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1725,6 +1733,7 @@
 				1C2CA5851FB1FE4A0018989F /* AuditShop.storyboard */,
 				1C2CA58F1FB357160018989F /* RejectInfo.storyboard */,
 				1C15BB9E1FB36C2B00300BC7 /* ShopBrowse.storyboard */,
+				5F157CA51FB42E4000DDE060 /* ShopBrowseCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2279,6 +2288,7 @@
 				6F5068821F1C506D00E8EC1B /* RepairShopCell.swift in Sources */,
 				6F4904C81F186DBA00F74691 /* UIViewController+Extension.swift in Sources */,
 				6F49051F1F186EE800F74691 /* ValidationResultEnum.swift in Sources */,
+				5F157CAA1FB44C9400DDE060 /* ShopBrowseModel.swift in Sources */,
 				2E12CB111E6F1E6F009527BA /* TZAssetModel.m in Sources */,
 				5F4823F81F612AAC00BE04AC /* MyMessageCell.swift in Sources */,
 				5F78464E1FA1883500591803 /* LYFMKPinAnnotationView.swift in Sources */,
@@ -2369,8 +2379,10 @@
 				1C07E3CE1F911F0C00547DAE /* Home.swift in Sources */,
 				1C2CA57E1FAE11140018989F /* MyShopIntroduceView.swift in Sources */,
 				1C5D8FF51F4493CC00F90380 /* LYFButtonBar.swift in Sources */,
+				5F157CA61FB42E4000DDE060 /* ShopBrowseCell.swift in Sources */,
 				6F45EB551EF8F90C00562709 /* UIImage+Extend.m in Sources */,
 				6F4905131F186EE800F74691 /* ForgotPasswordController.swift in Sources */,
+				5F157CA81FB44C7A00DDE060 /* ShopBrowseViewModel.swift in Sources */,
 				6F4904C11F186DBA00F74691 /* UIImage+Gif+Extension.swift in Sources */,
 				5F2310F91FA966100058B14A /* DemandCententCell.swift in Sources */,
 				6F4904BE1F186DBA00F74691 /* UICollectionViewCell+Extension.swift in Sources */,

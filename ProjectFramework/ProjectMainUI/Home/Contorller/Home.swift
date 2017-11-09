@@ -263,9 +263,6 @@ class Home: CustomTemplateViewController ,SDCycleScrollViewDelegate , CLLocation
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! RepairShopCell
         cell.InitConfig(self.viewModel.ListData[indexPath.row])
         cell.distanceLabel.isHidden = true
-        if self.viewModel.ListData[indexPath.row].IsRecommend == true {
-            //cell.setHot()
-        }
         return cell
     }
     var isfirstClick = true

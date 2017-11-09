@@ -47,12 +47,12 @@ let BaiduTTAppID="9311410"                         //百度地图开启语音功
 let JpushKey="d2bea33f0be75f93ed0fd1c8"            //激光推送Key
 
 #if DEBUG
-let HttpsUrl="http://39.108.173.130:5421/";
-let HttpsUrlImage="http://39.108.173.130:5422";
+let HttpsUrl="http://api.suxiu365.com/";
+let HttpsUrlImage="http://images.suxiu365.com/";
 
 #else
-let HttpsUrl="http://39.108.173.130:5421/";
-let HttpsUrlImage="http://39.108.173.130:5422";
+let HttpsUrl="http://api.suxiu365.com/";
+let HttpsUrlImage="http://images.suxiu365.com/";
 
 #endif
 

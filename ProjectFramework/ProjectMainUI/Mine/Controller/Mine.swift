@@ -60,7 +60,8 @@ class Mine: CustomTemplateViewController {
         }) {
             switch index {
                 case 0:
-                    debugPrint(Global_UserInfo.ProvinceName)
+                    let vc = CommonFunction.ViewControllerWithStoryboardName("ShopBrowse", Identifier: "ShopBrowse") as! ShopBrowse
+                    self.navigationController?.show(vc, sender: nil)
                 break;
                 case 1:
                     let vc = CommonFunction.ViewControllerWithStoryboardName("ReleseDemandManager", Identifier: "ReleseDemandManager") as! ReleseDemandManager

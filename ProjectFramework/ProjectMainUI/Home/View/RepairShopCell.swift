@@ -67,37 +67,41 @@ class RepairShopCell: UITableViewCell {
         var frame_x = weixiuleixing.frame.maxX
         var frame_X = mainImageView.frame.minX
         
-        if isFirst == true {
-            //let magin_x = (CommonFunction.kScreenWidth - weixiuleixing.frame.maxX - 185)/3
-            var tepyArray = [String]()
-            if model.TypeNames != "" {
-                tepyArray = model.TypeNames.components(separatedBy: ",")
-                tepyArray.removeLast()
+        for lable in self.contentView.subviews {
+            if lable.isKind(of: UILabel.self) && lable.tag >= 10000 {
+                lable.removeFromSuperview()
             }
-            for i in 0..<tepyArray.count {
-                let lable = UILabel.init()
-                lable.layer.borderWidth = 0.6
-                lable.layer.borderColor = UIColor.clear.cgColor
-                lable.layer.cornerRadius = 4
-                lable.clipsToBounds = true
-                lable.font = UIFont.systemFont(ofSize: 12)
-                lable.backgroundColor = CommonFunction.SystemColor().withAlphaComponent(0.7)
-                lable.text = tepyArray[i]
-                lable.textColor = UIColor.white
-                lable.textAlignment = .center
-                let view_width = tepyArray[i].getContenSizeWidth(font: UIFont.systemFont(ofSize: 12)) + 10//获取标签宽度
-                if i < 3 {
-                    lable.frame = CGRect.init(x: frame_x, y: weixiuleixing.frame.minY + 1, width: view_width , height: 20)
-                    frame_x = frame_x + view_width + 10
-                }else{
-                    lable.frame = CGRect.init(x: frame_X, y: mainImageView.frame.maxY + 10, width: view_width, height: 20)
-                    frame_X = frame_X + view_width + 10
-                }
-                self.contentView.addSubview(lable)
-            }
-            isFirst = false
         }
+        var tepyArray = [String]()
+        if model.TypeNames != "" {
+            tepyArray = model.TypeNames.components(separatedBy: ",")
+            tepyArray.removeLast()
+        }
+        for i in 0..<tepyArray.count {
+            let lable = UILabel.init()
+            lable.layer.borderWidth = 0.6
+            lable.layer.borderColor = UIColor.clear.cgColor
+            lable.layer.cornerRadius = 4
+            lable.clipsToBounds = true
+            lable.font = UIFont.systemFont(ofSize: 12)
+            lable.backgroundColor = CommonFunction.SystemColor().withAlphaComponent(0.7)
+            lable.text = tepyArray[i]
+            lable.textColor = UIColor.white
+            lable.textAlignment = .center
+            lable.tag = 10000 + i
+            let view_width = tepyArray[i].getContenSizeWidth(font: UIFont.systemFont(ofSize: 12)) + 10//获取标签宽度
+            if i < 3 {
+                lable.frame = CGRect.init(x: frame_x, y: weixiuleixing.frame.minY + 1, width: view_width , height: 20)
+                frame_x = frame_x + view_width + 10
+            }else{
+                lable.frame = CGRect.init(x: frame_X, y: mainImageView.frame.maxY + 11, width: view_width, height: 20)
+                frame_X = frame_X + view_width + 10
+            }
+            self.contentView.addSubview(lable)
+        }
+        
     }
+    
     //置顶的时候修改约束
     func atTop() -> Void {
         topLayoutConstrant.constant = 10

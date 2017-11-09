@@ -140,8 +140,12 @@ class ShopList: CustomTemplateViewController,PYSearchViewControllerDelegate {
     }
     //MARK: tableViewDelegate
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
-        //return model.tabs.count > 3 ? 130: 90
+        var tepyArray = [String]()
+        if self.viewModel.ListData[indexPath.row].TypeNames != "" {
+            tepyArray = self.viewModel.ListData[indexPath.row].TypeNames.components(separatedBy: ",")
+            tepyArray.removeLast()
+        }
+        return  tepyArray.count > 3 ? 130 : 90
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! RepairShopCell
