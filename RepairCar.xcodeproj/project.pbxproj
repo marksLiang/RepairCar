@@ -15,6 +15,7 @@
 		1C07E3D21F965DFA00547DAE /* PostedDemand.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C07E3D11F965DFA00547DAE /* PostedDemand.storyboard */; };
 		1C15BB9D1FB36BFB00300BC7 /* ShopBrowse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C15BB9C1FB36BFB00300BC7 /* ShopBrowse.swift */; };
 		1C15BB9F1FB36C2B00300BC7 /* ShopBrowse.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C15BB9E1FB36C2B00300BC7 /* ShopBrowse.storyboard */; };
+		1C15BBA11FB48E0A00300BC7 /* ShopScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C15BBA01FB48E0A00300BC7 /* ShopScore.swift */; };
 		1C2CA57A1FADF8F80018989F /* MyShopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2CA5791FADF8F80018989F /* MyShopViewModel.swift */; };
 		1C2CA57C1FAE0D360018989F /* MyShopIntroduceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C2CA57B1FAE0D350018989F /* MyShopIntroduceView.xib */; };
 		1C2CA57E1FAE11140018989F /* MyShopIntroduceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2CA57D1FAE11140018989F /* MyShopIntroduceView.swift */; };
@@ -337,6 +338,7 @@
 		1C07E3D11F965DFA00547DAE /* PostedDemand.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PostedDemand.storyboard; sourceTree = "<group>"; };
 		1C15BB9C1FB36BFB00300BC7 /* ShopBrowse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopBrowse.swift; sourceTree = "<group>"; };
 		1C15BB9E1FB36C2B00300BC7 /* ShopBrowse.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShopBrowse.storyboard; sourceTree = "<group>"; };
+		1C15BBA01FB48E0A00300BC7 /* ShopScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopScore.swift; sourceTree = "<group>"; };
 		1C2CA5791FADF8F80018989F /* MyShopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyShopViewModel.swift; sourceTree = "<group>"; };
 		1C2CA57B1FAE0D350018989F /* MyShopIntroduceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyShopIntroduceView.xib; sourceTree = "<group>"; };
 		1C2CA57D1FAE11140018989F /* MyShopIntroduceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyShopIntroduceView.swift; sourceTree = "<group>"; };
@@ -866,6 +868,7 @@
 			isa = PBXGroup;
 			children = (
 				1C15BB9C1FB36BFB00300BC7 /* ShopBrowse.swift */,
+				1C15BBA01FB48E0A00300BC7 /* ShopScore.swift */,
 			);
 			path = "店铺浏览";
 			sourceTree = "<group>";
@@ -2460,6 +2463,7 @@
 				6F50687D1F1C474700E8EC1B /* SDCollectionViewCell.m in Sources */,
 				6F45EB541EF8F90C00562709 /* ALAsset+Associate.m in Sources */,
 				2E12CB0B1E6F1E6F009527BA /* PYSearchSuggestionViewController.m in Sources */,
+				1C15BBA11FB48E0A00300BC7 /* ShopScore.swift in Sources */,
 				5F77807B1FB1BBBC00E74351 /* AuditShop.swift in Sources */,
 				6F4905161F186EE800F74691 /* LoginModel.swift in Sources */,
 				6F45EB641EF8F90C00562709 /* JLBadgeView.m in Sources */,

@@ -64,13 +64,27 @@ class ShopBrowse: CustomTemplateViewController {
         cell.shopImageView.ImageLoad(PostUrl: HttpsUrlImage+self.viewModel.ListData[indexPath.row].Images![0].ImgPath)
         cell.shopTitle.text = self.viewModel.ListData[indexPath.row].TitleName
         cell.createDateLable.text = self.viewModel.ListData[indexPath.row].CreateTime
-        cell.shopTypeLable.text = self.viewModel.ListData[indexPath.row].TypeNames
-        cell.priceLable.text = "¥:"+self.viewModel.ListData[indexPath.row].DealPrice
+        cell.shopTypeLable.text = "维修类型:"+self.viewModel.ListData[indexPath.row].TypeNames
+        cell.priceLable.text = "支付金额:"+self.viewModel.ListData[indexPath.row].DealPrice
         if self.viewModel.ListData[indexPath.row].IsScore == false {
             cell.stateBtn.isUserInteractionEnabled = true
             cell.stateBtn.setTitle("未评分", for: .normal)
-            cell.myCallbackValue = {
-                debugPrint("我去评分了")
+            cell.myCallbackValue = {[weak self] () in
+                let vc = ShopScore()
+                vc.shopTitle = (self?.viewModel.ListData[indexPath.row].TitleName)!
+                vc.callBack = {[weak self] (score) in
+                    self?.viewModel.SetMaintenanceScore(OrderID: (self?.viewModel.ListData[indexPath.row].OrderID)!, MaintenanceID: (self?.viewModel.ListData[indexPath.row].MaintenanceID)!, Score: score, result: { (result) in
+                        
+                        //
+                        if result == true {
+                            cell.stateBtn.isUserInteractionEnabled = false
+                            CommonFunction.HUD("评分成功", type: .success)
+                        }else{
+                            CommonFunction.HUD("评分失败", type: .error)
+                        }
+                    })
+                }
+                self?.navigationController?.show(vc, sender: self)
             }
         }else{
             cell.stateBtn.isUserInteractionEnabled = false
@@ -82,8 +96,8 @@ class ShopBrowse: CustomTemplateViewController {
     private func initUI()->Void{
         self.view.addSubview(buttonBar)
         self.InitCongif(tableView)
-        self.tableView.frame = CGRect.init(x: 0, y: CommonFunction.NavigationControllerHeight, width: CommonFunction.kScreenWidth, height: CommonFunction.kScreenHeight-CommonFunction.NavigationControllerHeight)
-        self.tableViewheightForRowAt = 100
+        self.tableView.frame = CGRect.init(x: 0, y: CommonFunction.NavigationControllerHeight+40, width: CommonFunction.kScreenWidth, height: CommonFunction.kScreenHeight-CommonFunction.NavigationControllerHeight-40)
+        self.tableViewheightForRowAt = 120
         
     }
 
