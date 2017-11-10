@@ -195,17 +195,16 @@ class AuditShop: CustomTemplateViewController {
     }
     func rejectEvent(button:UIButton) -> Void {
         if button.tag == 0 {
-            viewModel.SetAdminMaintenanceEditSave(IsAudit: true, IsReject: false, RejectMsg: "", result: { (result) in
-                if result == true {
-                    CommonFunction.AlertController(self, title: "已通过审核", message: "返回上一层", ok_name: "确定", cancel_name: nil, OK_Callback: {
-                        self.navigationController?.popViewController(animated: true)
-                    }, Cancel_Callback: nil)
-                }
+
+            viewModel.SetMaintenanceIsAudit(MaintenanceID: MaintenanceID, IsAudit: true, RejectMsg: "", result: { (result) in
+                CommonFunction.AlertController(self, title: "已通过审核", message: "返回上一层", ok_name: "确定", cancel_name: nil, OK_Callback: {
+                                            self.navigationController?.popViewController(animated: true)
+                                        }, Cancel_Callback: nil)
             })
         }else{
             let vc = CommonFunction.ViewControllerWithStoryboardName("RejectInfo", Identifier: "RejectInfo") as! RejectInfo
             vc.FuncCallbackValue(value: {[weak self] (text) in
-                self?.viewModel.SetAdminMaintenanceEditSave(IsAudit: false, IsReject: true, RejectMsg: text, result: { (reult) in
+                self?.viewModel.SetMaintenanceIsAudit(MaintenanceID: (self?.MaintenanceID)!, IsAudit: false, RejectMsg: text, result: { (result) in
                     CommonFunction.HUD("该店铺审核已驳回", type: .success)
                     self?.navigationController?.popViewController(animated: true)
                 })

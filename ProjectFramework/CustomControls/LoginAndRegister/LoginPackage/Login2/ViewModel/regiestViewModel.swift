@@ -123,13 +123,14 @@ class regiestViewModel {
     func SetRegister(){
         let parameters = ["Phone":username.value,"PassWord":password.value,"VCode":VerificationCode.value,"CityName":CurrentCity]
         CommonFunction.Global_Post(entity: nil, IsListData: false, url:  HttpsUrl+"api/Register/SetRegister", isHUD: true,HUDMsg: "正在提交中...", isHUDMake: false, parameters:parameters as NSDictionary) { (resultData) in
-//            print(resultData?.ret,resultData?.Content)
+            print(CurrentCity)
             if(resultData?.Success==true){
                 if (resultData?.ret == 0){
                     CommonFunction.HUD("注册成功", type: .success)
                     self.delegate?.dismiss(animated: true, completion: {
                         
                     })
+                    return 
                 }
                 if (resultData?.ret == 4){
                     CommonFunction.HUD((resultData?.Result)!, type: .error)

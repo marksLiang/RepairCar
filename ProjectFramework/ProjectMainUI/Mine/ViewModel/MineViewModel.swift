@@ -19,6 +19,7 @@ class MineViewModel {
                     let model = resultModel?.Content as! LoginMode
                     Global_UserInfo.ProvinceName = model.ProvinceName
                     Global_UserInfo.cityName = model.CityName
+                    debugPrint(model.CityName)
                     result?(true,model.UserType)
                     return
                 }

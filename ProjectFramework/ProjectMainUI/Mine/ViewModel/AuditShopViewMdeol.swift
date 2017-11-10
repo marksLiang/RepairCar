@@ -27,9 +27,9 @@ class AuditShopViewMdeol: NSObject {
             }
         }
     }
-    func SetAdminMaintenanceEditSave(IsAudit:Bool ,IsReject:Bool ,RejectMsg:String ,result:((_ result:Bool?) -> Void)?) -> Void {
-        let parameters = ["IsAudit":IsAudit ? "true" : "false","IsReject":IsReject ? "true" : "false","RejectMsg":RejectMsg,"IsRecommend":"false","IsTop":"false","MaintenanceID":self.model.MaintenanceID,"TitleName":self.model.TitleName,"Address":self.model.Address,"Phone":self.model.Phone,"Area":self.model.Area,"Lng":self.model.Lng,"Lat":self.model.Lat,"CityName":self.model.CityName,"TypeNames":self.model.TypeNames,"UserID":Global_UserInfo.UserID,"Introduce":self.model.Introduce,"PathImages":self.imageString] as [String : Any]
-        CommonFunction.Global_Post(entity: nil, IsListData: false, url: HttpsUrl+"api/Maintenance/SetAdminMaintenanceEditSave", isHUD: true, isHUDMake: false, parameters: parameters as NSDictionary) { (resultData) in
+    func SetMaintenanceIsAudit(MaintenanceID:Int ,IsAudit:Bool ,RejectMsg:String ,result:((_ result:Bool?) -> Void)?) -> Void {
+        let parameters = ["MaintenanceID":MaintenanceID ,"IsAudit":IsAudit ? "true" : "false","RejectMsg":RejectMsg] as [String : Any]
+        CommonFunction.Global_Post(entity: nil, IsListData: false, url: HttpsUrl+"api/Maintenance/SetMaintenanceIsAudit", isHUD: true, isHUDMake: false, parameters: parameters as NSDictionary) { (resultData) in
             debugPrint(resultData?.Content ?? "")
             
             if resultData?.Success == true {
@@ -45,4 +45,6 @@ class AuditShopViewMdeol: NSObject {
             }
         }
     }
+    
+
 }

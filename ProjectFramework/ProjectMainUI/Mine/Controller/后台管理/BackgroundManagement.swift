@@ -44,6 +44,7 @@ class BackgroundManagement: CustomTemplateViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.getHttpData()
+        debugPrint(Global_UserInfo.cityName)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,8 +104,9 @@ class BackgroundManagement: CustomTemplateViewController {
         }
     }
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if self.viewModel.ListData.MaintenanceInfoList!.count > 0 {
-            return 35
+
+        if self.viewModel.ListData.MaintenanceInfoList != nil {
+            return self.viewModel.ListData.MaintenanceInfoList!.count > 0 ? 35 : 0
         }else{
             return 0
         }

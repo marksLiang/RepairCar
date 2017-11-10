@@ -12,15 +12,15 @@ import SwiftyJSON
 class MyinfoViewModel: NSObject {
     //更新用户信息
     func SetUpdateUserInfo(UserID:Int, UserName:String , ImagePath:String , Sex:String , Phone:String,result:((_ result:Bool?) -> Void)?) -> Void {
-        let parameters=["UserID":UserID,"UserName":UserName,"ImagePath":ImagePath,"Sex":Sex,"Phone":Phone] as [String : Any]
-        CommonFunction.Global_Post(entity: nil, IsListData: false, url: HttpsUrl+"api/My/SetUpdateUserInfo", isHUD: true, isHUDMake: true, parameters: parameters as NSDictionary) { (resultModel) in
+        let parameters=["UserID":UserID,"UserName":UserName,"ImagePath":ImagePath,"Sex":Sex,"Phone":Phone,"CityName":Global_UserInfo.cityName,"UserType":Global_UserInfo.UserType] as [String : Any]
+        CommonFunction.Global_Post(entity: LoginMode(), IsListData: false, url: HttpsUrl+"api/My/SetUpdateUserInfo", isHUD: true, isHUDMake: true, parameters: parameters as NSDictionary) { (resultModel) in
             if resultModel?.Success == true {
                 if resultModel?.ret == 0 {
-                    let model = resultModel?.Content as! Dictionary<String, Any>
-                    Global_UserInfo.ImagePath=model["ImagePath"] as! String
-                    Global_UserInfo.Phone=model["Phone"] as! String
-                    Global_UserInfo.UserName=model["UserName"] as! String
-                    Global_UserInfo.Sex=model["Sex"] as! String
+                    let model = resultModel?.Content as! LoginMode
+                    Global_UserInfo.ImagePath=model.ImagePath
+                    Global_UserInfo.Phone=model.Phone
+                    Global_UserInfo.UserName=model.UserName
+                    Global_UserInfo.Sex=model.Sex
                     CommonFunction.ExecuteUpdate("update MemberInfo set UserID = (?), Phone = (?) , Token = (?), IsLogin = (?) ,UserName=(?),Sex=(?),ImagePath=(?),UserType=(?)",
                                                  [Global_UserInfo.UserID as AnyObject
                                                     ,Global_UserInfo.Phone as AnyObject
